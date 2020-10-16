@@ -25,16 +25,15 @@ class Register extends Component {
 
     handleRegister = () => {
         const { email, first_name, last_name, password } = this.state
+        if (this.state.password !== this.state.confirm_password) {
+            alert("Passwords don't match")
+            return
+        }
         axios
-            .post('/register', { email, first_name, last_name, password })
+            .post('/api/auth/newuser', { email, first_name, last_name, password })
             .then((res) => {
                 this.props.loginUser(res.data)
-                this.props.history.push('/login')
-                if (this.state.password !== this.state.confirmPassword) {
-                    message.error("The passwords doesn't match")
-                    return false // The form won't submit
-                }
-                else return true; // The form will submit
+                this.props.history.push('/')
             })
             .catch((err) => {
                 alert(err.message)
@@ -49,7 +48,7 @@ class Register extends Component {
 
     handleConfirmPassword = (e) => {
         if (e.target.value !== this.state.password) {
-            message.error('error')
+            alert('error')
             this.setState({ confirmPassword: e.target.value })
         }
     }
@@ -108,15 +107,14 @@ class Register extends Component {
                         <input
                             type="password"
                             maxLength="20"
-                            placeholder="ConfirmPassword"
-                            name="password"
+                            placeholder="Confirm Password"
+                            name="confirm_password"
                             onChange={(e) => {
                                 this.handleInput(e)
-                                this.handleConfirmPassword(e)
                             }}
                         />
 
-                        <a className='button2' onClick={() => { this.handleRegister() }}> Submit </a>
+                        <button className='button' onClick={() => { this.handleRegister() }}> Submit </button>
 
                     </div>
 
