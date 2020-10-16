@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 module.exports = {
     register: async (req, res) => {
         const db = req.app.get('db')
-        const { email, first_name, last_name, password }
+        const { email, first_name, last_name, password } = req.body
 
         const [user] = await db.check_user([email])
 
@@ -14,7 +14,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
 
-        const [newUser] = await db.register_user([email, first_name, last_name, password])
+        const [newUser] = await db.register_user([email, first_name, last_name, hash])
 
         req.session.user = newUser
 
@@ -40,7 +40,7 @@ module.exports = {
             return res.status(404).send("Oops! Couldn't find your account. Please try again or create an account.")
         }
 
-        const isAuthenticated = bcrypt.compareSync(password, existingUser.password)
+        const isAuthenticated = bcrypt.compareSync(password, existingUser.hash)
 
         if (!isAuthenticated) {
             return res.status(403).send('Incorrect email or password. Please try again.')
@@ -50,7 +50,7 @@ module.exports = {
 
         req.session.user = existingUser
 
-        res.status(200).send(req.session.use)
+        res.status(200).send(req.session.user)
     },
 
     logout: (req, res) => {

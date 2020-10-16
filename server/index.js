@@ -20,19 +20,18 @@ app.use(
 
 //Endpoints--
 //auth endpoints
-app.post('/api/auth/newuser', authCtrl.register);
-app.post('/api/auth/login', authCtrl.login);
-app.post('/api/auth/logout', authCtrl.logout);
-app.get('/api/auth/me', authCtrl.getUser);
-
-
-
+app.post('/api/auth/newuser', authCtrl.register)
+app.post('/api/auth/login', authCtrl.login)
+app.post('/api/auth/logout', authCtrl.logout)
+app.get('/api/auth/me', authCtrl.getUser)
 
 massive({
     connectionString: CONNECTION_STRING,
-    ssl: { rejectUnauthorized: false }
-}).then(dbInstance => {
-    app.set('db', dbInstance)
-    console.log('The database is working')
-    app.listen(SERVER_PORT, () => console.log(`Project running on Port ${SERVER_PORT}`))
-}).catch(err => console.log(err))
+    ssl: { rejectUnauthorized: false },
+})
+    .then((dbInstance) => {
+        app.set('db', dbInstance)
+        console.log('The database is working')
+        app.listen(SERVER_PORT, () => console.log(`Project running on Port ${SERVER_PORT}`))
+    })
+    .catch((err) => console.log(err))
