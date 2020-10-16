@@ -1,0 +1,31 @@
+//auth endpoints
+app.post(“/api/auth/newuser”) - client will create a new user profile
+app.post(“/api/auth/login”) - client will log into website
+app.post(“/api/auth/logout”) - client will log out of website
+app.get(“/api/auth/me”) - will update user session
+
+//listing endpoints
+app.get(“/api/listing/getlistings/”) - gets all listings
+app.get(“/api/listing/getlisting/:listing_id”) - pulls up information on individual listing JOIN with host
+app.post(“/api/listing/newlisting”) - creates a new listing
+app.put(“/api/listing/editlisting/:listing_id”) - change listing info (price, name, etc…)
+app.delete(“/api/listing/deletelisting/:listing_id”) - host can delete their listing
+
+//reservation endpoints
+app.get(“/api/reserve/getreserve”) - get all reservations based on user session
+app.post(“/api/reserve/newreserve”) - create a reservation
+app.delete(“/api/reserve/deletereserve”) - cancel a reservation
+
+
+
+/*
+GET: /v4/{tileset_id}/{zoom}/{x}/{y}{@2x}.{format}
+
+Required parameters	Description
+tileset_id	Unique identifier for the vector tileset in the format username.id. To composite multiple vector tilesets, use a comma-separated list of up to 15 tileset IDs.
+zoom	Specifies the tile's zoom level, as described in the Slippy Map Tilenames specification.
+{x}/{y}	Specifies the tile's column {x} and row {y}, as described in the Slippy Map Tilenames specification.
+format	Specifies the format of the returned tiles:
+.mvt	Vector tile
+.vector.pbf	Vector tile
+*/
