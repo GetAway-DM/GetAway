@@ -15,7 +15,7 @@ profile_img TEXT
 );
 
 CREATE TABLE property_types(
-type_id SERIAL PRIMARY KEY,
+type_id SERIAL PRIMARY KEY
 type_name VARCHAR(15)
 );
 
