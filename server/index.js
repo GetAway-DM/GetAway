@@ -3,6 +3,8 @@ const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
 const authCtrl = require('./authController.js')
+const listCtrl = require('./listController')
+
 
 const app = express()
 
@@ -19,11 +21,20 @@ app.use(
 )
 
 //Endpoints--
-//auth endpoints
+// auth endpoints
 app.post('/api/auth/newuser', authCtrl.register)
 app.post('/api/auth/login', authCtrl.login)
 app.post('/api/auth/logout', authCtrl.logout)
 app.get('/api/auth/me', authCtrl.getUser)
+
+// list endpoints
+app.get('/api/listing/getlistings', listCtrl.getAllListings)
+app.get('/api/listing/getlisting/:listing_id', listCtrl.getListing)
+// app.post('/api/listing/newlisting', listCtrl.addListing)
+// app.put('/api/listing/editlisting/:listing_id', listCtrl.editListing)
+// app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
+
+
 
 massive({
     connectionString: CONNECTION_STRING,
