@@ -13,4 +13,31 @@ module.exports = {
             listing[0] ? res.status(200).send(listing[0]) : res.status(200).send(listing)
         )
   },
-}
+    addListing: async(req, res) => {
+      const db = req.app.get('db')
+      const { title, description, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool } = req.body
+
+    const { user_id } = req.session
+
+       await db.create_listing([ title, description, user_id, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool ])
+
+       const [ listings ] = await db.get_all_listings()
+
+       res.status(200).send(listings)
+
+       },
+       /*
+       editListing: async(req, res) => {
+            const db = req.app.get('db')
+
+            const { } = req.body
+
+            const { listing_id } = req.params
+
+            await db.edit_listing
+       } */
+    }
+
+
+
+

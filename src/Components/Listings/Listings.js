@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react'
 
 const Listing = (props) => {
@@ -17,7 +16,9 @@ const Listing = (props) => {
 
     }, [] )
 
-    return (<div></div>)
+    return ( <div>
+
+    </div> )
 
 }
 
