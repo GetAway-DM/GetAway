@@ -26,8 +26,14 @@ module.exports = {
        res.status(200).send(listings)
 
        },
-       /*
        editListing: async(req, res) => {
+            /*
+            TODO Get content from req.body
+            TODO Get listing_id from req.params
+            TODO Save the updated post to the db
+            TODO Send back all posts
+            */
+
             const db = req.app.get('db')
 
             const { } = req.body
@@ -35,7 +41,7 @@ module.exports = {
             const { listing_id } = req.params
 
             await db.edit_listing
-       } */
+       }
     }
 
 
