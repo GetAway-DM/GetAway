@@ -5,7 +5,6 @@ module.exports = {
       res.status(200).send(listings)
   },
    getListing: async(req, res) => {
-   console.log(req.params.listing_id)
     req.app
         .get('db')
         .get_listing_by_id(req.params.listing_id)
@@ -26,23 +25,57 @@ module.exports = {
        res.status(200).send(listings)
 
        },
-       editListing: async(req, res) => {
-            /*
-            TODO Get content from req.body
-            TODO Get listing_id from req.params
-            TODO Save the updated post to the db
-            TODO Send back all posts
-            */
+  editListing: async (req, res) => {
+      const db = req.app.get('db')
 
-            const db = req.app.get('db')
+      const {
+        title,
+        description,
+        property_type,
+        bedrooms,
+        bathrooms,
+        price,
+        street,
+        city,
+        state,
+        zip,
+        parking,
+        television,
+        washer_dryer,
+        air_conditioning,
+        wifi,
+        hair_dryer,
+        pool,
+      } = req.body
 
-            const { } = req.body
+      const { listing_id } = req.params
 
-            const { listing_id } = req.params
+      const [editUser] = await db.edit_listing(
+        listing_id,
+        title,
+        description,
+        property_type,
+        bedrooms,
+        bathrooms,
+        price,
+        street,
+        city,
+        state,
+        zip,
+        parking,
+        television,
+        washer_dryer,
+        air_conditioning,
+        wifi,
+        hair_dryer,
+        pool
+      )
 
-            await db.edit_listing
-       }
-    }
+
+      res.status(200).send(editUser)
+    },
+
+  }
 
 
 

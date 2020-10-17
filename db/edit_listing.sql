@@ -1,3 +1,3 @@
-UPDATE listings SET title = $2, description = $3, property_type = $4, bedrooms = $5, bathrooms = $6, street = $7, city = $8, state = $9, zip = $10, parking = $11, television = $12, washer_dryer = $13, air_conditioning = $14, wifi = $15, hair_dryer = $16, pool = $17
+UPDATE listings SET title = $2, description = $3, property_type = $4, bedrooms = $5, bathrooms = $6, price = $7, street = $8, city = $9, state = $10, zip = $11, parking = $12, television = $13, washer_dryer = $14, air_conditioning = $15, wifi = $16, hair_dryer = $17, pool = $18
 WHERE listing_id = $1
 RETURNING *;
