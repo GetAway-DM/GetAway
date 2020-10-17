@@ -1,2 +1,2 @@
 DELETE FROM listings
-WHERE id = $1;
+WHERE listing_id = $1;
