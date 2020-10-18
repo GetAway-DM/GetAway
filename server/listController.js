@@ -74,6 +74,17 @@ module.exports = {
 
       res.status(200).send(editUser)
     },
+    deleteListing: async(req, res) => {
+        const db = req.app.get('db')
+
+        const {listing_id} = req.params
+
+        await db.delete_listing([ listing_id ])
+
+        const deletedListing = await db.get_all_listings()
+
+        res.status(200).send(deletedListing)
+    }
 
   }
 

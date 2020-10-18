@@ -32,7 +32,7 @@ app.get('/api/listing/getlistings', listCtrl.getAllListings)
 app.get('/api/listing/getlisting/:listing_id', listCtrl.getListing)
 app.post('/api/listing/newlisting', listCtrl.addListing)
 app.put('/api/listing/editlisting/:listing_id', listCtrl.editListing)
-// app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
+app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
 
 
 massive({
