@@ -7,8 +7,8 @@ import './App.css';
 function App(props) {
   return (
     <div className="App">
-     {/* <Nav/> */}
-     {routes}
+      {/* <Nav /> */}
+      {routes}
     </div>
   );
 }
