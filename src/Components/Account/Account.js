@@ -36,7 +36,7 @@ class Account extends Component {
     }
 
     componentDidUpdate(prevProps){
-    if (this.props.userid !== prevProps.userid){
+    if (this.props.user_id !== prevProps.user_id){
         this.props.getUser()
         }
     }
@@ -59,20 +59,24 @@ class Account extends Component {
     }
 
     handleEdit = () => {
-        
         const {email, first_name, last_name, profile_img} = this.state
         const {user_id} = this.props.authReducer.user
-        axios.put('/api/user/username', {}).then((res) => {
-            return res.data
+        axios.put('/api/user/edit', {user_id, email, first_name, last_name, profile_img}).then((res) => {
+            this.props.getUser().then(res => {
+                this.setState({
+                    email: this.props.authReducer.user.email,
+                    first_name:this.props.authReducer.user.first_name,
+                    last_name: this.props.authReducer.user.last_name,
+                    profile_img: this.props.authReducer.user.profile_img
+                })
+            })
         })
     }
     
     
       handleSubmit = (e) => {
-        console.log('hit handlesave')
         e.preventDefault()
         this.handleEdit()
-        this.props.getUser()
         this.setState({
             emailEdit: false,
             nameEdit: false,
@@ -105,7 +109,7 @@ class Account extends Component {
                             this.handleInput(e)
                         }} name="last_name" placeholder="Last Name"/><button name="nameEdit" onClick={(e)=> {this.toggleCancel(e)}}>Cancel</button></div> }
                     </div>
-                    <p>Profile Picture: <img src={`${profile_img}`}/></p>
+                    <p>Profile Picture: <img src={`${profile_img}`} alt="Not Loading"/></p>
                     <div className="profile_img_edit">
                         { this.state.profile_imgEdit === false ? <button name="profile_imgEdit" onClick={(e)=> {this.toggleEdit(e)}}>Edit</button> :  <div>
                             <input value={this.state.profile_img} onChange={(e) => {
@@ -114,6 +118,7 @@ class Account extends Component {
                             <button name="profile_imgEdit" onClick={(e)=> {this.toggleCancel(e)}}>Cancel</button>
                         </div> }
                     </div>
+                    {this.state.emailEdit === true || this.state.nameEdit === true || this.state.profile_imgEdit === true ? <button onClick={(e) => {this.handleSubmit(e)} }>Submit Edit</button> : null}
                 </div>
                 <p>Create Listing Button Goes Here</p>
                 <div> Reset Password Goes here!!!!</div>
