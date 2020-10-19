@@ -1,5 +1,5 @@
 import React from 'react';
-// import Nav from './Components/Nav/Nav';
+import Header from './Components/Header/Header';
 import routes from './routes';
 import { connect } from 'react-redux';
 import './App.css';
@@ -7,8 +7,8 @@ import './App.css';
 function App(props) {
   return (
     <div className="App">
-     {/* <Nav/> */}
-     {routes}
+      <Header />
+      {routes}
     </div>
   );
 }
