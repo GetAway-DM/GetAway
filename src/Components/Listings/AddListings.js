@@ -5,30 +5,28 @@ import axios from 'axios'
 import { getUserListing } from '../../ducks/listReducer'
 
 const AddListings = (props) => {
-    const currentListing = useSelector((state) => state.listReducer.listing)
-    const dispatch = useDispatch()
+  const currentListing = useSelector((state) => state.listReducer.listing)
+  const dispatch = useDispatch()
 
-    useEffect(() => {
-        axios
-                .get(`/api/listing/getlisting/${1}`)
-                .then((res) => dispatch({ type: 'GET_LIST', payload: res.data }))
-                .catch((error) => console.log(error.message))
-    },[])
+  useEffect(() => {
+    axios
+      .get(`/api/listing/getlisting/${1}`)
+      .then((res) => dispatch({ type: 'GET_LIST', payload: res.data }))
+      .catch((error) => console.log(error.message))
+  }, [])
 
-    console.log(currentListing)
-    return (
-            <div>
-            <div>{currentListing.title}</div>
-            </div>
-    )
+  console.log(currentListing)
+  return (
+    <div>
+      <div>{currentListing.title}</div>
+    </div>
+  )
 }
 
-
-
 AddListings.propTypes = {
-    title: PropTypes.string,
-    price: PropTypes.number,
-    host: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
+  host: PropTypes.string,
 }
 
 export default AddListings
