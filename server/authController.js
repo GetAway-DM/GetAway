@@ -22,6 +22,7 @@ module.exports = {
     },
 
     getUser: (req, res) => {
+        console.log(req.session)
         if (req.session.user) {
             res.status(200).send(req.session.user)
         } else {
@@ -51,6 +52,16 @@ module.exports = {
         req.session.user = existingUser
 
         res.status(200).send(req.session.user)
+    },
+    editUser: async (req, res, next) => {
+        const db = req.app.get('db')
+        const { user_id, email, first_name, last_name, profile_img } = req.body
+
+        const [newUser] = await db.edit_user([user_id, email, first_name, last_name, profile_img])
+
+        req.session.user = newUser
+
+        res.status(200).send(req.session.user)    
     },
 
     logout: (req, res) => {
