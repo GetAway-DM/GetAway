@@ -7,13 +7,10 @@ import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import * as ReactBootStrap from 'react-bootstrap'
 
-import logout from './logout.png'
-import login from './login.png'
-
 class Header extends Component {
 
-    handleLogout = (e) => {
-        axios.post('/api/auth/logout')
+    handleLogout = async (e) => {
+        await axios.post('/api/auth/logout')
             .then(() => {
                 this.props.logoutUser()
                 this.props.history.push("/")
@@ -57,13 +54,13 @@ class Header extends Component {
                                 <ReactBootStrap.Nav.Link href="#pricing">About Us</ReactBootStrap.Nav.Link>
                             </Link>
                         </ReactBootStrap.Nav>
-                        {/* Signed in as: {this.props.user.first_name} {this.props.user.last_name} */}
+                        Signed in as: {this.props.authReducer.user.first_name} {this.props.authReducer.user.last_name}
                         <ReactBootStrap.NavDropdown title="Account" id="collasible-nav-dropdown">
-                            <ReactBootStrap.NavDropdown.Item href="#action/3.1">Profile</ReactBootStrap.NavDropdown.Item>
+                            <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/account/${this.props.authReducer.user.user_id}`) }}>Profile</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Item href="#action/3.2">Create Listing</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Item href="#action/3.3">Favorites</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Divider />
-                            <ReactBootStrap.NavDropdown.Item> <button onClick={this.handleLogout}> <img src={logout} /></button>Logout</ReactBootStrap.NavDropdown.Item>
+                            <ReactBootStrap.NavDropdown.Item> <Link to="/" onClick={() => { this.handleLogout() }}> Logout</Link></ReactBootStrap.NavDropdown.Item>
                         </ReactBootStrap.NavDropdown>
                         <ReactBootStrap.Nav>
                             <Link to="/login">
@@ -77,7 +74,7 @@ class Header extends Component {
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>
                 </ReactBootStrap.Navbar>
-            </div>
+            </div >
         );
     }
 }
