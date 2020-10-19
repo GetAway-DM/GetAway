@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react'
-
-const Listing = (props) => {
-    const [title, setTitle]= useState('')
-    const [price, setPrice] = useState(0)
-    const [host, setHost] = useState('')
+import React from 'react'
+import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
+// import { getUserListing } from '../../ducks/listReducer'
 
 
+const Listings = (props) => {
+    const currentListing = useSelector(state => state.listing)
 
-    useEffect(() => {
-        axios
-            // TODO finish passing props into the axios request
-            .get(`/api/listing/getlisting/${this.state.id}`)
-            // TODO need to finish this request
-            .then(res => (res.date))
 
-    }, [] )
-
-    return ( <div>
-
-    </div> )
-
+    return (
+            <div>
+                <h1>{listing.title}</h1>
+                <h2>{listing.price}</h2>
+            </div>
+    )
 }
 
-export default Listing
+Listings.propTypes = {
+    title: PropTypes.string,
+    price: PropTypes.number,
+    host: PropTypes.string
+}
+
+export default Listings
+
