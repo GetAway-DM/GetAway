@@ -59,7 +59,6 @@ class Account extends Component {
     }
 
     handleEdit = () => {
-
         const {email, first_name, last_name, profile_img} = this.state
         const {user_id} = this.props.authReducer.user
         axios.put('/api/user/edit', {user_id, email, first_name, last_name, profile_img}).then((res) => {
@@ -114,6 +113,7 @@ class Account extends Component {
                             <button name="profile_imgEdit" onClick={(e)=> {this.toggleCancel(e)}}>Cancel</button>
                         </div> }
                     </div>
+                    {this.state.emailEdit === true || this.state.nameEdit === true || this.state.profile_imgEdit === true ? <button onClick={(e) => {this.handleSubmit(e)} }>Submit Edit</button> : null}
                 </div>
                 <p>Create Listing Button Goes Here</p>
                 <div> Reset Password Goes here!!!!</div>
