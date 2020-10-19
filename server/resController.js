@@ -1,8 +1,8 @@
 module.exports = {
-    createReservation = (req, res) => {
+    createReservation: (req, res) => {
 
     },
-    deleteReservation = (req, res) => {
+    deleteReservation: (req, res) => {
 
     },
 }
