@@ -4,7 +4,7 @@ class CreateListing extends Component {
 
     render(){
         return(
-            <div>Hi</div>
+            <div>This is a create listing page? YAY</div>
         )
     }
 }

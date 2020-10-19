@@ -12,6 +12,7 @@ export default (
     <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/account/:userid" component={Account} />
+        <Route path="/createlisting" component={CreateListing}/>
         {/* <Route path="/dashboard" component={Dashboard}/> */}
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
