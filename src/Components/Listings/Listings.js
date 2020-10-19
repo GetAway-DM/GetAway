@@ -10,22 +10,20 @@ const Listings = (props) => {
 
     useEffect(() => {
         axios
-                .get(`/api/listing/getlisting/${1}`)
-                .then((res) => dispatch({ type: 'GET_LIST', payload: res.data }))
-                .catch((error) => console.log(error.message))
-    },[])
+            .get(`/api/listing/getlisting/${1}`)
+            .then((res) => dispatch({ type: 'GET_LIST', payload: res.data }))
+            .catch((error) => console.log(error.message))
+    }, [])
 
     console.log(currentListing)
     return (
-            <div>
+        <div>
             <div>{currentListing.title}</div>
-            </div>
+        </div>
 
     )
 
 }
-
-
 
 Listings.propTypes = {
     title: PropTypes.string,
