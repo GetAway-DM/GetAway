@@ -120,9 +120,9 @@ class Account extends Component {
                     </div>
                     {this.state.emailEdit === true || this.state.nameEdit === true || this.state.profile_imgEdit === true ? <button onClick={(e) => {this.handleSubmit(e)} }>Submit Edit</button> : null}
                 </div>
-                <p>Create Listing Button Goes Here</p>
+                <button onClick={(e) => {this.props.history.push('/createlisting')}}>Create A Listing</button>
                 <div> Reset Password Goes here!!!!</div>
-                    <div>Reservations and Favorites will go here.</div>
+                    <div>Listings, Reservations and Favorites will go here.</div>
             </div>
 
             //link to create listing at bottom or top? 
