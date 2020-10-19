@@ -59,7 +59,7 @@ class Account extends Component {
     }
 
     handleEdit = () => {
-        
+
         const {email, first_name, last_name, profile_img} = this.state
         const {user_id} = this.props.authReducer.user
         axios.put('/api/user/username', {}).then((res) => {
