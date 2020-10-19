@@ -52,6 +52,12 @@ module.exports = {
 
         res.status(200).send(req.session.user)
     },
+    editUser: (req, res, next) => {
+        const db = req.app.get('db')
+        const { user_id, email, first_name, last_name, profile_img } = req.body
+
+        
+    },
 
     logout: (req, res) => {
         req.session.destroy()
