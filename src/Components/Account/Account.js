@@ -44,6 +44,7 @@ class Account extends Component {
                 [e.target.name]: !this.state.value
         })
     }
+    //test//
 
     render(props) {
         const {email, first_name, last_name, profile_img} = this.props.auth.user
