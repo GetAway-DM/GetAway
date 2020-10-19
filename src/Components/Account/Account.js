@@ -35,11 +35,11 @@ class Account extends Component {
     })
     }
 
-    // componentDidUpdate(prevProps){
-    // if (this.props !== prevProps){
-    //     this.props.getUser()
-    //     }
-    // }
+    componentDidUpdate(prevProps){
+    if (this.props.user_id !== prevProps.user_id){
+        this.props.getUser()
+        }
+    }
 
     handleInput = (e) => {
     this.setState({
