@@ -6,8 +6,8 @@ import listReducer from './listReducer';
 
 
 const rootReducer = combineReducers({
-    authReducer,
-    listReducer
+    auth: authReducer,
+    list: listReducer
 })
 
 export default createStore(

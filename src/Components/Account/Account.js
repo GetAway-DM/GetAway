@@ -41,12 +41,12 @@ class Account extends Component {
 
     toggleEdit = (e) => {
         this.setState({
-                [e.target.name]: !e.target.value
+                [e.target.name]: !this.state.value
         })
     }
 
     render(props) {
-        const {email, first_name, last_name, profile_img} = this.props.user
+        const {email, first_name, last_name, profile_img} = this.props.auth.user
         return (
             <div className="accountcontainer">
                 <div >Account Details</div>
@@ -54,9 +54,11 @@ class Account extends Component {
                     <p>Email: {email}</p>
                     <div className="email_edit">
                         <button name="emailEdit" onClick={(e)=> {this.toggleEdit(e)}}>Edit</button>
-                        { this.state.emailEdit === true ? <input onChange={(e) => {
-                            this.handleInput(e)
-                        }} name="email" placeholder="New Email"/> : null}
+                        { this.state.emailEdit === true ? <div>
+                            <input onChange={(e) => {
+                                this.handleInput(e)
+                            }} name="email" placeholder="New Email"/> <button>Submit</button> <button name="emailEdit" onClick={(e)=> {this.toggleEdit(e)}}>Cancel</button>
+                        </div>: null}
                     </div>
                     <p>Name: {first_name} {last_name}</p>
                     <div className="name_edit">
