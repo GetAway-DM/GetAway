@@ -74,11 +74,11 @@ class CreateListing extends Component {
                             <input name="price" type="numeric"></input>
 
                         <label>Address:</label>
-                            <input name="street" type="text"></input>
-                            <input name="city" type="text"></input>
-                            <input name="state" type="text"></input>
-                            <input name="zip" type="integer"></input>
-                            
+                            <input name="street" type="text" placeholder="Street"></input>
+                            <input name="city" type="text" placeholder="City"></input>
+                            <input name="state" type="text" placeholder="State"></input>
+                            <input name="zip" type="integer" placeholder="Zip"></input>
+                        
                         <div>Amenities</div>
                         <label>Parking:</label>
                             <input type="checkbox" id="Parking" name="Amenities" value="parking"/>
@@ -96,9 +96,10 @@ class CreateListing extends Component {
                             <input type="checkbox" id="pool" name="Amenities" value="pool"/>
 
                         <button type="submit">Create</button>
+                        
                         <button onClick={(e)=> {this.handleCancel()}}>Cancel</button>
-                    </form>
 
+                    </form>
             </div>
         )
     }
