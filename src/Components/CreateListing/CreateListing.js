@@ -95,9 +95,11 @@ class CreateListing extends Component {
                         <label>Pool:</label>
                             <input type="checkbox" id="pool" name="Amenities" value="pool"/>
 
-                        <button type="submit">Create</button>
-                        
-                        <button onClick={(e)=> {this.handleCancel()}}>Cancel</button>
+                        <div>
+                            <button type="submit">Create</button>
+                            
+                            <button onClick={(e)=> {this.handleCancel()}}>Cancel</button>
+                        </div>
 
                     </form>
             </div>
