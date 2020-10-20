@@ -23,7 +23,7 @@ class CreateListing extends Component {
             pool: false
         }
     }
-
+//must pull user_id from reducer from here.
 // app.post('/api/listing/newlisting', verifyUser,  listCtrl.addListing)
     handleSubmit(e){
         e.preventDefault();
