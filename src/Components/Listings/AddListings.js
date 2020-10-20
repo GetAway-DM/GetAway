@@ -26,8 +26,7 @@ const AddListings = () => {
 AddListings.propTypes = {
     title: PropTypes.string,
     price: PropTypes.number,
-    host: PropTypes.string,
+    host: PropTypes.string
 }
-
 
 export default AddListings
