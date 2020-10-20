@@ -32,7 +32,7 @@ module.exports = {
       pool,
     } = req.body
 
-    const { user_id } = req.session
+      const { user_id } = req.session
 
     await db.create_listing([
       title,

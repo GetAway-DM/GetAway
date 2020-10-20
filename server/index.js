@@ -26,6 +26,7 @@ app.post('/api/auth/newuser', authCtrl.register)
 app.post('/api/auth/login', authCtrl.login)
 app.post('/api/auth/logout', authCtrl.logout)
 app.get('/api/auth/me', authCtrl.getUser)
+app.put('/api/user/edit', authCtrl.editUser)
 
 // list endpoints
 app.get('/api/listing/getlistings', listCtrl.getAllListings)

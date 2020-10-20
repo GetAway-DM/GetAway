@@ -23,9 +23,9 @@ export function logoutUser() {
     }
 }
 
-export function getUser(){
+export function getUser() {
     const payload = axios.get('/api/auth/me')
-
+    console.log(payload, 'payload')
     return {
         type: GET_USER,
         payload: payload,
@@ -35,13 +35,13 @@ export function getUser(){
 export default function (state = initialState, action) {
     switch (action.type) {
         case LOGIN_USER:
-            return {...state, user: action.payload, isLoggedIn: true }
+            return { ...state, user: action.payload, isLoggedIn: true }
         case LOGOUT_USER:
             return initialState
         case GET_USER + '_PENDING':
-            return {...state}
+            return { ...state }
         case GET_USER + '_FULFILLED':
-            return {...state, user: action.payload.data, isLoggedIn: true}
+            return { ...state, user: action.payload.data, isLoggedIn: true }
         case GET_USER + '_REJECTED':
             return initialState
         default:
