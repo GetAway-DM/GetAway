@@ -4,12 +4,17 @@ import Datepicker from 'react-datepicker'
 import { connect } from 'react-redux'
 
 function Reservation(props) {
+  console.log(props)
   const [dateFrom, setDateFrom] = useState(new Date())
   const [dateTo, setDateTo] = useState(new Date())
 
   const handleReservation = () => {
-    Axios.post(`/api/reservation/newreservation/${listing_id}`, { user_id, listing_id, date_from, date_to }).then(
-      res.history.push('/')
+    const { user_id } = props
+    const { listing_id } = props.match.params
+    Axios.post(`/api/reservation/newreservation/${listing_id}`, { user_id, listing_id, dateFrom, dateTo }).then(
+      (res) => {
+        res.history.push('/')
+      }
     )
   }
 
