@@ -16,20 +16,20 @@ const AutoRotatingCarouselModal = ({ handleOpen, setHandleOpen, isMobile }) => {
                         onStart={() => setHandleOpen({ open: false })}
                         autoplay={false}
                         mobile={isMobile}
-                        style={{ position: "absolute" }}
+                        style={{ position: "absolute", zIndex: "1" }}
                 >
                     <Slide
                             media={
-                                <img src="http://www.icons101.com/icon_png/size_256/id_79394/youtube.png" />
+                                <img src="https://www.fillmurray.com/640/360" />
                             }
                             mediaBackgroundStyle={{ backgroundColor: red[400] }}
-                            style={{ backgroundColor: red[600] }}
+                            style={{ backgroundColor: red[600]  }}
                             title="This is a very cool feature"
                             subtitle="Just using this will blow your mind."
                     />
                     <Slide
                             media={
-                                <img src="http://www.icons101.com/icon_png/size_256/id_80975/GoogleInbox.png" />
+                                <img src="https://loremflickr.com/640/360" />
                             }
                             mediaBackgroundStyle={{ backgroundColor: blue[400] }}
                             style={{ backgroundColor: blue[600] }}
@@ -38,7 +38,7 @@ const AutoRotatingCarouselModal = ({ handleOpen, setHandleOpen, isMobile }) => {
                     />
                     <Slide
                             media={
-                                <img src="http://www.icons101.com/icon_png/size_256/id_76704/Google_Settings.png" />
+                                <img src="http://placeimg.com/640/360/any" />
                             }
                             mediaBackgroundStyle={{ backgroundColor: green[400] }}
                             style={{ backgroundColor: green[600] }}
