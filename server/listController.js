@@ -14,9 +14,7 @@ module.exports = {
   },
     addListing: async(req, res) => {
       const db = req.app.get('db')
-      const { title, description, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool } = req.body
-
-      const { user_id } = req.session
+      const { title, description, user_id, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool } = req.body
 
       const [ listing ] = await db.create_listing([ title, description, user_id, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool ])
 
