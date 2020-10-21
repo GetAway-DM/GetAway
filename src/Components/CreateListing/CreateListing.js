@@ -8,14 +8,14 @@ class CreateListing extends Component {
         this.state={
             title: '',
             description: '',
-            property_type: '',
-            bedrooms: '',
-            bathrooms: '',
-            price: '',
+            property_type: 0,
+            bedrooms: 0,
+            bathrooms: 0,
+            price: 0,
             street: '',
             city: '',
             state: '',
-            zip: '',
+            zip: 0,
             parking: false,
             television: false,
             washer_dryer: false,
@@ -33,7 +33,7 @@ class CreateListing extends Component {
         const {user_id} = this.props.authReducer.user
 
         axios.post('/api/listing/newlisting', {title, description, user_id, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool}).then((res) => {
-            const listing_id = this.res.data.listing_id
+            const listing_id = res.data.listing_id
             this.props.history.push(`/listing/${listing_id}`)
         }).catch((err)=> {
             alert('New Listing Error')
@@ -56,9 +56,9 @@ class CreateListing extends Component {
                 <div>New Listing</div>
                     <form id="create_listing" onSubmit={this.handleSubmit.bind(this)} method="Post">
                         
-                        <label >Title:</label><input name="title" type="text"></input>
+                        <label >Title:</label><input name="title" type="text" onChange={e => this.handleUserChange(e)}></input>
 
-                        <label >Description:</label><input name="description" type="text"></input>
+                        <label >Description:</label><input name="description" type="text" onChange={e => this.handleUserChange(e)}></input>
 
                         <label >Property Type:</label>
                         <select name="property_type" value={this.state.property_type} onChange={e => this.handleUserChange(e)}>
@@ -90,13 +90,13 @@ class CreateListing extends Component {
                             </select>
                             
                         <label>Price:</label>
-                            <input name="price" type="numeric"></input>
+                            <input name="price" type="numeric" onChange={e => this.handleUserChange(e)}></input>
 
                         <label>Address:</label>
-                            <input name="street" type="text" placeholder="Street"></input>
-                            <input name="city" type="text" placeholder="City"></input>
-                            <input name="state" type="text" placeholder="State"></input>
-                            <input name="zip" type="integer" placeholder="Zip"></input>
+                            <input name="street" type="text" placeholder="Street" onChange={e => this.handleUserChange(e)}></input>
+                            <input name="city" type="text" placeholder="City" onChange={e => this.handleUserChange(e)}></input>
+                            <input name="state" type="text" placeholder="State" onChange={e => this.handleUserChange(e)}></input>
+                            <input name="zip" type="integer" placeholder="Zip" onChange={e => this.handleUserChange(e)}></input>
                         
                         <div>Amenities</div>
                         <label>Parking:</label>
