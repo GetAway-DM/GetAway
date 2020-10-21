@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import Carousel from './Carousel'
 import axios from 'axios'
+import './listing.css'
 
 const AddListings = () => {
     const currentListing = useSelector((state) => state.listReducer.listing)
@@ -17,21 +18,34 @@ const AddListings = () => {
 
     return (
             <>
-                {currentListing.title}
-                {currentListing.description}
-                {currentListing.city}
-                {currentListing.first_name}
-                {currentListing.last_name}
-                {currentListing.profile_img}
-                <div><p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering
-                    animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero
-                    undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra
-                    adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max
-                    brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem
-                    virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead
-                    zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.
-                </p></div>
-                <Carousel/>
+                <div>
+               <h1 className="listing-title">{currentListing.title}</h1>
+                </div>
+                <div className="listing-city">
+                    <h3>{currentListing.city}</h3>
+                </div>
+                <div>
+                    <h3>{currentListing.state}</h3>
+                </div>
+                <Carousel />
+                <div className="listing-description">
+                    <p>{currentListing.description}</p>
+                </div>
+                <div className="listing-first_name">
+                    <h4>{currentListing.first_name}</h4>
+                </div>
+                <div className="listing-last-name">
+                <h4>{currentListing.last_name}</h4>
+                </div>
+                <div className="listing-img">
+                <img src={currentListing.profile_img} alt="profile Image" className="listing-profile-img"/>
+                </div>
+                <div className="listing-bedrooms">
+                    <h3>{currentListing.bedrooms}</h3>
+                </div>
+                <div className="listing-bathrooms">
+                    <h3>{currentListing.bathrooms}</h3>
+                </div>
             </>
     )
 }
