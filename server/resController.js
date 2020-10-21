@@ -5,4 +5,7 @@ module.exports = {
     deleteReservation: (req, res) => {
 
     },
+    getUserReservations: (req, res) => {
+        
+    },
 }
