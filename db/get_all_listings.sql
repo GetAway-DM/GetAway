@@ -1,1 +1,1 @@
-SELECT * FROM listings
+SELECT * FROM listings;
