@@ -31,8 +31,13 @@ module.exports = {
 
     res.status(200).send(getMyRes)
   },
-  getUserReservations: (req, res) => {
-        
-},
+  getUserReservations: async (req, res) => {
+    const db = req.app.get('db')
+    const {user_id} = req.params
+
+    const reservations = await db.get_user_reservations([user_id])
+
+    res.status(200).send(reservations)   
+  },
 }
 
