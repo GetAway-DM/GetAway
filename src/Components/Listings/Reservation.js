@@ -2,20 +2,28 @@ import Axios from 'axios'
 import React, { useState } from 'react'
 import Datepicker from 'react-datepicker'
 import { connect } from 'react-redux'
+import 'react-datepicker/dist/react-datepicker.css'
 
 function Reservation(props) {
-  console.log(props)
   const [dateFrom, setDateFrom] = useState(new Date())
   const [dateTo, setDateTo] = useState(new Date())
 
+  console.log(props)
+
   const handleReservation = () => {
-    const { user_id } = props
-    const { listing_id } = props.match.params
-    Axios.post(`/api/reservation/newreservation/${listing_id}`, { user_id, listing_id, dateFrom, dateTo }).then(
-      (res) => {
-        res.history.push('/')
-      }
-    )
+    if (dateTo === null || dateFrom === null) {
+      console.log('please enter start and end dates')
+    } else if (dateFrom > dateTo) {
+      console.log('The starting date cannot be after the ending date')
+    } else {
+      const { user_id } = props.authReducer.user
+      const { listing } = props
+      Axios.post(`/api/reservation/newreservation/${listing}`, { user_id, listing, dateFrom, dateTo }).then((res) => {
+        console.log(dateFrom)
+        console.log(dateTo)
+        props.history('/')
+      })
+    }
   }
 
   return (
@@ -30,11 +38,11 @@ function Reservation(props) {
       <div className="selector-container">
         <div className="calendar-selector">
           <p>Check in</p>
-          <Datepicker selected={dateFrom} onChange={(date) => setDateFrom(date)} />
+          <Datepicker selected={dateFrom} dateFormat="yyyy-MM-dd" onChange={(date) => setDateFrom(date)} />
         </div>
         <div className="calendar-selector">
           <p>Check out</p>
-          <Datepicker selected={dateTo} onChange={(date) => setDateTo(date)} />
+          <Datepicker selected={dateTo} dateFormat="yyyy-MM-dd" onChange={(date) => setDateTo(date)} />
         </div>
       </div>
       <div className="guests-reserve">
