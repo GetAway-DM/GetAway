@@ -1,11 +1,37 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { getUserListing } from '../../ducks/listReducer'
 
-function Amenities() {
-  return (
-    <div>
-      <h1>Amenities</h1>
-    </div>
-  )
+// FaSwimmingPool
+// FiWind
+// CgSmartHomeWashMachine
+// FaWifi
+// MdLocalParking
+// MdSatellite
+// RiTempColdLine
+
+class Amenities extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      amenities: []
+    }
+  }
+
+  render() {
+    const mapAmenities = this.state.amenities.map((amenity) => {
+      return (
+        <div></div>
+      )
+    }
+    )
+    return (
+      <div>{mapAmenities}</div>
+    )
+
+  }
 }
+const mapStateToProps = (reduxState) => reduxState
 
-export default Amenities
+export default connect(mapStateToProps, { getUserListing }(Amenities))
