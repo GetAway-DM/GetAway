@@ -5,6 +5,8 @@ const massive = require('massive')
 const authCtrl = require('./authController.js')
 const listCtrl = require('./listController')
 const resCtrl = require('./resController')
+const verifyUser = require('./middlewares/verifyUser')
+
 
 const app = express()
 
@@ -31,7 +33,7 @@ app.put('/api/user/edit', authCtrl.editUser)
 // list endpoints
 app.get('/api/listing/getlistings', listCtrl.getAllListings)
 app.get('/api/listing/getlisting/:listing_id', listCtrl.getListing)
-app.post('/api/listing/newlisting', listCtrl.addListing)
+app.post('/api/listing/newlisting', verifyUser,  listCtrl.addListing)
 app.put('/api/listing/editlisting/:listing_id', listCtrl.editListing)
 app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
 
