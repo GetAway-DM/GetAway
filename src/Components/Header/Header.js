@@ -35,20 +35,29 @@ class Header extends Component {
 
                         {
                             this.props.authReducer.isLoggedIn === true ?
-                                <div>
-                                    Signed in as : {this.props.authReducer.user.first_name} {this.props.authReducer.user.last_name}
-                                </div>
+                                <>
+                                    <div>
+                                        Signed in as : {this.props.authReducer.user.first_name} {this.props.authReducer.user.last_name}
+                                    </div>
+                                    <div>
+                                        <ReactBootStrap.NavDropdown title="Account" id="collasible-nav-dropdown">
+                                            <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/account/${this.props.authReducer.user.user_id}`) }}>Profile</ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Item href="#action/3.2">Favorites</ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Item href="#action/3.5">My Reservations</ReactBootStrap.NavDropdown.Item>
+
+                                            <ReactBootStrap.NavDropdown.Divider />
+                                            <ReactBootStrap.NavDropdown.Item href="#action/3.3">Create a Listing</ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Item href="#action/3.4">My Listings</ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Divider />
+
+                                            <ReactBootStrap.NavDropdown.Item> <Link to="/" onClick={() => { this.handleLogout() }}> Logout</Link></ReactBootStrap.NavDropdown.Item>
+                                        </ReactBootStrap.NavDropdown>
+                                    </div>
+                                </>
                                 :
                                 null
                         }
 
-                        <ReactBootStrap.NavDropdown title="Account" id="collasible-nav-dropdown">
-                            <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/account/${this.props.authReducer.user.user_id}`) }}>Profile</ReactBootStrap.NavDropdown.Item>
-                            <ReactBootStrap.NavDropdown.Item href="#action/3.2">Create Listing</ReactBootStrap.NavDropdown.Item>
-                            <ReactBootStrap.NavDropdown.Item href="#action/3.3">Favorites</ReactBootStrap.NavDropdown.Item>
-                            <ReactBootStrap.NavDropdown.Divider />
-                            <ReactBootStrap.NavDropdown.Item> <Link to="/" onClick={() => { this.handleLogout() }}> Logout</Link></ReactBootStrap.NavDropdown.Item>
-                        </ReactBootStrap.NavDropdown>
                         <ReactBootStrap.Nav>
                             <Link to="/login">
                                 <ReactBootStrap.Nav.Link href="#deets">Login</ReactBootStrap.Nav.Link>
