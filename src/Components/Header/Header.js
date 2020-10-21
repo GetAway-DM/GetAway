@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { logoutUser, getUser } from '../../ducks/authReducer'
-import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import * as ReactBootStrap from 'react-bootstrap'
 
 class Header extends Component {
@@ -46,11 +46,11 @@ class Header extends Component {
                                             <ReactBootStrap.NavDropdown.Item href="#action/3.5">My Reservations</ReactBootStrap.NavDropdown.Item>
 
                                             <ReactBootStrap.NavDropdown.Divider />
-                                            <ReactBootStrap.NavDropdown.Item href="#action/3.3">Create a Listing</ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Item href='/createlisting'>Create a Listing</ReactBootStrap.NavDropdown.Item>
                                             <ReactBootStrap.NavDropdown.Item href="#action/3.4">My Listings</ReactBootStrap.NavDropdown.Item>
                                             <ReactBootStrap.NavDropdown.Divider />
 
-                                            <ReactBootStrap.NavDropdown.Item> <Link to="/" onClick={() => { this.handleLogout() }}> Logout</Link></ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Item> <Link to="/" onClick={() => { this.handleLogout() }}>Logout</Link></ReactBootStrap.NavDropdown.Item>
                                         </ReactBootStrap.NavDropdown>
                                     </div>
                                 </>
