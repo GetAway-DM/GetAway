@@ -1,8 +1,10 @@
+import axios from 'axios';
+import {connect} from 'react-redux';
 import React, {Component} from 'react';
 
 class CreateListing extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             title: '',
             description: '',
@@ -27,10 +29,27 @@ class CreateListing extends Component {
 // app.post('/api/listing/newlisting', verifyUser,  listCtrl.addListing)
     handleSubmit(e){
         e.preventDefault();
+        const {title, description, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool} = this.state
+        const {user_id} = this.props.authReducer.user
 
+        axios.post('/api/listing/newlisting', {title, description, user_id, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool}).then((res) => {
+            const listing_id = this.res.data.listing_id
+            this.props.history.push(`/listing/${listing_id}`)
+        }).catch((err)=> {
+            alert('New Listing Error')
+        })
+    }
+    handleChecked = (e) => {
+        this.setState({
+            [e.target.id]: e.target.checked
+        })
     }
 
-
+    handleUserChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
     render(){
         return(
             <div>
@@ -81,19 +100,19 @@ class CreateListing extends Component {
                         
                         <div>Amenities</div>
                         <label>Parking:</label>
-                            <input type="checkbox" id="Parking" name="Amenities" value="parking"/>
+                            <input type="checkbox" id="parking" name="amenities" value="parking" onChange={this.handleChecked} checked={this.state.parking}/>
                         <label>Television:</label>
-                            <input type="checkbox" id="Television" name="Amenities" value="television"/>
+                            <input type="checkbox" id="television" name="amenities" value="television" onChange={this.handleChecked} checked={this.state.television}/>
                         <label>Washer/Dryer:</label>
-                            <input type="checkbox" id="washer_dryer" name="Amenities" value="washer_dryer"/>
+                            <input type="checkbox" id="washer_dryer" name="amenities" value="washer_dryer" onChange={this.handleChecked} checked={this.state.washer_dryer}/>
                         <label>Air Conditioning:</label>
-                            <input type="checkbox" id="air_conditioning" name="Amenities" value="air_conditioning"/>
+                            <input type="checkbox" id="air_conditioning" name="Amenities" value="air_conditioning" onChange={this.handleChecked} checked={this.state.air_conditioning}/>
                         <label>Wifi:</label>
-                            <input type="checkbox" id="wifi" name="Amenities" value="wifi"/>
+                            <input type="checkbox" id="wifi" name="amenities" value="wifi" onChange={this.handleChecked} checked={this.state.wifi}/>
                         <label>Hair Dryer:</label>
-                            <input type="checkbox" id="hair_dryer" name="Amenities" value="hair_dryer"/>
+                            <input type="checkbox" id="hair_dryer" name="amenities" value="hair_dryer" onChange={this.handleChecked} checked={this.state.hair_dryer}/>
                         <label>Pool:</label>
-                            <input type="checkbox" id="pool" name="Amenities" value="pool"/>
+                            <input type="checkbox" id="pool" name="amenities" value="pool" onChange={this.handleChecked} checked={this.state.pool}/>
 
                         <div>
                             <button type="submit">Create</button>
@@ -106,4 +125,6 @@ class CreateListing extends Component {
         )
     }
 }
-export default CreateListing
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps)(CreateListing)
