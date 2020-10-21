@@ -19,7 +19,7 @@ class Account extends Component {
     }
     
     async componentDidMount(){
-    if (!this.props.isLoggedIn) {
+    if (!this.props.authReducer.isLoggedIn) {
         this.props.getUser().catch((err) => {
                 this.props.history.push('/')
             }
@@ -33,12 +33,6 @@ class Account extends Component {
             profile_img: this.props.authReducer.user.profile_img
         })
     })
-    }
-
-    componentDidUpdate(prevProps){
-    if (this.props.user_id !== prevProps.user_id){
-        this.props.getUser()
-        }
     }
 
     handleInput = (e) => {
