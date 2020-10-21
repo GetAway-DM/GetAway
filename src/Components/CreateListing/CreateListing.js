@@ -50,6 +50,9 @@ class CreateListing extends Component {
             [e.target.name]: e.target.value
         })
     }
+    handleCancel = (e) => {
+        this.props.history.push('/')
+    }
     render(){
         return(
             <div>
@@ -117,7 +120,7 @@ class CreateListing extends Component {
                         <div>
                             <button type="submit">Create</button>
                             
-                            <button onClick={(e)=> {this.handleCancel()}}>Cancel</button>
+                            <button onClick={(e)=> {this.handleCancel(e)}}>Cancel</button>
                         </div>
 
                     </form>
