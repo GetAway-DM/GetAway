@@ -1,70 +1,63 @@
-import React, { useState } from "react";
-import Slide from "react-swipeable-views";
-import Button from "@material-ui/core/Button";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { red, blue, green } from "@material-ui/core/colors";
-import { AutoRotatingCarousel } from "material-auto-rotating-carousel";
+import React, { Component } from "react";
+import { Slide } from "react-slideshow-image";
+import { FaArrowLeft, FaArrowRight} from "react-icons/fa";
+import "./carousel.css";
+import "react-slideshow-image/dist/styles.css";
 
-const AutoRotatingCarouselModal = ({ handleOpen, setHandleOpen, isMobile }) => {
-    return (
-            <div>
-                 <Button onClick={() => setHandleOpen({ open: true })}>Open carousel</Button>
-                <AutoRotatingCarousel
-                        label="Get started"
-                        open={handleOpen.open}
-                        onClose={() => setHandleOpen({ open: false })}
-                        onStart={() => setHandleOpen({ open: false })}
-                        autoplay={false}
-                        mobile={isMobile}
-                        style={{ position: "absolute", zIndex: "1" }}
-                >
-                    <Slide
-                            media={
-                                <img src="https://www.fillmurray.com/640/360" />
-                            }
-                            mediaBackgroundStyle={{ backgroundColor: red[400] }}
-                            style={{ backgroundColor: red[600]  }}
-                            title="This is a very cool feature"
-                            subtitle="Just using this will blow your mind."
-                    />
-                    <Slide
-                            media={
-                                <img src="https://loremflickr.com/640/360" />
-                            }
-                            mediaBackgroundStyle={{ backgroundColor: blue[400] }}
-                            style={{ backgroundColor: blue[600] }}
-                            title="Ever wanted to be popular?"
-                            subtitle="Well just mix two colors and your are good to go!"
-                    />
-                    <Slide
-                            media={
-                                <img src="http://placeimg.com/640/360/any" />
-                            }
-                            mediaBackgroundStyle={{ backgroundColor: green[400] }}
-                            style={{ backgroundColor: green[600] }}
-                            title="May the force be with you"
-                            subtitle="The Force is a metaphysical and ubiquitous power in the Star Wars fictional universe."
-                    />
-                </AutoRotatingCarousel>
-            </div>
-    );
-};
+class App extends Component {
+    constructor() {
+        super();
+        this.slideRef = React.createRef();
+        this.back = this.back.bind(this);
+        this.next = this.next.bind(this);
+        this.state = {
+            current: 0
+        };
+    }
 
-function Carousel() {
-    const [handleOpen, setHandleOpen] = useState({ open: false });
-    const handleClick = () => {
-        setHandleOpen({ open: true });
-    };
-    const matches = useMediaQuery("(max-width:600px)");
-    return (
-            <>
-                <Button onClick={handleClick}>Open carousel</Button>
-                <AutoRotatingCarouselModal
-                        isMobile={matches}
-                        handleOpen={handleOpen}
-                        setHandleOpen={setHandleOpen}
-                />
-            </>
-    );
+    back() {
+        this.slideRef.current.goBack();
+    }
+
+    next() {
+        this.slideRef.current.goNext();
+    }
+
+    render() {
+        const properties = {
+            duration: 5000,
+            autoplay: true,
+            transitionDuration: 500,
+            arrows: false,
+            infinite: true,
+            easing: "ease",
+            indicators: (i) => <div className="indicator">{i + 1}</div>
+        };
+        const slideImages = [
+            "https://images.unsplash.com/photo-1531835551805-16d864c8d311?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
+            "https://images.unsplash.com/photo-1531835551805-16d864c8d311?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
+            "https://images.unsplash.com/photo-1531835551805-16d864c8d311?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
+            "https://images.unsplash.com/photo-1531835551805-16d864c8d311?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60"
+        ];
+        return (
+                <div className="App">
+                    <div className="slide-container">
+                        <Slide ref={this.slideRef} {...properties}>
+                            {slideImages.map((each, index) => (
+                                    <div key={index} className="each-slide">
+                                        <img className="lazy" src={each} alt="sample" />
+                                    </div>
+                            ))}
+                        </Slide>
+                    </div>
+
+                    <div className="slide-container buttons">
+                        <FaArrowLeft onClick={this.back} type="button" />
+                        <FaArrowRight onClick={this.next} type="button"/>
+                    </div>
+                </div>
+        );
+    }
 }
-export default Carousel
+
+export default App;
