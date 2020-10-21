@@ -38,7 +38,7 @@ app.put('/api/listing/editlisting/:listing_id', listCtrl.editListing)
 app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
 
 //reservation endpoints
-app.post('/api/reservation/newreservation', resCtrl.createReservation)
+app.post('/api/reservation/newreservation/:listing_id', resCtrl.createReservation)
 app.delete('/api/reservation/deletereservation/:res_id', resCtrl.deleteReservation)
 
 massive({
