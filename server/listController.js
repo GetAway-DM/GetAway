@@ -16,15 +16,12 @@ module.exports = {
       const db = req.app.get('db')
       const { title, description, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool } = req.body
 
-    const { user_id } = req.session
+      const { user_id } = req.session
 
-       await db.create_listing([ title, description, user_id, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool ])
+      const [ listing ] = await db.create_listing([ title, description, user_id, property_type, bedrooms, bathrooms, price, street, city, state, zip, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool ])
 
-       const [ listings ] = await db.get_all_listings()
-
-       res.status(200).send(listings)
-
-       },
+      res.status(200).send(listing)
+      },
   editListing: async (req, res) => {
       const db = req.app.get('db')
 
