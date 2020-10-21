@@ -11,7 +11,7 @@ class UserReservations extends Component {
     }
 
     async componentDidMount(){
-        if (!this.props.isLoggedIn) {
+        if (!this.props.authReducer.isLoggedIn) {
             this.props.getUser().catch((err) => {
                     this.props.history.push('/')
                 }
@@ -19,7 +19,7 @@ class UserReservations extends Component {
         }
         this.props.getUser().then(res => {
             this.setState({
-                user_id: this.props.authReducer.user_id
+                user_id: this.props.authReducer.user.user_id
             })
         })
         }
