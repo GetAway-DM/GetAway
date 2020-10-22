@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import {getUser} from '../../ducks/authReducer';
 import axios from 'axios';
+import MyReservations from './MyReservations'
 class UserReservations extends Component {
     constructor(props){
         super(props)
@@ -43,10 +44,15 @@ class UserReservations extends Component {
 
 
     render(){
-
+        const mappedRes = this.state.reservations.map((reservation, index) => {
+            return ( 
+                <MyReservations reservation={reservation} key={reservation.id}/>
+            )
+        })
         return (
             <div>
                 <h1>My Reservations</h1>
+                <div>{mappedRes}</div>
             </div>
         )
     }
