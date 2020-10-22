@@ -43,7 +43,7 @@ class Header extends Component {
                                         <ReactBootStrap.NavDropdown title="Account" id="collasible-nav-dropdown">
                                             <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/account/${this.props.authReducer.user.user_id}`) }}>Profile</ReactBootStrap.NavDropdown.Item>
                                             <ReactBootStrap.NavDropdown.Item href="#action/3.2">Favorites</ReactBootStrap.NavDropdown.Item>
-                                            <ReactBootStrap.NavDropdown.Item href="#action/3.5">My Reservations</ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/reservations/${this.props.authReducer.user.user_id}`) }}>My Reservations</ReactBootStrap.NavDropdown.Item>
 
                                             <ReactBootStrap.NavDropdown.Divider />
                                             <ReactBootStrap.NavDropdown.Item href='/createlisting'>Create a Listing</ReactBootStrap.NavDropdown.Item>

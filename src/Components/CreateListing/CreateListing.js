@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {getUser} from '../../ducks/authReducer';
 import React, {Component} from 'react';
 
 class CreateListing extends Component {
@@ -25,6 +26,15 @@ class CreateListing extends Component {
             pool: false
         }
     }
+    async componentDidMount(){
+        if (!this.props.authReducer.isLoggedIn) {
+            this.props.getUser().catch((err) => {
+                    this.props.history.push('/')
+                }
+            )
+        }
+        this.props.getUser()
+        }
 //must pull user_id from reducer from here.
 // app.post('/api/listing/newlisting', verifyUser,  listCtrl.addListing)
     handleSubmit(e){
@@ -130,4 +140,4 @@ class CreateListing extends Component {
 }
 const mapStateToProps = (state) => state
 
-export default connect(mapStateToProps)(CreateListing)
+export default connect(mapStateToProps, {getUser})(CreateListing)

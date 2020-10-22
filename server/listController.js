@@ -19,6 +19,7 @@ module.exports = {
     const {
       title,
       description,
+      user_id,
       property_type,
       bedrooms,
       bathrooms,
@@ -36,9 +37,7 @@ module.exports = {
       pool,
     } = req.body
 
-    const { user_id } = req.session
-
-    await db.create_listing([
+    const [listing] = await db.create_listing([
       title,
       description,
       user_id,
@@ -50,6 +49,11 @@ module.exports = {
       city,
       state,
       zip,
+    ])
+    const listing_id = listing.listing_id
+
+    await db.create_amenities([
+      listing_id,
       parking,
       television,
       washer_dryer,
@@ -59,9 +63,7 @@ module.exports = {
       pool,
     ])
 
-    const [listings] = await db.get_all_listings()
-
-    res.status(200).send(listings)
+    res.status(200).send(listing)
   },
   editListing: async (req, res) => {
     const db = req.app.get('db')
