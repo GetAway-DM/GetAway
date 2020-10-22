@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import axios from 'axios'
 import { getUserListing } from '../../ducks/listReducer'
 
 // FaSwimmingPool
@@ -19,19 +20,43 @@ class Amenities extends Component {
     }
   }
 
+  getListing = () => {
+    axios.get('/api/listing/getlistings').then((res) => {
+      this.setState({
+        amenities: res.data,
+      })
+    })
+  }
+
   render() {
-    const mapAmenities = this.state.amenities.map((amenity) => {
+    console.log(this.props)
+    const mapAmenities = this.state.amenities.map((amenities) => {
       return (
-        <div></div>
+
+        <div>
+          {this.props.listReducer.listings.pool === true ? <p>Pool</p> : null
+          }
+
+
+
+        </div>
       )
     }
     )
     return (
-      <div>{mapAmenities}</div>
+      <div>
+        <div></div>
+
+
+        <p>{mapAmenities}</p>
+      </div>
+
     )
 
   }
 }
-const mapStateToProps = (reduxState) => reduxState
+function mapStateToProps(state) {
+  return state
+}
 
-export default connect(mapStateToProps, { getUserListing }(Amenities))
+export default connect(mapStateToProps, { getUserListing })(Amenities)

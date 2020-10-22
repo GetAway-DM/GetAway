@@ -118,4 +118,17 @@ module.exports = {
 
     res.status(200).send(deletedListing)
   },
+  getAllAmenities: async (req, res) => {
+    const db = req.app.get('db')
+    const amenities = await db.get_all_amenities()
+    res.status(200).send(amenities)
+  },
+  getAmenitiesByListingId: async (db) => {
+    const listing = await db.get_listing()
+    const getAmenitiesByListingId = await Promise.all(listing.map(async listing => {
+      const amenities = await db.get_amenities_by_listing_id([listing.id])
+      return { ...listing, amenities }
+    }))
+    return getAmenitiesByListingId
+  }
 }
