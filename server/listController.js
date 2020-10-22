@@ -5,10 +5,14 @@ module.exports = {
     res.status(200).send(listings)
   },
   getListing: async (req, res) => {
-    req.app
-      .get('db')
-      .get_listing_by_id(req.params.listing_id)
-      .then((listing) => (listing[0] ? res.status(200).send(listing[0]) : res.status(200).send(listing)))
+    const db = req.app.get('db')
+    const listing = await db.get_listing_by_id(req.params.listing_id)
+    if (!listing[0]) {
+      return res.status(200).send(listing)
+    }
+    const amenities = await db.get_amenities_by_listing_id(listing[0].listing_id)
+    listing[0].amenities = amenities[0]
+    res.status(200).send(listing[0])
   },
   addListing: async (req, res) => {
     const db = req.app.get('db')
@@ -124,7 +128,7 @@ module.exports = {
     res.status(200).send(amenities)
   },
   getAmenitiesByListingId: async (db) => {
-    const listing = await db.get_listing()
+    const listing = await db.get_listing_by_id()
     const getAmenitiesByListingId = await Promise.all(listing.map(async listing => {
       const amenities = await db.get_amenities_by_listing_id([listing.id])
       return { ...listing, amenities }

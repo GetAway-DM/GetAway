@@ -29,31 +29,16 @@ class Amenities extends Component {
   }
 
   render() {
-    console.log(this.props)
-    const mapAmenities = this.state.amenities.map((amenities) => {
-      return (
-
-        <div>
-          {this.props.listReducer.listings.pool === true ? <p>Pool</p> : null
-          }
-
-
-
-        </div>
-      )
-    }
-    )
+    console.log(this.props.listReducer.listing.amenities)
     return (
+
       <div>
-        <div></div>
-
-
-        <p>{mapAmenities}</p>
+        <h1>Amenities</h1>
+        <p></p>
       </div>
-
     )
-
   }
+
 }
 function mapStateToProps(state) {
   return state
