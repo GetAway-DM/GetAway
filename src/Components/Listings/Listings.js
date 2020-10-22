@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import AddListings from './AddListings'
 import Amenities from './Amenities'
 import Reservation from './Reservation'
+import Reviews from './Reviews'
 import { connect } from 'react-redux'
 import { getUser } from '../../ducks/authReducer'
 import axios from 'axios'
@@ -19,6 +20,7 @@ const Listings = (props) => {
       <AddListings />
       <Reservation listing={props.match.params.listing_id} history={props.history.push} />
       <Amenities />
+      <Reviews/>
     </div>
   )
 }
