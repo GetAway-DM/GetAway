@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 
 class MyReservations extends Component{
-    
-    render(){
+
+    render(props){
         return (
         <div>
-            <h1>reservation</h1>
+            <h1>reservations</h1>
         </div>
         )
     }
