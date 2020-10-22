@@ -4,7 +4,7 @@ import { FaArrowLeft, FaArrowRight} from "react-icons/fa";
 import "./carousel.css";
 import "react-slideshow-image/dist/styles.css";
 
-class App extends Component {
+class Carousel extends Component {
     constructor() {
         super();
         this.slideRef = React.createRef();
@@ -60,4 +60,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Carousel;

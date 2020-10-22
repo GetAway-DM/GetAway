@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import Carousel from './Carousel'
+import Rating from './Rating'
+import Rules from './Rules'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
 import './listing.css'
@@ -30,7 +32,9 @@ const AddListings = (props) => {
                 <div>
                     <h3>{currentListing.state}</h3>
                 </div>
+                <Rating/>
                 <Carousel />
+                <Rules/>
                 <div className="listing-description">
                     <p>{currentListing.description}</p>
                 </div>
