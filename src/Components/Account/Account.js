@@ -119,51 +119,6 @@ class Account extends Component {
       })
   }
 
-<<<<<<< HEAD
-    render(props) {
-        const {email, first_name, last_name, profile_img, user_id} = this.props.authReducer.user
-        return (
-            <div className="accountcontainer">
-                <div >Account Details</div>
-                <div className="infocontainer">
-                    <p>Email: {email}</p>
-                    <div className="email_edit">
-                    { this.state.emailEdit === false ? <button name="emailEdit" onClick={(e)=> {this.toggleEdit(e)}}>Edit</button> :
-                         <div>
-                            <input value={this.state.email} onChange={(e) => {
-                                this.handleInput(e)
-                            }} name="email" placeholder="New Email"/><button name="emailEdit" onClick={(e)=> {this.toggleCancel(e)}}>Cancel</button>
-                        </div>}
-                    </div>
-                    <p>Name: {first_name} {last_name}</p>
-                    <div className="name_edit">
-                    { this.state.nameEdit === false ? <button name="nameEdit" onClick={(e)=> {this.toggleEdit(e)}}>Edit</button> :
-                         <div><input value={this.state.first_name} onChange={(e) => {
-                            this.handleInput(e)
-                        }} name="first_name" placeholder="First Name"/>  <input value={this.state.last_name} onChange={(e) => {
-                            this.handleInput(e)
-                        }} name="last_name" placeholder="Last Name"/><button name="nameEdit" onClick={(e)=> {this.toggleCancel(e)}}>Cancel</button></div> }
-                    </div>
-                    <p>Profile Picture: <img src={`${profile_img}`} alt="Not Loading"/></p>
-                    <div className="profile_img_edit">
-                        { this.state.profile_imgEdit === false ? <button name="profile_imgEdit" onClick={(e)=> {this.toggleEdit(e)}}>Edit</button> :  <div>
-                            <input value={this.state.profile_img} onChange={(e) => {
-                                this.handleInput(e)
-                            }} name="profile_img" placeholder="New Profile Picture"/>
-                            <button name="profile_imgEdit" onClick={(e)=> {this.toggleCancel(e)}}>Cancel</button>
-                        </div> }
-                    </div>
-                    {this.state.emailEdit === true || this.state.nameEdit === true || this.state.profile_imgEdit === true ? <button onClick={(e) => {this.handleSubmit(e)} }>Submit Edit</button> : null}
-                </div>
-                <button onClick={(e) => {this.props.history.push('/createlisting')}}>Create A Listing</button>
-                <button onClick={(e) => {this.props.history.push(`/reservations/${user_id}`)}}>My Reservations</button>
-                <div> Reset Password Goes here!!!!</div>
-                    <div>Listings, and Favorites will go here.</div>
-            </div>
- 
-        )
-    }
-=======
   handleSubmit = (e) => {
     e.preventDefault()
     this.handleEdit()
@@ -333,7 +288,6 @@ class Account extends Component {
       </div>
     )
   }
->>>>>>> main
 }
 const mapStateToProps = (state) => state
 export default connect(mapStateToProps, { getUser })(Account)
