@@ -1,14 +1,24 @@
 import React, {Component} from 'react'
-
+import { connect } from 'react-redux';
 class MyReservations extends Component{
+    constructor(props){
+        super(props)
+    }
     render(props){
-        console.log(this.props.reservation.date_from)//works//
+        const { date_from, date_to, listing_id} = this.props.reservation
+        //works//
         return (
         <div>
-            <h1>reservations</h1>
+            <div>
+                <p>Date From: {date_from}</p>
+                <p>Date To: {date_to}</p>
+            </div>
+            <div>
+            <button onClick={(e) => {this.props.push(`/listing/${listing_id}`)}}>View Listing</button>
+            </div>
         </div>
         )
     }
 }
-
-export default MyReservations
+const mapStateToProps = (state) => state
+export default connect(mapStateToProps)(MyReservations)
