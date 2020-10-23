@@ -19,7 +19,7 @@ class Account extends Component {
     }
     
     async componentDidMount(){
-    if (!this.props.isLoggedIn) {
+    if (!this.props.authReducer.isLoggedIn) {
         this.props.getUser().catch((err) => {
                 this.props.history.push('/')
             }
@@ -33,12 +33,6 @@ class Account extends Component {
             profile_img: this.props.authReducer.user.profile_img
         })
     })
-    }
-
-    componentDidUpdate(prevProps){
-    if (this.props.user_id !== prevProps.user_id){
-        this.props.getUser()
-        }
     }
 
     handleInput = (e) => {
@@ -86,7 +80,7 @@ class Account extends Component {
     //test//
 
     render(props) {
-        const {email, first_name, last_name, profile_img} = this.props.authReducer.user
+        const {email, first_name, last_name, profile_img, user_id} = this.props.authReducer.user
         return (
             <div className="accountcontainer">
                 <div >Account Details</div>
@@ -121,11 +115,11 @@ class Account extends Component {
                     {this.state.emailEdit === true || this.state.nameEdit === true || this.state.profile_imgEdit === true ? <button onClick={(e) => {this.handleSubmit(e)} }>Submit Edit</button> : null}
                 </div>
                 <button onClick={(e) => {this.props.history.push('/createlisting')}}>Create A Listing</button>
+                <button onClick={(e) => {this.props.history.push(`/reservations/${user_id}`)}}>My Reservations</button>
                 <div> Reset Password Goes here!!!!</div>
                     <div>Listings, Reservations and Favorites will go here.</div>
             </div>
-
-            //link to create listing at bottom or top? 
+ 
         )
     }
 }
