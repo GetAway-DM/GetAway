@@ -19,8 +19,8 @@ const Listings = (props) => {
     <div>
       <AddListings />
       <Reservation listing={props.match.params.listing_id} history={props.history.push} />
-      <Amenities />
-      <Reviews/>
+      <Amenities listing={props.match.params.listing_id} />
+      <Reviews />
     </div>
   )
 }

@@ -31,11 +31,16 @@ price NUMERIC(6, 0),
 street TEXT,
 city TEXT,
 state TEXT,
-zip INT,
+zip INT
+);
+
+CREATE TABLE amenities(
+amenities_id SERIAL PRIMARY KEY,
+listing_id INT REFERENCES listings(listing_id),
 parking BOOLEAN,
 television BOOLEAN,
 washer_dryer BOOLEAN,
-air_conditioning BOOLEAN,
+hair_conditioning BOOLEAN,
 wifi BOOLEAN,
 hair_dryer BOOLEAN,
 pool BOOLEAN
