@@ -2,3 +2,17 @@
     height: 5vh;
     width: 5vw;
 }
+
+.rules{
+    display: inline-block;
+    flex-direction: column;
+}
+.rules-box{
+    display: block;
+    flex-direction: column;
+}
+
+.list-box{
+    display: block;
+
+}
