@@ -117,7 +117,7 @@ class Account extends Component {
                 <button onClick={(e) => {this.props.history.push('/createlisting')}}>Create A Listing</button>
                 <button onClick={(e) => {this.props.history.push(`/reservations/${user_id}`)}}>My Reservations</button>
                 <div> Reset Password Goes here!!!!</div>
-                    <div>Listings, Reservations and Favorites will go here.</div>
+                    <div>Listings, and Favorites will go here.</div>
             </div>
  
         )

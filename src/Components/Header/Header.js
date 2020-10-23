@@ -21,7 +21,7 @@ class Header extends Component {
         return (
             <div className="App">
                 <ReactBootStrap.Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-                    <ReactBootStrap.Navbar.Brand href="#home">Get Away</ReactBootStrap.Navbar.Brand>
+                    <ReactBootStrap.Navbar.Brand href="/">Get Away</ReactBootStrap.Navbar.Brand>
                     <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                         <ReactBootStrap.Nav className="mr-auto">
