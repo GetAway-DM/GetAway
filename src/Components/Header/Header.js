@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { logoutUser, getUser } from '../../ducks/authReducer'
 import { withRouter } from 'react-router-dom'
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as ReactBootStrap from 'react-bootstrap'
 
 class Header extends Component {
@@ -28,8 +28,8 @@ class Header extends Component {
                             <Link to="/features">
                                 <ReactBootStrap.Nav.Link href="#features">Explore Nearby</ReactBootStrap.Nav.Link>
                             </Link>
-                            <Link to="/pricing">
-                                <ReactBootStrap.Nav.Link href="#pricing">About Us</ReactBootStrap.Nav.Link>
+                            <Link to="/aboutus">
+                                <ReactBootStrap.Nav.Link href="/aboutus">About Us</ReactBootStrap.Nav.Link>
                             </Link>
                         </ReactBootStrap.Nav>
 
