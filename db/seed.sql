@@ -35,15 +35,15 @@ zip INT
 );
 
 CREATE TABLE amenities(
-    amenities_id SERIAL PRIMARY KEY,
-    listing_id INT REFERENCES listings(listing_id),
-    parking BOOLEAN,
-    television BOOLEAN,
-    washer_dryer BOOLEAN,
-    air_conditioning BOOLEAN,
-    wifi BOOLEAN,
-    hair_dryer BOOLEAN,
-    pool BOOLEAN
+amenities_id SERIAL PRIMARY KEY,
+listing_id INT REFERENCES listings(listing_id),
+parking BOOLEAN,
+television BOOLEAN,
+washer_dryer BOOLEAN,
+hair_conditioning BOOLEAN,
+wifi BOOLEAN,
+hair_dryer BOOLEAN,
+pool BOOLEAN
 );
 
 CREATE TABLE favorites(
