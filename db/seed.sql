@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS reservations;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS favorites;
 DROP TABLE IF EXISTS listings;
+DROP TABLE IF EXISTS amenities;
 DROP TABLE IF EXISTS property_types;
 DROP TABLE IF EXISTS users;
 
@@ -40,7 +41,7 @@ listing_id INT REFERENCES listings(listing_id),
 parking BOOLEAN,
 television BOOLEAN,
 washer_dryer BOOLEAN,
-hair_conditioning BOOLEAN,
+air_conditioning BOOLEAN,
 wifi BOOLEAN,
 hair_dryer BOOLEAN,
 pool BOOLEAN
@@ -68,4 +69,3 @@ date_from DATE,
 date_to DATE,
 listing_id INT REFERENCES listings(listing_id)
 );
-
