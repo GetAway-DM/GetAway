@@ -7,6 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 function Reservation(props) {
   const [dateFrom, setDateFrom] = useState(new Date())
   const [dateTo, setDateTo] = useState(new Date())
+  const [guests, setGuests] = useState(1)
 
   console.log(props)
 
@@ -19,8 +20,6 @@ function Reservation(props) {
       const { user_id } = props.authReducer.user
       const { listing } = props
       Axios.post(`/api/reservation/newreservation/${listing}`, { user_id, listing, dateFrom, dateTo }).then((res) => {
-        console.log(dateFrom)
-        console.log(dateTo)
         props.history('/')
       })
     }
@@ -29,10 +28,9 @@ function Reservation(props) {
   return (
     <div className="reserve-container">
       <div className="info-container">
-        <p>{props.price}/night</p>
+        <p>${props.listReducer.listing.price}/night</p>
         <div>
-          <p>star icon here</p>
-          <p>avg rating here</p>
+          <p>star icon here {props.listReducer.listing.avg}</p>
         </div>
       </div>
       <div className="selector-container">
