@@ -28,5 +28,6 @@ class Homepage extends Component {
     )
   }
 }
+
 const mapStateToProps = (state) => state
 export default connect(mapStateToProps, { getUser })(Homepage)
