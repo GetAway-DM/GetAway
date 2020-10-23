@@ -7,6 +7,8 @@ class MyReservations extends Component{
         this.state = {
             date_from: '',
             date_to: '',
+            dfrom: '',
+            dto: '',
             listing_id: 0,
             listing: {}
         }
@@ -18,6 +20,7 @@ class MyReservations extends Component{
             date_to,
             listing_id
         })
+        
         await axios.get(`/api/listing/getlisting/${listing_id}`).then((res) => {
             this.setState({
                 listing: res.data
