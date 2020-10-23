@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import Search from './Search'
+import './homepage.css'
 
-// https://reactjs.org/docs/hooks-intro.html
 class Homepage extends Component{
     render(){
         return(
-            <div>Homepage</div>
+            <div>
+                <p>Homepage</p>
+                <Search/>
+            </div>
         )
     }
 }

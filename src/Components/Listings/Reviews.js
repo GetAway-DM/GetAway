@@ -1,12 +1,12 @@
-import React from 'react'
+import React, {Component} from 'react';
 import './reviews.css'
 
-class Reviews extends React.Component {
+class Reviews extends Component {
     constructor() {
         super();
 
         this.state = {
-            showComments: true,
+            showComments: false,
             comments: [
                 {id: 1, author: "mickey", body: "The house was dirty"},
                 {id: 2, author: "susie", body: "Roaches everywhere"},
@@ -18,21 +18,20 @@ class Reviews extends React.Component {
     render () {
         const comments = this._getComments();
         let commentNodes;
-        let buttonText = 'Show Comments';
+        let buttonText = 'Show Review';
 
         if (this.state.showComments) {
-            buttonText = 'Hide Comments';
+            buttonText = 'Hide Review';
             commentNodes = <div className="comment-list">{comments}</div>;
         }
 
         return(
                 <div className="comment-box">
-                    <h2>Join the Discussion!</h2>
+                    <h2>Please leave a Review!</h2>
                     <CommentForm addComment={this._addComment.bind(this)}/>
                     <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
                         {buttonText}
                     </button>
-                    <h3>Comments</h3>
                     <h4 className="comment-count">
                         {this._getCommentsTitle(comments.length)}
                     </h4>
@@ -47,7 +46,7 @@ class Reviews extends React.Component {
             author,
             body
         };
-        this.setState({ comments: this.state.comments.concat([comment]) }); // *new array references help React stay fast, so concat works better than push here.
+        this.setState({ comments: this.state.comments.concat([comment]) });
     }
 
     _handleClick() {
@@ -78,7 +77,7 @@ class Reviews extends React.Component {
     }
 } // end CommentBox component
 
-class CommentForm extends React.Component {
+class CommentForm extends Component {
     render() {
         return (
                 <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
@@ -91,17 +90,17 @@ class CommentForm extends React.Component {
                     </div>
                 </form>
         );
-    } // end render
+    }
 
     _handleSubmit(event) {
-        event.preventDefault();   // prevents page from reloading on submit
+        event.preventDefault();
         let author = this._author;
         let body = this._body;
         this.props.addComment(author.value, body.value);
     }
-} // end CommentForm component
+}
 
-class Comment extends React.Component {
+class Comment extends Component {
     render () {
         return(
                 <div className="comment">
@@ -114,7 +113,7 @@ class Comment extends React.Component {
         );
     }
     _deleteComment() {
-        alert("-- DELETE Comment Functionality COMMING SOON...");
+        alert("Need to connect to backend");
     }
 }
 

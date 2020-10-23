@@ -4,7 +4,7 @@ body {
 }
 button {
     border: none;
-    border-radius: 0.25rem;
+    border-radius: 5%;
     font-size: 0.75rem;
     font-weight: bold;
     padding: 0.75em;
@@ -21,9 +21,10 @@ button:focus {
 .comment-box {
     max-width: 37.5rem;
     color: #fff;
-    background-color: #909090;
+    background-color: #bac7c8;
     border-radius: 0.875rem;
     padding: 0.2rem 1rem 2rem;
+    opacity: 70%;
 }
 .comment-form {
     background-color: #fff;
@@ -49,15 +50,16 @@ button:focus {
     font-style: italic;
 }
 .comment-count {
-    color: #404040;
+    color: #000000;
 }
 #comment-reveal {
     float: right;
-    background-color: #00bdfc;
-    color: #fff;
+    background-color: #e9e1e1;
+    border-radius: 5%;
+    color: #000000;
 }
 .comment {
-    border-top: 0.125rem solid #404040;
+    border-top: 0.125rem solid #000000;
 }
 .comment-body {
     font-style: italic;
@@ -68,7 +70,7 @@ button:focus {
 }
 .comment-footer-delete {
     padding: 0.2rem 0;
-    color: #404040;
+    color: #000000;
     text-decoration: none;
 }
 .comment-footer-delete:hover {

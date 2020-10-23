@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 });
 
 export default function HoverRating() {
-    const [value, setValue] = React.useState(2);
+    const [value, setValue] = React.useState(3);
     const [hover, setHover] = React.useState(-1);
     const classes = useStyles();
 

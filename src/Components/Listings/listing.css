@@ -3,8 +3,16 @@
     width: 5vw;
 }
 
-rules-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+.rules{
+    display: inline-block;
+    flex-direction: column;
+}
+.rules-box{
+    display: block;
+    flex-direction: column;
+}
+
+.list-box{
+    display: block;
+
 }
