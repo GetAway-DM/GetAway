@@ -29,7 +29,7 @@ app.use(
   })
 )
 
-app.get('/sign-s3', (req, res) => {
+app.get('/api/sign-s3', (req, res) => {
   aws.config = {
     region: 'us-east-1',
     accessKeyId: AWS_ACCESS_KEY_ID,

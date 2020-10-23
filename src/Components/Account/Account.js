@@ -76,7 +76,7 @@ class Account extends Component {
     console.log(fileName)
     // We will now send a request to our server to get a "signed url" from Amazon. We are essentially letting AWS know that we are going to upload a file soon. We are only sending the file-name and file-type as strings. We are not sending the file itself at this point.
     axios
-      .get('/api/signs3', {
+      .get('/api/sign-s3', {
         params: {
           'file-name': fileName,
           'file-type': file.type,
@@ -102,7 +102,7 @@ class Account extends Component {
     axios
       .put(signedRequest, file, options)
       .then((response) => {
-        this.setState({ isUploading: false, url })
+        this.setState({ isUploading: false, profile_img: url })
         // THEN DO SOMETHING WITH THE URL. SEND TO DB USING POST REQUEST OR SOMETHING
       })
       .catch((err) => {
@@ -224,29 +224,26 @@ class Account extends Component {
                 <h1>Upload</h1>
                 <h1>{url}</h1>
                 <img src={url} alt="" width="450px" />
-                <Dropzone
-                  onDropAccepted={this.getSignedRequest}
-                  style={{
-                    position: 'relative',
-                    width: 200,
-                    height: 200,
-                    borderWidth: 7,
-                    marginTop: 100,
-                    borderColor: 'rgb(102, 102, 102)',
-                    borderStyle: 'dashed',
-                    borderRadius: 5,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    fontSize: 28,
-                  }}
-                  accept="image/*"
-                  multiple={false}>
+                <Dropzone onDropAccepted={this.getSignedRequest} accept="image/*" multiple={false}>
                   {({ getRootProps, getInputProps }) =>
                     isUploading ? (
                       <GridLoader />
                     ) : (
-                      <section>
+                      <section
+                        style={{
+                          position: 'relative',
+                          width: 200,
+                          height: 200,
+                          borderWidth: 7,
+                          marginTop: 100,
+                          borderColor: 'rgb(102, 102, 102)',
+                          borderStyle: 'dashed',
+                          borderRadius: 5,
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          fontSize: 28,
+                        }}>
                         <div {...getRootProps()}>
                           <input {...getInputProps()} />
                           <p>Drag 'n' drop some files here, or click to select files</p>
