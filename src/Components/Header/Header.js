@@ -25,8 +25,8 @@ class Header extends Component {
                     <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                         <ReactBootStrap.Nav className="mr-auto">
-                            <Link to="/features">
-                                <ReactBootStrap.Nav.Link href="#features">Explore Nearby</ReactBootStrap.Nav.Link>
+                            <Link to="/dashboard">
+                                <ReactBootStrap.Nav.Link href="/dashboard">Explore Nearby</ReactBootStrap.Nav.Link>
                             </Link>
                             <Link to="/aboutus">
                                 <ReactBootStrap.Nav.Link href="/aboutus">About Us</ReactBootStrap.Nav.Link>
