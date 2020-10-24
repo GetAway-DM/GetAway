@@ -4,7 +4,7 @@ import './homepage.css'
 
 import { connect } from 'react-redux'
 import { getUser } from '../../ducks/authReducer'
-// https://reactjs.org/docs/hooks-intro.html
+
 class Homepage extends Component {
   constructor(props) {
     super(props)
