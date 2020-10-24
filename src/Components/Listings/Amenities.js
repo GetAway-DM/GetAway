@@ -29,8 +29,6 @@ class Amenities extends Component {
 
 
   render() {
-    console.log(this.props.listReducer.listing.amenities)
-
     let amenitiesDisplay = 'Loading';
 
     if (this.props.listReducer.listing.amenities) {
