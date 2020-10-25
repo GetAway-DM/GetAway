@@ -5,6 +5,7 @@ const massive = require('massive')
 const authCtrl = require('./authController.js')
 const listCtrl = require('./listController')
 const resCtrl = require('./resController')
+const reviewCtrl = require('./reviewController')
 const verifyUser = require('./middlewares/verifyUser')
 const aws = require('aws-sdk')
 
@@ -80,6 +81,11 @@ app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
 app.get('/api/reservations/:user_id', verifyUser, resCtrl.getUserReservations)
 app.post('/api/reservation/newreservation/:listing_id', resCtrl.createReservation)
 app.delete('/api/reservation/deletereservation/:res_id', resCtrl.deleteReservation)
+
+// review endpoints
+app.get('/api/reviews/getreviews/:property_id', reviewCtrl.getAllReviews)
+app.post('/api/reviews/addreviews/:property_id', reviewCtrl.addReview)
+app.delete('/api/reviews/deletereviews/:property_id/:review_id', reviewCtrl.deleteReview)
 
 massive({
   connectionString: CONNECTION_STRING,
