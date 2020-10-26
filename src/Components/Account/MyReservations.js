@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import axios from 'axios';
-import datepicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 class MyReservations extends Component{
     constructor(props){
         super(props)
@@ -24,8 +22,6 @@ class MyReservations extends Component{
             date_to,
             listing_id
         })
-        const dfrom = this.getDate(date_from)
-        console.log(dfrom)
         
         await axios.get(`/api/listing/getlisting/${listing_id}`).then((res) => {
             this.setState({
