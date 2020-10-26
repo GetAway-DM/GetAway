@@ -25,6 +25,7 @@ function Reservation(props) {
     }
   }
 
+
   return (
     <div className="reserve-container">
       <div className="info-container">
@@ -36,11 +37,11 @@ function Reservation(props) {
       <div className="selector-container">
         <div className="calendar-selector">
           <p>Check in</p>
-          <Datepicker selected={dateFrom} dateFormat="yyyy-MM-dd" onChange={(date) => setDateFrom(date)} />
+          <Datepicker selected={dateFrom} dateFormat="MM-dd-yyyy" onChange={(date) => setDateFrom(date)} />
         </div>
         <div className="calendar-selector">
           <p>Check out</p>
-          <Datepicker selected={dateTo} dateFormat="yyyy-MM-dd" onChange={(date) => setDateTo(date)} />
+          <Datepicker selected={dateTo} dateFormat="MM-dd-yyyy" onChange={(date) => setDateTo(date)} />
         </div>
       </div>
       <div className="guests-reserve">
