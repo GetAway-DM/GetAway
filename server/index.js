@@ -4,6 +4,7 @@ const session = require('express-session')
 const massive = require('massive')
 const authCtrl = require('./authController.js')
 const listCtrl = require('./listController')
+const mapCtrl = require('./mapController')
 const resCtrl = require('./resController')
 const reviewCtrl = require('./reviewController')
 const verifyUser = require('./middlewares/verifyUser')
@@ -79,13 +80,27 @@ app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
 
 //reservation endpoints
 app.get('/api/reservations/:user_id', verifyUser, resCtrl.getUserReservations)
-app.post('/api/reservation/newreservation/:listing_id', resCtrl.createReservation)
-app.delete('/api/reservation/deletereservation/:res_id', resCtrl.deleteReservation)
+app.post(
+  '/api/reservation/newreservation/:listing_id',
+  resCtrl.createReservation
+)
+app.delete(
+  '/api/reservation/deletereservation/:res_id',
+  resCtrl.deleteReservation
+)
 
 // review endpoints
 app.get('/api/reviews/getreviews/:property_id', reviewCtrl.getAllReviews)
 app.post('/api/reviews/addreviews/:property_id', reviewCtrl.addReview)
-app.delete('/api/reviews/deletereviews/:property_id/:review_id', reviewCtrl.deleteReview)
+app.delete(
+  '/api/reviews/deletereviews/:property_id/:review_id',
+  reviewCtrl.deleteReview
+)
+
+// map endpoints
+app.get('/api/map/location/getstreet', mapCtrl.getStreet)
+app.get('/api/map/location/getcity', mapCtrl.getCity)
+app.get('/api/map/location/getstate', mapCtrl.getState)
 
 massive({
   connectionString: CONNECTION_STRING,
@@ -94,6 +109,8 @@ massive({
   .then((dbInstance) => {
     app.set('db', dbInstance)
     console.log('The database is working')
-    app.listen(SERVER_PORT, () => console.log(`Project running on Port ${SERVER_PORT}`))
+    app.listen(SERVER_PORT, () =>
+      console.log(`Project running on Port ${SERVER_PORT}`)
+    )
   })
   .catch((err) => console.log(err))
