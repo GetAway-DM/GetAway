@@ -91,7 +91,7 @@ module.exports = {
     const { listing_id } = req.params
 
     const [editUser] = await db.edit_listing(
-      listing_id,
+      [listing_id,
       title,
       description,
       property_type,
@@ -108,7 +108,7 @@ module.exports = {
       air_conditioning,
       wifi,
       hair_dryer,
-      pool
+      pool]
     )
 
     res.status(200).send(editUser)
