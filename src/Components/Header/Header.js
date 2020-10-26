@@ -46,7 +46,7 @@ class Header extends Component {
 
                                             <ReactBootStrap.NavDropdown.Divider />
                                             <ReactBootStrap.NavDropdown.Item href='/createlisting'>Create a Listing</ReactBootStrap.NavDropdown.Item>
-                                            <ReactBootStrap.NavDropdown.Item href="#action/3.4">My Listings</ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/listings/${this.props.authReducer.user.user_id}`) }}>My Listings</ReactBootStrap.NavDropdown.Item>
                                             <ReactBootStrap.NavDropdown.Divider />
 
                                             <ReactBootStrap.NavDropdown.Item> <Link to="/" onClick={() => { this.handleLogout() }}>Logout</Link></ReactBootStrap.NavDropdown.Item>
