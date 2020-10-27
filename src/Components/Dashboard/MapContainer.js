@@ -18,40 +18,10 @@ export default class MapContainer extends Component {
     }
   }
 
-<<<<<<< HEAD
   componentDidMount() {
     this.getAddress()
     this.putOnMarkers()
   }
-=======
-    state = {
-        showingInfoWindow: true,
-        activeMarker: {},
-        selectedPlace: {},
-    };
-
-    onMarkerClick = (props, marker) =>
-        this.setState({
-            activeMarker: marker,
-            selectedPlace: props,
-            showingInfoWindow: true
-        });
-
-    //           var geocoderFunction = function () { 
-    //         geocoder.geocode({ 'address': road[index] }, 
-    //            function (results, status) {
-    //               if (status == google.maps.GeocoderStatus.OK) {
-    //                  new google.maps.Marker({
-    //                     map: map, 
-    //                     position: results[0].geometry.location
-    //                  });
-    //            }             
-    //    }
-
-    render() {
-        return (
-            <Map google={this.props.google} zoom={14}>
->>>>>>> main
 
   getAddress = () => {
     const newStreet = axios
@@ -66,7 +36,6 @@ export default class MapContainer extends Component {
     })
   }
 
-<<<<<<< HEAD
   putOnMarkers = () => {
     const { GM_API_KEY } = config
     const { state, city, street } = this.state
@@ -79,15 +48,6 @@ export default class MapContainer extends Component {
           this.setState({ marker: [...this.state.marker, res.data.results[0]] })
         })
         .catch((err) => console.log('err'))
-=======
-                <InfoWindow onClose={this.onInfoWindowClose}>
-                    <div>
-                        <h1>{this.state.selectedPlace.name}</h1>
-                    </div>
-                </InfoWindow>
-            </Map >
-        );
->>>>>>> main
     }
   }
 
