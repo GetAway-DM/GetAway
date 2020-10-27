@@ -4,14 +4,11 @@ import MapContainer from './MapContainer'
 import './dashboard.css'
 
 const Dashboard = () => {
-    return (
-        <div>
-            <NearbyListing />
-            <MapContainer />
-        </div>
-
-    )
+  return (
+    <div className="dashboard-body">
+      <NearbyListing className="listing-box"/>
+      <MapContainer className="map-box"/>
+    </div>
+  )
 }
 export default Dashboard
-
-
