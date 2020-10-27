@@ -6,6 +6,7 @@ const authCtrl = require('./authController.js')
 const listCtrl = require('./listController')
 const mapCtrl = require('./mapController')
 const resCtrl = require('./resController')
+const reviewCtrl = require('./reviewController')
 const photoCtrl = require('./photoController')
 const verifyUser = require('./middlewares/verifyUser')
 const aws = require('aws-sdk')
@@ -108,7 +109,10 @@ app.get('/api/map/location/getstate', mapCtrl.getState)
 //listing_photos
 app.get('/api/listingphoto/getphotos/:listing_id', photoCtrl.getPhotos)
 app.post('/api/listingphoto/uploadphoto/:listing_id', photoCtrl.uploadPhoto)
-app.delete('/api/listingphoto/deletephoto/:listing_id/:photo_id', photoCtrl.deletePhoto)
+app.delete(
+  '/api/listingphoto/deletephoto/:listing_id/:photo_id',
+  photoCtrl.deletePhoto
+)
 
 massive({
   connectionString: CONNECTION_STRING,
