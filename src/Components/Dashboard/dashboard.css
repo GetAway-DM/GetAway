@@ -1,7 +1,7 @@
 .mappy {
   height: 100vh;
   width: 52vw;
-  position: absolute;
+  position: fixed;
   left: 56.6rem;
   border-left: 10px inset black;
 }
@@ -12,7 +12,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 }
 
 .mapped-listing {
@@ -21,11 +20,10 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
-.card-listing{
-
+.card-listing {
 }
 
-.container-listing-mapped{
+.container-listing-mapped {
   height: 70vh;
   width: 50vw;
   display: flex;
@@ -35,14 +33,11 @@
   padding-top: 3rem;
   justify-content: space-evenly;
   /*align-content: space-evenly;*/
-
-
 }
 
-.card{
-display: flex;
+.card {
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   /*flex-direction: column;*/
-
 }
