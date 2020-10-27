@@ -12,18 +12,37 @@ class MyListings extends Component{
     constructor(props){
         super(props)
         this.state = {
-            listing: {},
+            title: '',
+            description: '',
+            bedrooms: 0,
+            bathrooms: 0,
+            price: 0,
+            street: '',
+            city: '',
+            state: '',
+            zip: 0,
+            listing_id: 0,
             amenities: {},
             photos: [],
-            detailsToggle: false,
-            amenitiesToggle: false,
-            photosToggle: false,
+            detailsEdit: false,
+            amenitiesEdit: false,
+            photosEdit: false,
         }
     }
     async componentDidMount(){
         const {listing_id} = this.props.listing
+        const {title, description, bedrooms, bathrooms, price, street, city, state, zip} = this.props.listing
         await this.setState({
-            listing: this.props.listing
+            listing_id,
+            title,
+            description,
+            bedrooms,
+            bathrooms,
+            price,
+            street,
+            city,
+            state,
+            zip
         })
         await axios.get(`/api/listing/amenities/${listing_id}`).then((res) => {
             this.setState({
@@ -36,7 +55,27 @@ class MyListings extends Component{
             })
         })
     }
+    handleInput = (e) => {
+        this.setState({
+          [e.target.name]: e.target.value,
+        })
+      }
     
+      toggleEdit = (e) => {
+        this.setState({
+          [e.target.name]: !this.state.value,
+        })
+      }
+      toggleCancel = (e) => {
+        this.setState({
+          [e.target.name]: false,
+        })
+      }
+      handleDetails = (e) => {
+          e.preventDefault()
+          const { listing_id, title, description, bedrooms, bathrooms, price, street, city, state, zip} = this.state
+          
+      }
 
     deleteListing = () => {
         axios.delete(`/api/listing/deletelisting/${this.state.listing.listing_id}`).then(window.location.reload())
@@ -52,16 +91,30 @@ class MyListings extends Component{
         })
         return(
             <div>
+                {this.state.detailsEdit === false ? (
                 <div>
-                <h3>{this.state.listing.title}</h3>
-                <p>{this.state.listing.description}</p>
-                <p>Bedrooms: {this.state.listing.bedrooms}</p>
-                <p>Bathrooms: {this.state.listing.bathrooms}</p>
-                <p>Price: ${this.state.listing.price}</p>
-                <p>Address:{this.state.listing.street}</p>
-                <p>{this.state.listing.city}</p>
-                <p>{this.state.listing.zip}</p>
+                <h3>{this.state.title}</h3>
+                <p>{this.state.description}</p>
+                <p>Bedrooms: {this.state.bedrooms}</p>
+                <p>Bathrooms: {this.state.bathrooms}</p>
+                <p>Price: ${this.state.price}</p>
+                <p>Address:{this.state.street}</p>
+                <p>{this.state.city} {this.state.state}</p>
+                <p>{this.state.zip}</p>
+                <button name="detailsEdit" onClick={(e) => {this.toggleEdit(e)}}>Edit Details</button>
                 </div>
+                ) : (<div>
+                    <label>Title: </label><input value={this.state.title} onChange={(e) => {this.handleInput(e)}} name="title" placeholder="Title" />
+                    <label>Description: </label><input value={this.state.description} onChange={(e) => {this.handleInput(e)}} name="description" placeholder="Description"/>
+                <label>Bedrooms: </label><input value={this.state.bedrooms} onChange={(e) => {this.handleInput(e)}} name="bedrooms" placeholder="Bedrooms" />
+                <label>Bathrooms: </label><input value={this.state.bathrooms} onChange={(e) => {this.handleInput(e)}} name="bathrooms" placeholder="Bathrooms" />
+                <label>Price: $</label><input value={this.state.price} onChange={(e) => {this.handleInput(e)}} name="price" placeholder="Price" />
+                <label>Address:</label><input value={this.state.street} onChange={(e) => {this.handleInput(e)}} name="street" placeholder="Street" />
+                <input value={this.state.city} onChange={(e) => {this.handleInput(e)}} name="city" placeholder="City" /> <input value={this.state.state} onChange={(e) => {this.handleInput(e)}} name="state" placeholder="State" />
+                <input value={this.state.zip} onChange={(e) => {this.handleInput(e)}} name="zip" placeholder="Zip Code" />
+                <button onClick={(e) => {this.handleDetails(e)}}>Submit Details</button>
+                    <button name="detailsEdit" onClick={(e) => {this.toggleCancel(e)}}>Cancel Details Edit</button>
+                </div>)}
                 <>
           <h4>Amenities</h4>
 

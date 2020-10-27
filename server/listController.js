@@ -62,53 +62,36 @@ module.exports = {
 
     res.status(200).send(listing)
   },
-  editListing: async (req, res) => {
+  editListingDetails: async (req, res) => {
     const db = req.app.get('db')
 
     const {
+      listing_id,
       title,
       description,
-      property_type,
       bedrooms,
       bathrooms,
       price,
       street,
       city,
       state,
-      zip,
-      parking,
-      television,
-      washer_dryer,
-      air_conditioning,
-      wifi,
-      hair_dryer,
-      pool,
+      zip
     } = req.body
 
-    const { listing_id } = req.params
-
-    const [editUser] = await db.edit_listing(
+    const [editDetails] = await db.edit_listing(
       [listing_id,
       title,
       description,
-      property_type,
       bedrooms,
       bathrooms,
       price,
       street,
       city,
       state,
-      zip,
-      parking,
-      television,
-      washer_dryer,
-      air_conditioning,
-      wifi,
-      hair_dryer,
-      pool]
+      zip]
     )
 
-    res.status(200).send(editUser)
+    res.status(200).send(editDetails)
   },
   deleteListing: async (req, res) => {
     const db = req.app.get('db')
