@@ -35,6 +35,7 @@ module.exports = {
       wifi,
       hair_dryer,
       pool,
+      uploadedPhoto,
     } = req.body
 
     const [listing] = await db.create_listing([
@@ -50,18 +51,14 @@ module.exports = {
       state,
       zip,
     ])
+
     const listing_id = listing.listing_id
 
-    await db.create_amenities([
-      listing_id,
-      parking,
-      television,
-      washer_dryer,
-      air_conditioning,
-      wifi,
-      hair_dryer,
-      pool,
-    ])
+    await db.create_amenities([listing_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool])
+
+    const photoArray = uploadedPhoto.map((e) => ({ listing_id: listing_id, photo: e }))
+
+    await db.listing_photos.insert(photoArray)
 
     res.status(200).send(listing)
   },
@@ -131,10 +128,12 @@ module.exports = {
   },
   getAmenitiesByListingId: async (db) => {
     const listing = await db.get_listing_by_id()
-    const getAmenitiesByListingId = await Promise.all(listing.map(async listing => {
-      const amenities = await db.get_amenities_by_listing_id([listing.id])
-      return { ...listing, amenities }
-    }))
+    const getAmenitiesByListingId = await Promise.all(
+      listing.map(async (listing) => {
+        const amenities = await db.get_amenities_by_listing_id([listing.id])
+        return { ...listing, amenities }
+      })
+    )
     return getAmenitiesByListingId
-  }
+  },
 }
