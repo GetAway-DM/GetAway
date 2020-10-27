@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import MyMarker from './MyMarker'
-import { GiHouse } from 'react-icons/gi'
-// import { setApiKey } from 'react-geocode'
 import axios from 'axios'
 import './dashboard.css'
-import { TextsmsTwoTone } from '@material-ui/icons'
 
 const config = require('../.././config')
 
@@ -25,16 +22,6 @@ export default class MapContainer extends Component {
     this.getAddress()
     this.putOnMarkers()
   }
-
-  // locations = [
-  // {
-  // 	title: 'House',
-  // 	position: {lat: 48.856259, lng: 2.365043},
-  // 	icon: {
-  // 		url: "images/markers/svg/Coffee_3.svg",
-  // 		scaledSize: new google.maps.Size(64, 64)
-  // 	}
-  // },
 
   getAddress = () => {
     const newStreet = axios
@@ -64,12 +51,6 @@ export default class MapContainer extends Component {
     }
   }
 
-  // addMarker = () => {}
-
-  //  TODO: map over array of markers the pass down for each marker individual
-  //  ? Can we invoke putOnMarkers() in the getAddress function and so on?
-  //  ? How to correctly access lat lng from our axios request to display the markers?
-
   render() {
     const { GM_API_KEY } = config
     const markerz = this.state.marker.map((el, i) => {
@@ -80,20 +61,11 @@ export default class MapContainer extends Component {
           lat={el.geometry.location.lat}
           lng={el.geometry.location.lng}
         />
-        // <Marker
-        //   key={i}
-        //   id={i}
-        //   position={{
-        //     lat: el.geometry.location.lat,
-        //     lng: el.geometry.location.lng,
-        //   }}
-        // />
       )
     })
 
-    console.log(markerz)
     return (
-      <div className="mapContainer">
+      <div className="mappy">
         <GoogleMapReact
           bootstrapURLKeys={{
             key: 'AIzaSyAidj2vQaxHLAtybTybhIAZi6bnUm7fGkE',

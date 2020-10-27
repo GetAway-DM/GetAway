@@ -5,9 +5,9 @@ import './dashboard.css'
 
 const Dashboard = () => {
   return (
-    <div>
-      <NearbyListing />
-      <MapContainer />
+    <div className="dashboard-body">
+      <NearbyListing className="listing-box"/>
+      <MapContainer className="map-box"/>
     </div>
   )
 }

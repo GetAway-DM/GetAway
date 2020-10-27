@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Search from './Search'
 import './homepage.css'
-
 import { connect } from 'react-redux'
 import { getUser } from '../../ducks/authReducer'
 
@@ -23,7 +22,7 @@ class Homepage extends Component {
     return (
       <div>
         <p>Homepage</p>
-        <Search />
+        {/*<Search />*/}
       </div>
     )
   }
@@ -31,3 +30,4 @@ class Homepage extends Component {
 
 const mapStateToProps = (state) => state
 export default connect(mapStateToProps, { getUser })(Homepage)
+

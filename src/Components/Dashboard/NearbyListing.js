@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import CardListing from './CardListing'
+import './dashboard.css'
 
-
-class NearbyListing extends Component{
-    render(){
-        return(
-                <div>NearbyListing</div>
-        )
-    }
+function NearbyListing() {
+    return (
+      <div className="mapped-listing">
+        <CardListing className="card-listing"/>
+      </div>
+    )
 }
-export default NearbyListing;
+
+export default NearbyListing
