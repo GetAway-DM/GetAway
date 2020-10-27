@@ -6,9 +6,15 @@ class MyListings extends Component{
     constructor(props){
         super(props)
         this.state = {
-            listing: {}
+            listing: {},
+            amenities: {},
+            photos: []
         }
     }
+    deleteListing = () => {
+
+    }
+
     render(props){
         return(
             <div>
