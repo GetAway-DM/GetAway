@@ -14,7 +14,10 @@ class MyListings extends Component{
         this.state = {
             listing: {},
             amenities: {},
-            photos: []
+            photos: [],
+            detailsToggle: false,
+            amenitiesToggle: false,
+            photosToggle: false,
         }
     }
     async componentDidMount(){
@@ -33,6 +36,7 @@ class MyListings extends Component{
             })
         })
     }
+    
 
     deleteListing = () => {
         axios.delete(`/api/listing/deletelisting/${this.state.listing.listing_id}`).then(window.location.reload())
@@ -48,7 +52,8 @@ class MyListings extends Component{
         })
         return(
             <div>
-                <h1>{this.state.listing.title}</h1>
+                <div>
+                <h3>{this.state.listing.title}</h3>
                 <p>{this.state.listing.description}</p>
                 <p>Bedrooms: {this.state.listing.bedrooms}</p>
                 <p>Bathrooms: {this.state.listing.bathrooms}</p>
@@ -56,36 +61,38 @@ class MyListings extends Component{
                 <p>Address:{this.state.listing.street}</p>
                 <p>{this.state.listing.city}</p>
                 <p>{this.state.listing.zip}</p>
+                </div>
                 <>
-          <h3>Amenities</h3>
+          <h4>Amenities</h4>
 
           {amenities.parking === true ? (
-            <p value="parking"> <FaParking /> Parking</p>
-          ) : null}
+              <p value="parking"> <FaParking /> Parking</p>
+              ) : null}
           {amenities.television ? (
-            <p value="television"> <CgScreen /> Television</p>
-          ) : null}
+              <p value="television"> <CgScreen /> Television</p>
+              ) : null}
           {amenities.washer_dryer ? (
-            <p value="washer_dryer"> <CgSmartHomeWashMachine /> Washer/Dryer</p>
-          ) : null}
+              <p value="washer_dryer"> <CgSmartHomeWashMachine /> Washer/Dryer</p>
+              ) : null}
           {amenities.air_conditioning ? (
-            <p value="air_conditioning"> <RiTempColdLine /> Air Conditioning</p>
-          ) : null}
+              <p value="air_conditioning"> <RiTempColdLine /> Air Conditioning</p>
+              ) : null}
           {amenities.wifi ? (
-            <p value="wifi"> <FaWifi /> Wifi</p>
-          ) : null}
+              <p value="wifi"> <FaWifi /> Wifi</p>
+              ) : null}
           {amenities.hair_dryer ? (
-            <p value="hair_dryer"> <FiWind /> Hair Dryer</p>
-          ) : null}
+              <p value="hair_dryer"> <FiWind /> Hair Dryer</p>
+              ) : null}
           {amenities.pool ? (
-            <p value="pool"> <FaSwimmingPool /> Pool</p>
-          ) : null}
+              <p value="pool"> <FaSwimmingPool /> Pool</p>
+              ) : null}
         </>
         <div>{mappedPhotos}</div>
+        <button onClick={(e) => {this.deleteListing()}}>Delete Listing</button>
             </div>
         )
     }
-
+    
 }
 const mapStateToProps = (state) => state
 export default connect(mapStateToProps)(MyListings)

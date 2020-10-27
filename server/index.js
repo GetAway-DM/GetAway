@@ -10,7 +10,6 @@ const reviewCtrl = require('./reviewController')
 const photoCtrl = require('./photoController')
 const verifyUser = require('./middlewares/verifyUser')
 const aws = require('aws-sdk')
-const reviewCtrl = require('./reviewController')
 
 const app = express()
 
