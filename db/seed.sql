@@ -68,7 +68,8 @@ review_id SERIAL PRIMARY KEY,
 property_id INT REFERENCES listings(listing_id),
 author_id INT REFERENCES users(user_id),
 rating INT,
-content TEXT
+content TEXT,
+created_at DATE
 );
 
 CREATE TABLE reservations(

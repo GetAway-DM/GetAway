@@ -20,7 +20,7 @@ const Listings = (props) => {
       <AddListings />
       <Reservation listing={props.match.params.listing_id} history={props.history.push} />
       <Amenities listing={props.match.params.listing_id} />
-      <Reviews />
+      {/*<Reviews />*/}
     </div>
   )
 }
