@@ -27,7 +27,6 @@ class Amenities extends Component {
     })
   }
 
-
   render() {
     let amenitiesDisplay = 'Loading';
 
