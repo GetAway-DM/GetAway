@@ -6,11 +6,8 @@ const authCtrl = require('./authController.js')
 const listCtrl = require('./listController')
 const mapCtrl = require('./mapController')
 const resCtrl = require('./resController')
-<<<<<<< HEAD
 const reviewCtrl = require('./reviewController')
-=======
 const photoCtrl = require('./photoController')
->>>>>>> main
 const verifyUser = require('./middlewares/verifyUser')
 const aws = require('aws-sdk')
 
