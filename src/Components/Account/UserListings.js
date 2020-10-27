@@ -6,6 +6,10 @@ import axios from 'axios';
 class UserListings extends Component{
     constructor(props){
         super(props)
+        this.state = {
+            mylistings: [],
+            user_id: 0
+        }
     }
 
     async componentDidMount(){
@@ -21,6 +25,14 @@ class UserListings extends Component{
             })
         })
         // await this.getMyListings()
+        }
+        getMyListings = () => {
+            const user_id = this.state.user_id
+            axios.get(`/api/reservations/${user_id}`).then((res) => {
+                this.setState({
+                    mylistings: res.data
+                })
+            })
         }
     
 
