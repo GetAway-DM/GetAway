@@ -48,13 +48,6 @@ export default class MapContainer extends Component {
           this.setState({ marker: [...this.state.marker, res.data.results[0]] })
         })
         .catch((err) => console.log('err'))
-      //     // <InfoWindow onClose={this.onInfoWindowClose}>
-      //     //     <div>
-      //     //         <h1>{this.state.selectedPlace.name}</h1>
-      //     //     </div>
-      //     // </InfoWindow>
-      // </Map >
-      // );
     }
   }
 
