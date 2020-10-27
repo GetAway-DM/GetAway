@@ -136,5 +136,12 @@ module.exports = {
       return { ...listing, amenities }
     }))
     return getAmenitiesByListingId
+  },
+  getMyListings: async (req, res) => {
+    const db = req.app.get('db')
+    const myListings = await db.get_listing_by_owner(req.params.owner_id)
+
+    res.status(200).send(myListings)
   }
+
 }
