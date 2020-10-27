@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS reservations;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS favorites;
+DROP TABLE IF EXISTS listing_photos;
 DROP TABLE IF EXISTS listings;
 DROP TABLE IF EXISTS amenities;
 DROP TABLE IF EXISTS property_types;
@@ -20,6 +21,8 @@ type_id SERIAL PRIMARY KEY
 type_name VARCHAR(15)
 );
 
+
+
 CREATE TABLE listings(
 listing_id SERIAL PRIMARY KEY,
 title VARCHAR(100),
@@ -33,6 +36,12 @@ street TEXT,
 city TEXT,
 state TEXT,
 zip INT
+);
+
+CREATE TABLE listing_photos(
+photo_id SERIAL PRIMARY KEY,
+listing_id INT REFERENCES listings(listing_id),
+photo TEXT
 );
 
 CREATE TABLE amenities(
