@@ -284,7 +284,7 @@ class Account extends Component {
           }}>
           My Reservations
         </button>
-          <button onClick={(e) => {this.props.history.push(`/`)}}>My Listings</button>
+          <button onClick={(e) => {this.props.history.push(`/listings/${user_id}`)}}>My Listings</button>
       </div>
     )
   }

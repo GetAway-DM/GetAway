@@ -114,7 +114,9 @@ module.exports = {
     const db = req.app.get('db')
 
     const { listing_id } = req.params
-
+    await db.delete_listing_reservations([listing_id])
+    await db.delete_listing_amenities([listing_id])
+    await db.delete_listing_allphotos([listing_id])
     await db.delete_listing([listing_id])
 
     const deletedListing = await db.get_all_listings()
@@ -141,6 +143,12 @@ module.exports = {
     const myListings = await db.get_listing_by_owner(req.params.owner_id)
 
     res.status(200).send(myListings)
+  },
+  listingAmenities: async (req, res) => {
+    const db = req.app.get('db')
+    const [listAmenities] = await db.get_amenities_by_listing_id(req.params.listing_id)
+
+    res.status(200).send(listAmenities)
   }
 
 }

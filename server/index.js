@@ -75,6 +75,7 @@ app.get('/api/listing/getlistings', listCtrl.getAllListings)
 app.get('/api/listing/getlisting/:listing_id', listCtrl.getListing)
 app.post('/api/listing/newlisting', verifyUser, listCtrl.addListing)
 app.get('/api/listing/mylistings/:owner_id', verifyUser, listCtrl.getMyListings)
+app.get('/api/listing/amenities/:listing_id', listCtrl.listingAmenities)
 app.put('/api/listing/editlisting/:listing_id', listCtrl.editListing)
 app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
 
