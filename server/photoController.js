@@ -2,7 +2,7 @@ module.exports = {
   getPhotos: async (req, res) => {
     const db = req.app.get('db')
     const { listing_id } = req.params
-    const [photos] = await db.get_listing_photos([listing_id])
+    const photos = await db.get_listing_photos([listing_id])
     res.status(200).send(photos)
   },
   uploadPhoto: async (req, res) => {
