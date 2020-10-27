@@ -93,6 +93,12 @@ module.exports = {
 
     res.status(200).send(editDetails)
   },
+  editListingAmenities: async (req, res) => {
+    const db = req.app.get('db')
+    const { amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool} = req.body
+    const [editAmenities] = await db.edit_amenities([amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool])
+    res.status(200).send(editAmenities)
+  },
   deleteListing: async (req, res) => {
     const db = req.app.get('db')
 

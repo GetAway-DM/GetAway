@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { logoutUser, getUser } from '../../ducks/authReducer'
@@ -20,7 +19,7 @@ class Header extends Component {
     render() {
         return (
             <div className="App">
-                <ReactBootStrap.Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+                <ReactBootStrap.Navbar collapseOnSelect expand="md" bg="dark" variant="dark" >
                     <ReactBootStrap.Navbar.Brand href="/">Get Away</ReactBootStrap.Navbar.Brand>
                     <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">

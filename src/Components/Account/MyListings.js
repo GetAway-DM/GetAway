@@ -22,7 +22,14 @@ class MyListings extends Component{
             state: '',
             zip: 0,
             listing_id: 0,
-            amenities: {},
+            amenities_id: 0,
+            parking: false,
+            television: false,
+            washer_dryer: false,
+            air_conditioning: false,
+            wifi: false,
+            hair_dryer: false,
+            pool: false,
             photos: [],
             detailsEdit: false,
             amenitiesEdit: false,
@@ -45,8 +52,16 @@ class MyListings extends Component{
             zip
         })
         await axios.get(`/api/listing/amenities/${listing_id}`).then((res) => {
+            const {amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool} = res.data
             this.setState({
-                amenities: res.data
+                amenities_id,
+                parking,
+                television,
+                washer_dryer,
+                air_conditioning,
+                wifi,
+                hair_dryer,
+                pool,
             })
         })
         await axios.get(`/api/listingphoto/getphotos/${listing_id}`).then((res) => {
@@ -71,11 +86,21 @@ class MyListings extends Component{
           [e.target.name]: false,
         })
       }
+      handleChecked = (e) => {
+        this.setState({
+          [e.target.id]: e.target.checked,
+        })
+      }
       handleDetails = (e) => {
           e.preventDefault()
           const { listing_id, title, description, bedrooms, bathrooms, price, street, city, state, zip} = this.state
           axios.put('/api/listing/editlistingdetails', { listing_id, title, description, bedrooms, bathrooms, price, street, city, state, zip}).then(window.location.reload())
       }
+      handleAmenities = (e) => {
+        e.preventDefault()
+        const { amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool} = this.state
+        axios.put('/api/listing/editlistingamenities', { amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool}).then(window.location.reload())
+    }
 
     deleteListing = () => {
         axios.delete(`/api/listing/deletelisting/${this.state.listing.listing_id}`).then(window.location.reload())
@@ -117,28 +142,98 @@ class MyListings extends Component{
                 </div>)}
                 <>
           <h4>Amenities</h4>
-
-          {amenities.parking === true ? (
-              <p value="parking"> <FaParking /> Parking</p>
-              ) : null}
-          {amenities.television ? (
-              <p value="television"> <CgScreen /> Television</p>
-              ) : null}
-          {amenities.washer_dryer ? (
-              <p value="washer_dryer"> <CgSmartHomeWashMachine /> Washer/Dryer</p>
-              ) : null}
-          {amenities.air_conditioning ? (
-              <p value="air_conditioning"> <RiTempColdLine /> Air Conditioning</p>
-              ) : null}
-          {amenities.wifi ? (
-              <p value="wifi"> <FaWifi /> Wifi</p>
-              ) : null}
-          {amenities.hair_dryer ? (
-              <p value="hair_dryer"> <FiWind /> Hair Dryer</p>
-              ) : null}
-          {amenities.pool ? (
-              <p value="pool"> <FaSwimmingPool /> Pool</p>
-              ) : null}
+          {this.state.amenitiesEdit === false ? (
+            <div>
+              {this.state.parking === true ? (
+                  <p value={this.state.parking}> <FaParking /> Parking</p>
+                  ) : null}
+              {this.state.television ? (
+                  <p value={this.state.television}> <CgScreen /> Television</p>
+                  ) : null}
+              {this.state.washer_dryer ? (
+                  <p value={this.state.washer_dryer}> <CgSmartHomeWashMachine /> Washer/Dryer</p>
+                  ) : null}
+              {this.state.air_conditioning ? (
+                  <p value={this.state.air_conditioning}> <RiTempColdLine /> Air Conditioning</p>
+                  ) : null}
+              {this.state.wifi ? (
+                  <p value={this.state.wifi}> <FaWifi /> Wifi</p>
+                  ) : null}
+              {this.state.hair_dryer ? (
+                  <p value={this.state.hair_dryer}> <FiWind /> Hair Dryer</p>
+                  ) : null}
+              {this.state.pool ? (
+                  <p value={this.state.pool}> <FaSwimmingPool /> Pool</p>
+                  ) : null}
+            <button name="amenitiesEdit" onClick={(e) => {this.toggleEdit(e)}}>Edit Amenities</button>
+                </div>)
+                : (<div>
+                    <label>Parking:</label>
+                        <input
+                          type="checkbox"
+                          id="parking"
+                          name="amenities"
+                          value="parking"
+                          onChange={this.handleChecked}
+                          checked={this.state.parking}
+                        />
+                        <label>Television:</label>
+                        <input
+                          type="checkbox"
+                          id="television"
+                          name="amenities"
+                          value="television"
+                          onChange={this.handleChecked}
+                          checked={this.state.television}
+                        />
+                        <label>Washer/Dryer:</label>
+                        <input
+                          type="checkbox"
+                          id="washer_dryer"
+                          name="amenities"
+                          value="washer_dryer"
+                          onChange={this.handleChecked}
+                          checked={this.state.washer_dryer}
+                        />
+                        <label>Air Conditioning:</label>
+                        <input
+                          type="checkbox"
+                          id="air_conditioning"
+                          name="Amenities"
+                          value="air_conditioning"
+                          onChange={this.handleChecked}
+                          checked={this.state.air_conditioning}
+                        />
+                        <label>Wifi:</label>
+                        <input
+                          type="checkbox"
+                          id="wifi"
+                          name="amenities"
+                          value="wifi"
+                          onChange={this.handleChecked}
+                          checked={this.state.wifi}
+                        />
+                        <label>Hair Dryer:</label>
+                        <input
+                          type="checkbox"
+                          id="hair_dryer"
+                          name="amenities"
+                          value="hair_dryer"
+                          onChange={this.handleChecked}
+                          checked={this.state.hair_dryer}
+                        />
+                        <label>Pool:</label>
+                        <input
+                          type="checkbox"
+                          id="pool"
+                          name="amenities"
+                          value="pool"
+                          onChange={this.handleChecked}
+                          checked={this.state.pool}
+                        />
+                    
+                    <button name="amenitiesEdit" onClick={(e) => {this.toggleCancel(e)}}>Cancel Amenities Edit</button>
+                </div>)}
         </>
         <div>{mappedPhotos}</div>
         <button onClick={(e) => {this.deleteListing()}}>Delete Listing</button>
