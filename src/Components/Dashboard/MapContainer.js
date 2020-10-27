@@ -5,10 +5,29 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 export class MapContainer extends React.Component {
 
     state = {
-        showingInfoWindow: false,
+        showingInfoWindow: true,
         activeMarker: {},
         selectedPlace: {},
     };
+
+    onMarkerClick = (props, marker) =>
+        this.setState({
+            activeMarker: marker,
+            selectedPlace: props,
+            showingInfoWindow: true
+        });
+
+    //           var geocoderFunction = function () { 
+    //         geocoder.geocode({ 'address': road[index] }, 
+    //            function (results, status) {
+    //               if (status == google.maps.GeocoderStatus.OK) {
+    //                  new google.maps.Marker({
+    //                     map: map, 
+    //                     position: results[0].geometry.location
+    //                  });
+    //            }             
+    //    }
+
     render() {
         return (
             <Map google={this.props.google} zoom={14}>
@@ -21,7 +40,7 @@ export class MapContainer extends React.Component {
                         <h1>{this.state.selectedPlace.name}</h1>
                     </div>
                 </InfoWindow>
-            </Map>
+            </Map >
         );
     }
 }
