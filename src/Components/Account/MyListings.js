@@ -236,6 +236,7 @@ class MyListings extends Component{
                 </div>)}
         </>
         <div>{mappedPhotos}</div>
+        <div> Current Rating: ?</div>
         <button onClick={(e) => {this.deleteListing()}}>Delete Listing</button>
             </div>
         )
