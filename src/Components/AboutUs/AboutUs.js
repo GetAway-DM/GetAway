@@ -34,7 +34,7 @@ class AboutUs extends Component {
                             <br />
                                 <div className="roundPics">
                                     <img width="20%" src={tessa} alt="Picture of Tessa" />
-                                    <p>Hi, my name's Tessa Woodard and I'm a web developer from Colorado. I love making nice, easy to use apps that brighten people's day!</p>
+                                    <p>Hi, my name is Tessa Woodard and I'm a web developer from Colorado. I love making nice, easy to use apps that brighten people's day!</p>
                                         
                                         <IconButton href="https://www.linkedin.com/in/tessa-woodard/">
                                         Feel free to connect on Linkedin!
