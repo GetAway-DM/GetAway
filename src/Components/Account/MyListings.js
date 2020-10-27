@@ -74,7 +74,7 @@ class MyListings extends Component{
       handleDetails = (e) => {
           e.preventDefault()
           const { listing_id, title, description, bedrooms, bathrooms, price, street, city, state, zip} = this.state
-          
+          axios.put('/api/listing/editlistingdetails', { listing_id, title, description, bedrooms, bathrooms, price, street, city, state, zip}).then(window.location.reload())
       }
 
     deleteListing = () => {
