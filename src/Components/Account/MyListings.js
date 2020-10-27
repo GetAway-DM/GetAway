@@ -231,7 +231,7 @@ class MyListings extends Component{
                           onChange={this.handleChecked}
                           checked={this.state.pool}
                         />
-                    
+                    <button onClick={(e) => {this.handleAmenities(e)}}>Submit Amenities</button>
                     <button name="amenitiesEdit" onClick={(e) => {this.toggleCancel(e)}}>Cancel Amenities Edit</button>
                 </div>)}
         </>
