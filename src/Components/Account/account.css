@@ -11,7 +11,7 @@
 .infocontainer {
     margin: 5vh;
     height: 55vh;
-    width: 50vw;
+    width: 40vw;
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -21,8 +21,11 @@
 .emailedit{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 #email {
     width: 25vw;
+}
+.submitbutton{
+    margin-top: 3vh;
 }
