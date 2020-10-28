@@ -62,59 +62,51 @@ module.exports = {
 
     res.status(200).send(listing)
   },
-  editListing: async (req, res) => {
+  editListingDetails: async (req, res) => {
     const db = req.app.get('db')
 
     const {
-      title,
-      description,
-      property_type,
-      bedrooms,
-      bathrooms,
-      price,
-      street,
-      city,
-      state,
-      zip,
-      parking,
-      television,
-      washer_dryer,
-      air_conditioning,
-      wifi,
-      hair_dryer,
-      pool,
-    } = req.body
-
-    const { listing_id } = req.params
-
-    const [editUser] = await db.edit_listing(
       listing_id,
       title,
       description,
-      property_type,
       bedrooms,
       bathrooms,
       price,
       street,
       city,
       state,
-      zip,
-      parking,
-      television,
-      washer_dryer,
-      air_conditioning,
-      wifi,
-      hair_dryer,
-      pool
+      zip
+    } = req.body
+
+    const [editDetails] = await db.edit_listing(
+      [listing_id,
+      title,
+      description,
+      bedrooms,
+      bathrooms,
+      price,
+      street,
+      city,
+      state,
+      zip]
     )
 
-    res.status(200).send(editUser)
+    res.status(200).send(editDetails)
+  },
+  editListingAmenities: async (req, res) => {
+    const db = req.app.get('db')
+    const { amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool} = req.body
+    const [editAmenities] = await db.edit_amenities([amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool])
+    res.status(200).send(editAmenities)
   },
   deleteListing: async (req, res) => {
     const db = req.app.get('db')
 
     const { listing_id } = req.params
-
+    await db.delete_listing_reviews([listing_id])
+    await db.delete_listing_reservations([listing_id])
+    await db.delete_listing_amenities([listing_id])
+    await db.delete_listing_allphotos([listing_id])
     await db.delete_listing([listing_id])
 
     const deletedListing = await db.get_all_listings()
@@ -136,4 +128,17 @@ module.exports = {
     )
     return getAmenitiesByListingId
   },
+  getMyListings: async (req, res) => {
+    const db = req.app.get('db')
+    const myListings = await db.get_listing_by_owner(req.params.owner_id)
+
+    res.status(200).send(myListings)
+  },
+  listingAmenities: async (req, res) => {
+    const db = req.app.get('db')
+    const [listAmenities] = await db.get_amenities_by_listing_id(req.params.listing_id)
+
+    res.status(200).send(listAmenities)
+  }
+
 }

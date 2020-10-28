@@ -8,7 +8,8 @@ import UserReservations from './Components/Account/UserReservations';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Homepage from './Components/Homepage/Homepage';
 import Listings from './Components/Listings/Listings';
-import AboutUs from './Components/AboutUs/AboutUs'
+import AboutUs from './Components/AboutUs/AboutUs';
+import UserListings from './Components/Account/UserListings'
 
 export default (
     <Switch>
@@ -16,6 +17,7 @@ export default (
         <Route path="/account/:userid" component={Account} />
         <Route path="/createlisting" component={CreateListing} />
         <Route path="/reservations/:userid/" component={UserReservations} />
+        <Route path="/listings/:userid" component={UserListings}/>
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />

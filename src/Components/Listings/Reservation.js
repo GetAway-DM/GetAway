@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import axios from 'axios'
 import React, { useState } from 'react'
 import Datepicker from 'react-datepicker'
 import { connect } from 'react-redux'
@@ -19,11 +19,12 @@ function Reservation(props) {
     } else {
       const { user_id } = props.authReducer.user
       const { listing } = props
-      Axios.post(`/api/reservation/newreservation/${listing}`, { user_id, listing, dateFrom, dateTo }).then((res) => {
-        props.history('/')
+      axios.post(`/api/reservation/newreservation/${listing}`, { user_id, listing, dateFrom, dateTo }).then((res) => {
+        props.history(`/reservations/${user_id}`)
       })
     }
   }
+
 
   return (
     <div className="reserve-container">
@@ -36,11 +37,11 @@ function Reservation(props) {
       <div className="selector-container">
         <div className="calendar-selector">
           <p>Check in</p>
-          <Datepicker selected={dateFrom} dateFormat="yyyy-MM-dd" onChange={(date) => setDateFrom(date)} />
+          <Datepicker selected={dateFrom} dateFormat="MM-dd-yyyy" onChange={(date) => setDateFrom(date)} />
         </div>
         <div className="calendar-selector">
           <p>Check out</p>
-          <Datepicker selected={dateTo} dateFormat="yyyy-MM-dd" onChange={(date) => setDateTo(date)} />
+          <Datepicker selected={dateTo} dateFormat="MM-dd-yyyy" onChange={(date) => setDateTo(date)} />
         </div>
       </div>
       <div className="guests-reserve">
