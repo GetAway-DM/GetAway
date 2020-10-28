@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import axios from 'axios'
 import React, { useState } from 'react'
 import Datepicker from 'react-datepicker'
 import { connect } from 'react-redux'
@@ -19,14 +19,16 @@ function Reservation(props) {
     } else {
       const { user_id } = props.authReducer.user
       const { listing } = props
-      Axios.post(`/api/reservation/newreservation/${listing}`, {
-        user_id,
-        listing,
-        dateFrom,
-        dateTo,
-      }).then((res) => {
-        props.history('/')
-      })
+      axios
+        .post(`/api/reservation/newreservation/${listing}`, {
+          user_id,
+          listing,
+          dateFrom,
+          dateTo,
+        })
+        .then((res) => {
+          props.history('/')
+        })
     }
   }
 

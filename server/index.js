@@ -76,7 +76,11 @@ app.put('/api/user/edit', authCtrl.editUser)
 app.get('/api/listing/getlistings', listCtrl.getAllListings)
 app.get('/api/listing/getlisting/:listing_id', listCtrl.getListing)
 app.post('/api/listing/newlisting', verifyUser, listCtrl.addListing)
-app.put('/api/listing/editlisting/:listing_id', listCtrl.editListing)
+app.get('/api/listing/mylistings/:owner_id', verifyUser, listCtrl.getMyListings)
+app.get('/api/listing/amenities/:listing_id', listCtrl.listingAmenities)
+app.put('/api/listing/editlistingdetails', listCtrl.editListingDetails)
+app.put('/api/listing/editlistingamenities', listCtrl.editListingAmenities)
+
 app.delete('/api/listing/deletelisting/:listing_id', listCtrl.deleteListing)
 
 //reservation endpoints
@@ -111,7 +115,7 @@ app.get('/api/map/location/getstate', mapCtrl.getState)
 app.get('/api/listingphoto/getphotos/:listing_id', photoCtrl.getPhotos)
 app.post('/api/listingphoto/uploadphoto/:listing_id', photoCtrl.uploadPhoto)
 app.delete(
-  '/api/listingphoto/deletephoto/:listing_id/:photo_id',
+  '/api/listingphoto/deletephoto/:photo_id',
   photoCtrl.deletePhoto
 )
 

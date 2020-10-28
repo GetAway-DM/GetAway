@@ -20,8 +20,7 @@ class Homepage extends Component {
 
   render() {
     return (
-      <div>
-        <p>Homepage</p>
+      <div className="homepage-container">
         <Search />
       </div>
     )

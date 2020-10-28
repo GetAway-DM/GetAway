@@ -46,7 +46,7 @@ class UserReservations extends Component {
     render(){
         const mappedRes = this.state.reservations.map((reservation, index) => {
             return ( 
-                <MyReservations reservation={reservation} key={reservation.id}/>
+                <MyReservations reservation={reservation} key={reservation.id} push={this.props.history.push}/>
             )
         })
         return (

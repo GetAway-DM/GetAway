@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { logoutUser, getUser } from '../../ducks/authReducer'
@@ -20,13 +19,13 @@ class Header extends Component {
     render() {
         return (
             <div className="App">
-                <ReactBootStrap.Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-                    <ReactBootStrap.Navbar.Brand href="#home">Get Away</ReactBootStrap.Navbar.Brand>
+                <ReactBootStrap.Navbar collapseOnSelect expand="md" bg="dark" variant="dark" >
+                    <ReactBootStrap.Navbar.Brand href="/">Get Away</ReactBootStrap.Navbar.Brand>
                     <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                         <ReactBootStrap.Nav className="mr-auto">
-                            <Link to="/features">
-                                <ReactBootStrap.Nav.Link href="#features">Explore Nearby</ReactBootStrap.Nav.Link>
+                            <Link to="/dashboard">
+                                <ReactBootStrap.Nav.Link href="/dashboard">Explore Nearby</ReactBootStrap.Nav.Link>
                             </Link>
                             <Link to="/aboutus">
                                 <ReactBootStrap.Nav.Link href="/aboutus">About Us</ReactBootStrap.Nav.Link>
@@ -42,12 +41,11 @@ class Header extends Component {
                                     <div>
                                         <ReactBootStrap.NavDropdown title="Account" id="collasible-nav-dropdown">
                                             <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/account/${this.props.authReducer.user.user_id}`) }}>Profile</ReactBootStrap.NavDropdown.Item>
-                                            <ReactBootStrap.NavDropdown.Item href="#action/3.2">Favorites</ReactBootStrap.NavDropdown.Item>
                                             <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/reservations/${this.props.authReducer.user.user_id}`) }}>My Reservations</ReactBootStrap.NavDropdown.Item>
 
                                             <ReactBootStrap.NavDropdown.Divider />
                                             <ReactBootStrap.NavDropdown.Item href='/createlisting'>Create a Listing</ReactBootStrap.NavDropdown.Item>
-                                            <ReactBootStrap.NavDropdown.Item href="#action/3.4">My Listings</ReactBootStrap.NavDropdown.Item>
+                                            <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/listings/${this.props.authReducer.user.user_id}`) }}>My Listings</ReactBootStrap.NavDropdown.Item>
                                             <ReactBootStrap.NavDropdown.Divider />
 
                                             <ReactBootStrap.NavDropdown.Item> <Link to="/" onClick={() => { this.handleLogout() }}>Logout</Link></ReactBootStrap.NavDropdown.Item>

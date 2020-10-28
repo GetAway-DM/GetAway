@@ -34,7 +34,7 @@ class AboutUs extends Component {
                             <br />
                                 <div className="roundPics">
                                     <img width="20%" src={tessa} alt="Picture of Tessa" />
-                                    <p>Hi, my name's Tessa Woodard and I'm a web developer from Colorado. I love making nice, easy to use apps that brighten people's day!</p>
+                                    <p>Hi, my name is Tessa Woodard and I'm a web developer from Colorado. I love making nice, easy to use apps that brighten people's day!</p>
                                         
                                         <IconButton href="https://www.linkedin.com/in/tessa-woodard/">
                                         Feel free to connect on Linkedin!
@@ -69,7 +69,7 @@ class AboutUs extends Component {
                                 <br />
                                     <div className="roundPics">
                                         <img width="20%" src={megan} alt="Picture of Megan" />
-                                        <p>Hi my name is Megan Olsen. I’m a student at Devmountain where I’m learning to develop and build in the digital world using React and Node.Js after working and building in the real world as a Sheep Rancher.</p>
+                                        <p>Hello! My name is Megan Olsen. I’m a Full Stack Web Developer from Utah. I take the notion of working hard to play hard to heart. I enjoy coding websites that are helpful and fun.</p>
                                         
                                         <IconButton href="https://www.linkedin.com/in/megan-olsen-027ab8132/">
                                         Feel free to connect on Linkedin!
