@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import { createMuiTheme, MuiThemeProvider, makeStyles } from '@material-ui/core/styles'
 import { loginUser } from '../../ducks/authReducer'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import './login.css'
-import { makeStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,7 +16,7 @@ import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import { createMuiTheme } from '@material-ui/core/styles'
+import blueGrey from '@material-ui/core/colors/blueGrey'
 
 const styles = makeStyles((theme) => ({
     paper: {
@@ -36,18 +36,13 @@ const styles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
-    palette: {
-        primary: '#009688',
-    },
 }))
 
 const theme = createMuiTheme({
     palette: {
-        primary: {
-            main: '#009688',
-        },
+        primary: blueGrey,
     },
-});
+})
 
 // function Copyright() {
 //     return (
@@ -90,69 +85,70 @@ class Login extends Component {
     render() {
         const classes = styles
         return (
-            <Container style={{ position: 'relative', top: '8rem', left: '-2rem' }} component="main" maxWidth="xs">
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
+            <MuiThemeProvider theme={theme} >
+                <Container style={{ position: 'relative', top: '8rem', left: '-2rem' }} component="main" maxWidth="xs">
+                    <CssBaseline />
+                    <div className={classes.paper}>
+                        <Avatar className={classes.avatar} style={{ color: '#607d8b' }}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Sign in
                     </Typography>
-                    <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                            onChange={(e) => { this.handleInput(e) }}
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            onChange={(e) => { this.handleInput(e) }}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" style={{ color: '#009688' }} />}
-                            label="Remember me"
-                        />
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            color="#009688"
-                            onClick={() => { this.handleLogin() }}
-                        >
-                            Sign In
-                        </Button>
-                        {/* <Grid container> */}
-                        {/* <Grid item xs>
+                        <form className={classes.form} noValidate>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
+                                onChange={(e) => { this.handleInput(e) }}
+                            />
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                onChange={(e) => { this.handleInput(e) }}
+                            />
+                            <FormControlLabel
+                                control={<Checkbox value="remember" style={{ color: '#607d8b' }} />}
+                                label="Remember me"
+                            />
+                            <Button
+                                fullWidth
+                                variant="contained"
+                                color='primary'
+                                onClick={() => { this.handleLogin() }}>
+                                Sign In
+                            </Button>
+                            {/* <Grid container> */}
+                            {/* <Grid item xs>
                                 <Link href="#" variant="body2">
-                                    Forgot password?
-                            </Link>
+                                Forgot password?
+                                </Link>
                             </Grid> */}
-                        <Grid item>
-                            <Link href="./register" variant="body2">
-                                {"Don't have an account? Sign Up"}
-                            </Link>
-                        </Grid>
-                        {/* </Grid> */}
-                    </form>
-                </div>
-                {/* <Box mt={8}>
+                            <Grid item>
+                                <Link href="./register" style={{ color: '#607d8b' }}>
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </Grid>
+                            {/* </Grid> */}
+                        </form>
+                    </div>
+                    {/* <Box mt={8}>
                     <Copyright />
                 </Box> */}
-            </Container>
+                </Container>
+            </MuiThemeProvider >
         )
     }
 }
