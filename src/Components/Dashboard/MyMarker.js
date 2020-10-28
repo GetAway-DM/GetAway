@@ -1,5 +1,5 @@
 import React from 'react'
-import { HouseFill } from '@styled-icons/bootstrap/HouseFill'
+import HouseIcon from '@material-ui/icons/House'
 
 const WrapperStyle = {
   color: 'white',
@@ -7,12 +7,12 @@ const WrapperStyle = {
   fontSize: '10px',
 }
 
-const Wrapper = () => <HouseFill size="48" />
+const Wrapper = () => <HouseIcon size="large" />
 
 const MyMarker = ({ text, onClick, tooltip }) => (
   <Wrapper
     style={WrapperStyle}
-    src={HouseFill}
+    src={HouseIcon}
     text={'text'}
     tooltip={'test'}
     onClick={onClick}

@@ -1,5 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -10,6 +14,9 @@ import Typography from '@material-ui/core/Typography'
 import { red } from '@material-ui/core/colors'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import { Link } from 'react-router-dom'
 import errorImage from '../../assets/404.svg'
 import axios from 'axios'
 import HouseImage from '../../assets/placeholderHouse.jpg'
@@ -30,6 +37,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: red[500],
   },
 }))
+
+const theme = createMuiTheme({
+  palette: {
+    secondary: blueGrey,
+  },
+})
 
 const CardListing = () => {
   const classes = useStyles()
@@ -59,47 +72,58 @@ const CardListing = () => {
   }, [url])
 
   return (
-    <div className="container-listing-mapped">
-      {isError && <img src={errorImage} alt="error" />}
+    <ThemeProvider theme={theme}>
+      <div className="container-listing-mapped">
+        {isError && <img src={errorImage} alt="error" />}
 
-      {isLoading ? (
-        <CircularProgress
-          size={200}
-          color={'secondary'}
-          style={{ position: 'relative', top: '8rem', left: '-2rem' }}
-        />
-      ) : (
-        <>
-          {data.listings.map((item) => (
-            <Card className={classes.card} key={item.id}>
-              <CardHeader
-                avatar={
-                  <Avatar className={classes.avatar}>${item.price}</Avatar>
-                }
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title={item.title}
-                subheader={`${item.city}, ${item.state}`}
-              />
-              {item.zip}
-              <CardMedia
-                className={classes.media}
-                image={HouseImage}
-                title="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {item.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </>
-      )}
-    </div>
+        {isLoading ? (
+          <CircularProgress
+            size={200}
+            color={'secondary'}
+            style={{ position: 'relative', top: '8rem', left: '-2rem' }}
+          />
+        ) : (
+          <>
+            {data.listings.map((item) => (
+              <Card className={classes.card} key={item.id}>
+                <CardHeader
+                  avatar={
+                    <Avatar
+                      className={classes.avatar}
+                      style={{ fontSize: '16px', fontFamily: 'roboto' }}>
+                      ${item.price}
+                    </Avatar>
+                  }
+                  action={
+                    <IconButton aria-label="settings">
+                      <Link to={`/listing/${item.id}`}>
+                        <ArrowForwardIcon />
+                      </Link>
+                    </IconButton>
+                  }
+                  title={item.title}
+                  subheader={`${item.city}, ${item.state}`}
+                />
+                {item.zip}
+                <CardMedia
+                  className={classes.media}
+                  image={HouseImage}
+                  title="Paella dish"
+                />
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p">
+                    {item.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </>
+        )}
+      </div>
+    </ThemeProvider>
   )
 }
 
