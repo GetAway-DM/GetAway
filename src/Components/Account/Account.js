@@ -5,7 +5,15 @@ import axios from 'axios'
 import { v4 as randomString } from 'uuid'
 import Dropzone from 'react-dropzone'
 import { GridLoader } from 'react-spinners'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import Button from '@material-ui/core/Button';
 
+const theme = createMuiTheme({
+  palette: {
+      primary: blueGrey,
+  },
+})
 class Account extends Component {
   constructor(props) {
     super(props)
