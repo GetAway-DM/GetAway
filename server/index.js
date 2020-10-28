@@ -111,7 +111,7 @@ app.get('/api/map/location/getstate', mapCtrl.getState)
 app.get('/api/listingphoto/getphotos/:listing_id', photoCtrl.getPhotos)
 app.post('/api/listingphoto/uploadphoto/:listing_id', photoCtrl.uploadPhoto)
 app.delete(
-  '/api/listingphoto/deletephoto/:listing_id/:photo_id',
+  '/api/listingphoto/deletephoto/:photo_id',
   photoCtrl.deletePhoto
 )
 

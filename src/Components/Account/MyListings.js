@@ -6,6 +6,7 @@ import { CgSmartHomeWashMachine } from "react-icons/cg"
 import { FiWind } from "react-icons/fi"
 import { RiTempColdLine } from "react-icons/ri"
 import { CgScreen } from "react-icons/cg"
+import AddPhoto from './AddPhoto'
 import Photo from './Photo'
 
 class MyListings extends Component{
@@ -34,6 +35,7 @@ class MyListings extends Component{
             detailsEdit: false,
             amenitiesEdit: false,
             photosEdit: false,
+            uploadedPhoto: [],
         }
     }
     async componentDidMount(){
@@ -91,6 +93,11 @@ class MyListings extends Component{
           [e.target.id]: e.target.checked,
         })
       }
+      addPhoto = (newPhoto) => {
+        this.setState({
+          uploadedPhoto: [...this.state.uploadedPhoto, newPhoto],
+        })
+      }
       handleDetails = (e) => {
           e.preventDefault()
           const { listing_id, title, description, bedrooms, bathrooms, price, street, city, state, zip} = this.state
@@ -101,19 +108,18 @@ class MyListings extends Component{
         const { amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool} = this.state
         axios.put('/api/listing/editlistingamenities', { amenities_id, parking, television, washer_dryer, air_conditioning, wifi, hair_dryer, pool}).then(window.location.reload())
     }
+    handlePhotos = (e) => {
+        const {listing_id} = this.props.listing
+        const uploadedPhoto = this.state.uploadedPhoto
+        axios.post(`/api/listingphoto/uploadphoto/${listing_id}`, {uploadedPhoto}).then(window.location.reload())
+    }
 
     deleteListing = () => {
         axios.delete(`/api/listing/deletelisting/${this.state.listing.listing_id}`).then(window.location.reload())
     }
 
     render(props){
-        const amenities = this.state.amenities
-        const photos = this.state.photos
-        const mappedPhotos = photos.map((photo, index) => {
-            return (
-                <Photo photo={photo} key={photo.id} />
-            )
-        })
+        
         return(
             <div>
                 {this.state.detailsEdit === false ? (
@@ -234,8 +240,16 @@ class MyListings extends Component{
                     <button onClick={(e) => {this.handleAmenities(e)}}>Submit Amenities</button>
                     <button name="amenitiesEdit" onClick={(e) => {this.toggleCancel(e)}}>Cancel Amenities Edit</button>
                 </div>)}
-        </>
-        <div>{mappedPhotos}</div>
+        </> {this.state.photosEdit === false ?
+            (<div>
+                <Photo photos={this.state.photos}/>
+            <button name="photosEdit" onClick={(e) => {this.toggleEdit(e)}}>Add Photos</button>
+            </div>) :
+            (<div>
+                <AddPhoto addPhoto={this.addPhoto} uploadPhoto={this.state.uploadedPhoto}/>
+                <button onClick={(e) => {this.handlePhotos(e)}}>Submit Photos</button>
+                <button name="photosEdit" onClick={(e) => {this.toggleCancel(e)}}>Cancel Adding Photos</button>
+            </div>)}
         <div> Current Rating: ?</div>
         <button onClick={(e) => {this.deleteListing()}}>Delete Listing</button>
             </div>

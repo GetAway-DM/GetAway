@@ -1,28 +1,63 @@
-import React, {Component} from 'react'
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Slide } from "react-slideshow-image";
+import { FaArrowLeft, FaArrowRight} from "react-icons/fa";
+import "./photo.css";
+import "react-slideshow-image/dist/styles.css";
+import axios from 'axios';
 
 class Photo extends Component {
-    constructor(props){
-        super(props)
-        this.state= {
-            photo: {}
-        }
-    }
-    async componentDidMount(){
-        const photo = this.props.photo
-        await this.setState({
-            photo
-        })
-    }
-    render(props){
-        const {photo} = this.state.photo
-        return(
-            <div>
-                <img src={photo} alt="not visible"/>
-            </div>
-        )
+    constructor() {
+        super();
+        this.slideRef = React.createRef();
+        this.back = this.back.bind(this);
+        this.next = this.next.bind(this);
+        this.state = {
+            current: 0
+        };
     }
 
+    back() {
+        this.slideRef.current.goBack();
+    }
+
+    next() {
+        this.slideRef.current.goNext();
+    }
+    deletePhoto = (photo_id) => {
+        axios.delete(`/api/listingphoto/deletephoto/${photo_id}`).then(window.location.reload())
+    }
+
+    render() {
+        const properties = {
+            duration: 5000,
+            autoplay: true,
+            transitionDuration: 500,
+            arrows: false,
+            infinite: true,
+            easing: "ease",
+            indicators: (i) => <div className="indicator">{i + 1}</div>
+        };
+        const slideImages = this.props.photos;
+        return (
+                <div className="App">
+                    <div className="slide-container">
+                        <Slide ref={this.slideRef} {...properties}>
+                            {slideImages.map((each, index) => (
+                                    <div key={index} className="each-slide">
+                                        <img className="lazy" src={each.photo} alt="sample" />
+                                        <button onClick={(e) => {this.deletePhoto(each.photo_id)}} >Delete Photo</button>
+                                    </div>
+                            ))}
+                        </Slide>
+                    </div>
+
+                    <div className="slide-container buttons">
+                        <FaArrowLeft onClick={this.back} type="button" />
+                        <FaArrowRight onClick={this.next} type="button"/>
+                    </div>
+                </div>
+        );
+    }
 }
-const mapStateToProps = (state) => state
-export default connect(mapStateToProps)(Photo)
+
+export default Photo;
