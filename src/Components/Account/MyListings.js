@@ -250,7 +250,7 @@ class MyListings extends Component{
                 <button onClick={(e) => {this.handlePhotos(e)}}>Submit Photos</button>
                 <button name="photosEdit" onClick={(e) => {this.toggleCancel(e)}}>Cancel Adding Photos</button>
             </div>)}
-        <div> Current Rating: ?</div>
+        <button onClick={(e) => {this.props.push(`/listing/${this.state.listing_id}`)}}>Go To Listing</button>
         <button onClick={(e) => {this.deleteListing()}}>Delete Listing</button>
             </div>
         )
