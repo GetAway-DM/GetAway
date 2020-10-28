@@ -13,6 +13,7 @@
     height: 55vh;
     width: 40vw;
     display: flex;
+    font-size: 18px;
     justify-content: space-between;
     align-content: center;
     align-self: center;
@@ -21,11 +22,29 @@
 .emailedit{
     display: flex;
     flex-direction: row;
+    align-content: center;
     justify-content: space-between;
+}
+.emailedit > p {
+    margin: 1vw;
 }
 #email {
     width: 25vw;
 }
 .submitbutton{
     margin-top: 3vh;
+}
+.upload{
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
+.uploadedit{
+    display: flex;
+    height: 300px;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
 }

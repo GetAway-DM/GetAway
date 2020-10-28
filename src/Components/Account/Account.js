@@ -153,16 +153,18 @@ class Account extends Component {
               
               <div className="emailedit">
                 <p>Email: {email}</p>
-                  <MuiThemeProvider theme={theme}><Button
-                  size="medium"
-                    variant="contained"
-                    color='primary'
-                    name="emailEdit"
-                    onClick={(e) => {
-                      this.toggleEdit('emailEdit')
-                    }}>
-                    Edit
-                  </Button></MuiThemeProvider>
+                  <p>
+                    <MuiThemeProvider theme={theme}><Button
+                    size="medium"
+                      variant="contained"
+                      color='primary'
+                      name="emailEdit"
+                      onClick={(e) => {
+                        this.toggleEdit('emailEdit')
+                      }}>
+                      Edit
+                    </Button></MuiThemeProvider>
+                  </p>
               </div>
               
             ) : (
@@ -178,16 +180,18 @@ class Account extends Component {
                   name="email"
                   placeholder="New Email"/>
                 
-                <MuiThemeProvider theme={theme}><Button
-                size="medium"
-                  variant="contained"
-                  color='primary'
-                  name="emailEdit"
-                  onClick={(e) => {
-                    this.toggleCancel('emailEdit', 'email')
-                  }}>
-                  Cancel
-                </Button></MuiThemeProvider>
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                    variant="contained"
+                    color='primary'
+                    name="emailEdit"
+                    onClick={(e) => {
+                      this.toggleCancel('emailEdit', 'email')
+                    }}>
+                    Cancel
+                  </Button></MuiThemeProvider>
+                </p>
               </div>
             )}
           </div>
@@ -195,16 +199,18 @@ class Account extends Component {
             {this.state.nameEdit === false ? (
               <div className="emailedit">
                 <p>Name: {first_name} {last_name} </p>
-                <MuiThemeProvider theme={theme}><Button
-                size="medium"
-                variant="contained"
-                color='primary'
-                name="nameEdit"
-                onClick={(e) => {
-                  this.toggleEdit('nameEdit')
-                }}>
-                Edit
-              </Button></MuiThemeProvider>
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                  variant="contained"
+                  color='primary'
+                  name="nameEdit"
+                  onClick={(e) => {
+                    this.toggleEdit('nameEdit')
+                  }}>
+                  Edit
+                </Button></MuiThemeProvider>
+                </p>
               </div>
             ) : (
               <div className="emailedit">
@@ -228,17 +234,19 @@ class Account extends Component {
                   }}
                   name="last_name"
                   placeholder="Last Name"/>
-                <MuiThemeProvider theme={theme}><Button
-                size="medium"
-                  variant="contained"
-                  color='primary'
-                  name="nameEdit"
-                  onClick={(e) => {
-                    this.toggleCancel( '', 'first_name') 
-                    this.toggleCancel('nameEdit', 'last_name')
-                  }}>
-                  Cancel
-                </Button></MuiThemeProvider>
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                    variant="contained"
+                    color='primary'
+                    name="nameEdit"
+                    onClick={(e) => {
+                      this.toggleCancel( '', 'first_name') 
+                      this.toggleCancel('nameEdit', 'last_name')
+                    }}>
+                    Cancel
+                  </Button></MuiThemeProvider>
+                </p>
               </div>
             )}
           </div>
@@ -246,60 +254,66 @@ class Account extends Component {
             {this.state.profile_imgEdit === false ? (
              <div className="emailedit">
                <p className="image">Profile Picture: <img src={`${profile_img}`} alt="Not Loading" /></p>
-                <MuiThemeProvider theme={theme}><Button
-                size="medium"
-                variant="contained"
-                color='primary'
-                name="profile_imgEdit"
-                onClick={(e) => {
-                  this.toggleEdit('profile_imgEdit')
-                }}>
-                Edit
-              </Button></MuiThemeProvider>
-             </div>
-            ) : (
-              <div className="emailedit">
-                <h1>Upload</h1>
-                <h1>{url}</h1>
-                <img src={url} alt="" width="450px" />
-                <Dropzone onDropAccepted={this.getSignedRequest} accept="image/*" multiple={false}>
-                  {({ getRootProps, getInputProps }) =>
-                    isUploading ? (
-                      <GridLoader />
-                    ) : (
-                      <section
-                        style={{
-                          position: 'relative',
-                          width: 200,
-                          height: 200,
-                          borderWidth: 7,
-                          marginTop: 100,
-                          borderColor: 'rgb(102, 102, 102)',
-                          borderStyle: 'dashed',
-                          borderRadius: 5,
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          fontSize: 28,
-                        }}>
-                        <div {...getRootProps()}>
-                          <input {...getInputProps()} />
-                          <p>Drag 'n' drop some files here, or click to select files</p>
-                        </div>
-                      </section>
-                    )
-                  }
-                </Dropzone>
-                <MuiThemeProvider theme={theme}><Button
-                size="medium"
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
                   variant="contained"
                   color='primary'
                   name="profile_imgEdit"
                   onClick={(e) => {
-                    this.toggleCancel('profile_imgEdit', 'profile_img')
+                    this.toggleEdit('profile_imgEdit')
                   }}>
-                  Cancel
+                  Edit
                 </Button></MuiThemeProvider>
+                </p>
+             </div>
+            ) : (
+              <div className="uploadedit">
+                <p>Upload</p>
+                <p>{url}</p>
+                <img src={url} alt="" width="450px" />
+                <div className="upload">
+                  <Dropzone className="dropzone" onDropAccepted={this.getSignedRequest} accept="image/*" multiple={false}>
+                    {({ getRootProps, getInputProps }) =>
+                      isUploading ? (
+                        <GridLoader />
+                      ) : (
+                        <section
+                          style={{
+                            position: 'relative',
+                            width: 200,
+                            height: 200,
+                            borderWidth: 7,
+                            marginTop: 100,
+                            borderColor: 'rgb(102, 102, 102)',
+                            borderStyle: 'dashed',
+                            borderRadius: 5,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontSize: 18,
+                          }}>
+                          <div {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            <p>Drag 'n' drop some files here, or click to select files</p>
+                          </div>
+                        </section>
+                      )
+                    }
+                  </Dropzone>
+                </div>
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                    variant="contained"
+                    color='primary'
+                    name="profile_imgEdit"
+                    onClick={(e) => {
+                      this.toggleCancel('profile_imgEdit', 'profile_img')
+                    }}>
+                    Cancel
+                  </Button></MuiThemeProvider>
+                </p>
               </div>
             )}
           </div>

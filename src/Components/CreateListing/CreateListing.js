@@ -121,7 +121,7 @@ class CreateListing extends Component {
     })
   }
   handleCancel = (e) => {
-    this.props.history.push(`/account/${this.props.authReducer.user.user_id}`)
+    this.props.history.push(`/`)
   }
   render() {
     return (
