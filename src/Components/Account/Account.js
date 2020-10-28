@@ -9,6 +9,7 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import blueGrey from '@material-ui/core/colors/blueGrey'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import './account.css'
 
 const theme = createMuiTheme({
   palette: {
@@ -145,24 +146,27 @@ class Account extends Component {
     const { email, first_name, last_name, profile_img, user_id } = this.props.authReducer.user
     return (
       <div className="accountcontainer">
-        <div>Account Details</div>
+        <h2>Account Details</h2>
         <div className="infocontainer">
-          <p>Email: {email}</p>
           <div className="email_edit">
             {this.state.emailEdit === false ? (
               
-                <MuiThemeProvider theme={theme}><Button
-                  variant="contained"
-                  color='primary'
-                  name="emailEdit"
-                  onClick={(e) => {
-                    this.toggleEdit('emailEdit')
-                  }}>
-                  Edit
-                </Button></MuiThemeProvider>
+              <div className="emailedit">
+                <p>Email: {email}</p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                    variant="contained"
+                    color='primary'
+                    name="emailEdit"
+                    onClick={(e) => {
+                      this.toggleEdit('emailEdit')
+                    }}>
+                    Edit
+                  </Button></MuiThemeProvider>
+              </div>
               
             ) : (
-              <div>
+              <div className="emailedit">
                 <TextField
                   variant="outlined"
                   label="email"
@@ -175,6 +179,7 @@ class Account extends Component {
                   placeholder="New Email"/>
                 
                 <MuiThemeProvider theme={theme}><Button
+                size="medium"
                   variant="contained"
                   color='primary'
                   name="emailEdit"
@@ -186,22 +191,23 @@ class Account extends Component {
               </div>
             )}
           </div>
-          <p>
-            Name: {first_name} {last_name}
-          </p>
           <div className="name_edit">
             {this.state.nameEdit === false ? (
-              <MuiThemeProvider theme={theme}><Button
-              variant="contained"
-              color='primary'
-              name="nameEdit"
-              onClick={(e) => {
-                this.toggleEdit('nameEdit')
-              }}>
-              Edit
-            </Button></MuiThemeProvider>
+              <div className="emailedit">
+                <p>Name: {first_name} {last_name} </p>
+                <MuiThemeProvider theme={theme}><Button
+                size="medium"
+                variant="contained"
+                color='primary'
+                name="nameEdit"
+                onClick={(e) => {
+                  this.toggleEdit('nameEdit')
+                }}>
+                Edit
+              </Button></MuiThemeProvider>
+              </div>
             ) : (
-              <div>
+              <div className="emailedit">
                 <TextField
                   variant="outlined"
                   label="first_name"
@@ -223,6 +229,7 @@ class Account extends Component {
                   name="last_name"
                   placeholder="Last Name"/>
                 <MuiThemeProvider theme={theme}><Button
+                size="medium"
                   variant="contained"
                   color='primary'
                   name="nameEdit"
@@ -235,22 +242,23 @@ class Account extends Component {
               </div>
             )}
           </div>
-          <p>
-            Profile Picture: <img src={`${profile_img}`} alt="Not Loading" />
-          </p>
           <div className="profile_img_edit">
             {this.state.profile_imgEdit === false ? (
-              <MuiThemeProvider theme={theme}><Button
-              variant="contained"
-              color='primary'
-              name="profile_imgEdit"
-              onClick={(e) => {
-                this.toggleEdit('profile_imgEdit')
-              }}>
-              Edit
-            </Button></MuiThemeProvider>
+             <div className="emailedit">
+               <p className="image">Profile Picture: <img src={`${profile_img}`} alt="Not Loading" /></p>
+                <MuiThemeProvider theme={theme}><Button
+                size="medium"
+                variant="contained"
+                color='primary'
+                name="profile_imgEdit"
+                onClick={(e) => {
+                  this.toggleEdit('profile_imgEdit')
+                }}>
+                Edit
+              </Button></MuiThemeProvider>
+             </div>
             ) : (
-              <div>
+              <div className="emailedit">
                 <h1>Upload</h1>
                 <h1>{url}</h1>
                 <img src={url} alt="" width="450px" />
@@ -283,6 +291,7 @@ class Account extends Component {
                   }
                 </Dropzone>
                 <MuiThemeProvider theme={theme}><Button
+                size="medium"
                   variant="contained"
                   color='primary'
                   name="profile_imgEdit"
@@ -295,43 +304,19 @@ class Account extends Component {
             )}
           </div>
           {this.state.emailEdit === true || this.state.nameEdit === true || this.state.profile_imgEdit === true ? (
-            <MuiThemeProvider theme={theme}><Button
-            variant="contained"
-            color='primary'
-            onClick={(e) => {
-              this.handleSubmit(e)
-            }}>
-            Submit Edit
-          </Button></MuiThemeProvider>
-          ) : null}
-        </div>
-        <MuiThemeProvider theme={theme}><Button
-            variant="contained"
-            color='primary'
-            onClick={(e) => {
-              this.props.history.push('/createlisting')
-            }}>
-            Create A Listing
-          </Button></MuiThemeProvider>
-        <br></br>
-        <MuiThemeProvider theme={theme}><Button
-            variant="contained"
-            color='primary'
-            onClick={(e) => {
-              this.props.history.push(`/reservations/${user_id}`)
-            }}>
-            My Reservations
-          </Button></MuiThemeProvider>
-          <br></br>
-          <MuiThemeProvider theme={theme}><Button
-            variant="contained"
-            color='primary'
-            onClick={(e) => {
-              this.props.history.push(`/listings/${user_id}`)
+            <div className="submitbutton">
+              <MuiThemeProvider theme={theme}><Button
+              size="medium"
+              variant="contained"
+              color='primary'
+              onClick={(e) => {
+                this.handleSubmit(e)
               }}>
-              My Listings
-          </Button></MuiThemeProvider>
-          
+              Submit Edit
+            </Button></MuiThemeProvider>
+            </div>
+          ) : null}
+        </div>  
       </div>
     )
   }
