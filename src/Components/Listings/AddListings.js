@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import Carousel from './Carousel'
-import Rating from './Rating'
+import StarRatingComponent from 'react-star-rating-component'
+// import Rating from './Rating'
 import Rules from './Rules'
 import Reviews from './Reviews'
 import Button from '@material-ui/core/Button'
@@ -15,7 +16,6 @@ import './listing.css'
 const AddListings = (props) => {
   const currentListing = useSelector((state) => state.listReducer.listing)
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(true)
 
   // TODO loading section
 
@@ -23,11 +23,11 @@ const AddListings = (props) => {
     setTimeout(() => {
       axios
         .get(`/api/listing/getlisting/${props.match.params.listing_id}`)
-        .then((res) =>
-          dispatch({ type: 'GET_LIST', payload: res.data }, setLoading(false))
-        )
-        .catch((error) => console.log(error.message))
-    }, 7000)
+        .then((res) => dispatch({ type: 'GET_LIST', payload: res.data }))
+        .catch((error) => {
+          console.log(error.message)
+        })
+    }, 3000)
   }, [])
 
   const useStyles = makeStyles((theme) => ({
@@ -37,8 +37,10 @@ const AddListings = (props) => {
   }))
   const classes = useStyles()
 
+  console.log(currentListing)
+
   return (
-    <>
+    <div>
       <div>
         <h1 className="listing-title">{currentListing.title}</h1>
       </div>
@@ -48,18 +50,17 @@ const AddListings = (props) => {
       <div>
         <h3>{currentListing.state}</h3>
       </div>
-      <Rating />
-      <Button
-        variant="contained"
-        color="primary"
-        size="small"
-        className={classes.button}
-        startIcon={<SaveIcon />}>
-        Save
-      </Button>
-      <Carousel />
+      <p>
+        <StarRatingComponent
+          name="rate2"
+          editing={false}
+          starCount={5}
+          value={currentListing.avg}
+        />
+        ({currentListing.avg})
+      </p>
+      <Carousel listing={props.match.params.listing_id} />
       <Rules />
-      <Reviews />
       <div className="listing-description">
         <p>{currentListing.description}</p>
       </div>
@@ -77,12 +78,12 @@ const AddListings = (props) => {
         />
       </div>
       <div className="listing-bedrooms">
-        <h3>{currentListing.bedrooms}</h3>
+        <h3>{currentListing.bedrooms} Bedrooms</h3>
       </div>
       <div className="listing-bathrooms">
-        <h3>{currentListing.bathrooms}</h3>
+        <h3>{currentListing.bathrooms} Bathrooms</h3>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -1,141 +1,130 @@
 import React, { Component } from 'react'
-import './reviews.css'
+import { connect } from 'react-redux'
+import ReviewContainer from './ReviewContainer'
+import { getUser } from '../../ducks/authReducer'
+import StarRatingComponent from 'react-star-rating-component'
+
 import axios from 'axios'
+import './reviews.css'
 
 class Reviews extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      showComments: false,
-      comments: [
-        { id: 1, author: 'mickey', body: 'The house was dirty' },
-        { id: 2, author: 'susie', body: 'Roaches everywhere' },
-        {
-          id: 3,
-          author: 'rosco',
-          body:
-            'Pulled up to the address and it was an empty field, I want my money back',
-        },
-      ],
+      reviews: [],
+      created_at: null,
+      content: '',
+      rating: 0,
     }
   }
 
-  render() {
-    const comments = this.getComments()
-    let commentNodes
-    let buttonText = 'Show Review'
-
-    if (this.state.showComments) {
-      buttonText = 'Hide Review'
-      commentNodes = <div className="comment-list">{comments}</div>
+  componentDidMount() {
+    if (!this.props.isLoggedIn) {
+      this.props.getUser().catch((err) => {
+        this.props.history.push('/')
+      })
     }
-
-    return (
-      <div className="comment-box">
-        <h2>Please leave a Review!</h2>
-        <CommentForm addComment={this.addComment.bind(this)} />
-        <button id="comment-reveal" onClick={this.handleClick.bind(this)}>
-          {buttonText}
-        </button>
-        <h4 className="comment-count">
-          {this.getCommentsTitle(comments.length)}
-        </h4>
-        {commentNodes}
-      </div>
-    )
-  } // end render
-
-  addComment(author, body) {
-    const comment = {
-      id: this.state.comments.length + 1,
-      author,
-      body,
-    }
-    //   axios.get('/api/').then(res => {
-    //       this.setState({
-    //           reviews: res.data
-    //         })
-    //     })
-    this.setState({ comments: this.state.comments.concat([comment]) })
+    this.getReviews()
   }
 
-  handleClick() {
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({ rating: nextValue })
+  }
+
+  getReviews = () => {
+    axios
+      .get(`/api/reviews/getreviews/${this.props.listing_id}`)
+      .then((res) => {
+        this.setState({
+          reviews: res.data,
+        })
+        console.log(this.state.reviews)
+      })
+  }
+
+  handleChange = (e) => {
     this.setState({
-      showComments: !this.state.showComments,
+      content: e.target.value,
     })
   }
 
-  getComments() {
-    return this.state.comments.map((comment) => {
+  handleClick = () => {
+    const property_id = this.props.listing_id
+    const { user_id } = this.props.authReducer.user
+    const { rating, content, created_at } = this.state
+    axios
+      .post(`/api/reviews/addreviews/${this.props.listing_id}`, {
+        property_id,
+        user_id,
+        rating,
+        content,
+        created_at,
+      })
+      .then((res) =>
+        this.setState({ reviews: res.data, content: '', rating: 1 })
+      )
+  }
+
+  handleDelete = (review_id) => {
+    axios
+      .delete(
+        `/api/reviews/deletereviews/${this.props.listing_id}/${review_id}`
+      )
+      .then((res) => {
+        this.setState({ reviews: res.data })
+      })
+  }
+
+  render() {
+    const mappedReviews = this.state.reviews.map((e) => {
       return (
-        <Comment author={comment.author} body={comment.body} key={comment.id} />
+        <ReviewContainer
+          review={e}
+          key={e.review_id}
+          handleDelete={this.handleDelete}
+        />
       )
     })
-  }
-
-  getCommentsTitle(commentCount) {
-    if (commentCount === 0) {
-      return 'No Reviews yet'
-    } else if (commentCount === 1) {
-      return '1 Review'
-    } else {
-      return `${commentCount} Reviews`
-    }
-  }
-} // end CommentBox component
-
-class CommentForm extends Component {
-  render() {
     return (
-      <form className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
-        <div className="comment-form-fields">
-          <input
-            placeholder="Name"
-            required
-            ref={(input) => (this.author = input)}></input>
-          <br />
+      <div>
+        <section className="app-body">
+          <div className="padding" />
+          <ul className="flex-vertical-center review-feed">{mappedReviews}</ul>
+        </section>
+        <div className="input-container">
+          <p>
+            Your Rating Here:
+            <StarRatingComponent
+              name="rate1"
+              starCount={5}
+              value={this.state.rating}
+              onStarClick={this.onStarClick.bind(this)}
+            />
+          </p>
           <textarea
-            placeholder="Comment"
-            rows="4"
-            required
-            ref={(textarea) => (this.body = textarea)}></textarea>
-        </div>
-        <div className="comment-form-actions">
-          <button type="submit">Write Review</button>
-        </div>
-      </form>
-    )
-  }
-
-  handleSubmit(event) {
-    event.preventDefault()
-    let author = this.author
-    let body = this.body
-    this.props.addComment(author.value, body.value)
-  }
-}
-
-class Comment extends Component {
-  render() {
-    return (
-      <div className="comment">
-        <p className="comment-header">{this.props.author}</p>
-        <p className="comment-body">- {this.props.body}</p>
-        <div className="comment-footer">
-          <a
-            href="#"
-            className="comment-footer-delete"
-            onClick={this._deleteComment}>
-            Delete Review
-          </a>
+            id="new-review"
+            cols="25"
+            rows="5"
+            placeholder="Let us know how were doing!"
+            value={this.state.content}
+            onChange={(e) => {
+              this.handleChange(e)
+            }}
+          />
+          <button
+            onClick={() => {
+              this.handleClick()
+            }}
+            className="input-container-button">
+            Post
+          </button>
         </div>
       </div>
     )
   }
-  deleteComment() {
-    alert('Need to connect to backend')
-  }
 }
 
-export default Reviews
+const mapStateToProps = (reduxState) => reduxState
+
+export default connect(mapStateToProps, { getUser })(Reviews)
