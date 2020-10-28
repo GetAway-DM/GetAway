@@ -8,7 +8,9 @@ function App(props) {
   return (
     <div className="App">
       <Header />
-      {routes}
+      <div className="routes">
+        {routes}
+      </div>
     </div>
   );
 }

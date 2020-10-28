@@ -1,0 +1,13 @@
+.navbar {
+    min-height: 4rem;
+    z-index: 1;
+}
+
+.signinas {
+    color: white;
+}
+
+.collasible-nav-dropdown .dropdown-toggle .nav-link a{
+    color: green !important;
+}
+
