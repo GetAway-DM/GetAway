@@ -69,7 +69,7 @@ class AboutUs extends Component {
                                 <br />
                                     <div className="roundPics">
                                         <img width="20%" src={megan} alt="Picture of Megan" />
-                                        <p>Hi my name is Megan Olsen. I’m a student at Devmountain where I’m learning to develop and build in the digital world using React and Node.Js after working and building in the real world as a Sheep Rancher.</p>
+                                        <p>Hello! My name is Megan Olsen. I’m a Full Stack Web Developer from Utah. I take the notion of working hard to play hard to heart. I enjoy coding websites that are helpful and fun.</p>
                                         
                                         <IconButton href="https://www.linkedin.com/in/megan-olsen-027ab8132/">
                                         Feel free to connect on Linkedin!

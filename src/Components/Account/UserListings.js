@@ -2,12 +2,13 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import {getUser} from '../../ducks/authReducer';
 import axios from 'axios';
-import MyReservations from './MyReservations'
-class UserReservations extends Component {
+import MyListings from'./MyListings'
+
+class UserListings extends Component{
     constructor(props){
         super(props)
         this.state = {
-            reservations: [],
+            mylistings: [],
             user_id: 0
         }
     }
@@ -24,38 +25,40 @@ class UserReservations extends Component {
                 user_id: this.props.authReducer.user.user_id
             })
         })
-        await this.getReservations()
-        }
-    
-        componentDidUpdate(prevProps){
-        if (this.props.user_id !== prevProps.user_id){
-            this.props.getUser()
-            }
+        await this.getMyListings()
         }
 
-        getReservations = () => {
+        componentDidUpdate(prevProps){
+            if (this.props.user_id !== prevProps.user_id){
+                this.props.getUser()
+                }
+            } 
+
+        getMyListings = () => {
             const user_id = this.state.user_id
-            axios.get(`/api/reservations/${user_id}`).then((res) => {
+            axios.get(`/api/listing/mylistings/${user_id}`).then((res) => {
                 this.setState({
-                    reservations: res.data
+                    mylistings: res.data
                 })
             })
         }
-
+    
 
     render(){
-        const mappedRes = this.state.reservations.map((reservation, index) => {
-            return ( 
-                <MyReservations reservation={reservation} key={reservation.id} push={this.props.history.push}/>
+        const mappedList = this.state.mylistings.map((listing, index) => {
+            return (
+                <MyListings listing={listing} key={listing.id} push={this.props.history.push} />
             )
         })
         return (
-            <div>
-                <h1>My Reservations</h1>
-                <div>{mappedRes}</div>
-            </div>
-        )
-    }
+        <div>
+            <h1>
+                My Listings
+            </h1>
+            <div>{mappedList}</div>
+        </div>
+
+    )}
 }
 const mapStateToProps = (state) => state
-export default connect(mapStateToProps, {getUser})(UserReservations)
+export default connect(mapStateToProps, {getUser})(UserListings)
