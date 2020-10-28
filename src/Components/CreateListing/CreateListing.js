@@ -3,7 +3,16 @@ import { connect } from 'react-redux'
 import { getUser } from '../../ducks/authReducer'
 import React, { Component } from 'react'
 import CreateCarousel from './CreateCarousel'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
+const theme = createMuiTheme({
+  palette: {
+      primary: blueGrey,
+  },
+})
 class CreateListing extends Component {
   constructor(props) {
     super(props)
@@ -112,19 +121,26 @@ class CreateListing extends Component {
     })
   }
   handleCancel = (e) => {
-    this.props.history.push('/')
+    this.props.history.push(`/account/${this.props.authReducer.user.user_id}`)
   }
   render() {
     return (
       <div>
         <div>New Listing</div>
         <form id="create_listing" onSubmit={this.handleSubmit.bind(this)} method="Post">
-          <label>Title:</label>
-          <input name="title" type="text" onChange={(e) => this.handleUserChange(e)}></input>
-
-          <label>Description:</label>
-          <input name="description" type="text" onChange={(e) => this.handleUserChange(e)}></input>
-
+        <TextField
+          variant="outlined"
+          label="Title"
+          id="title"
+          name="title" 
+          type="text" 
+          onChange={(e) => this.handleUserChange(e)}/>
+        <TextField
+          variant="outlined"
+          label="Description"
+          id="description"
+          name="description" type="text" 
+          onChange={(e) => this.handleUserChange(e)}/>
           <label>Property Type:</label>
           <select name="property_type" value={this.state.property_type} onChange={(e) => this.handleUserChange(e)}>
             <option value="Select Property Type"></option>
@@ -153,16 +169,31 @@ class CreateListing extends Component {
             <option value="5">5 bathrooms</option>
             <option value="6">6 bathrooms</option>
           </select>
-
-          <label>Price:</label>
-          <input name="price" type="numeric" onChange={(e) => this.handleUserChange(e)}></input>
-
-          <label>Address:</label>
-          <input name="street" type="text" placeholder="Street" onChange={(e) => this.handleUserChange(e)}></input>
-          <input name="city" type="text" placeholder="City" onChange={(e) => this.handleUserChange(e)}></input>
-          <input name="state" type="text" placeholder="State" onChange={(e) => this.handleUserChange(e)}></input>
-          <input name="zip" type="integer" placeholder="Zip" onChange={(e) => this.handleUserChange(e)}></input>
-
+          <TextField
+          variant="outlined"
+          label="Price"
+          id="price"
+          name="price" type="numeric" onChange={(e) => this.handleUserChange(e)}/>
+          <TextField
+          variant="outlined"
+          label="Street"
+          id="street"
+          name="street" type="text" placeholder="Street" onChange={(e) => this.handleUserChange(e)}/>
+          <TextField
+          variant="outlined"
+          label="City"
+          id="city"
+          name="city" type="text" placeholder="City" onChange={(e) => this.handleUserChange(e)}/>
+          <TextField
+          variant="outlined"
+          label="State"
+          id="state"
+          name="state" type="text" placeholder="State" onChange={(e) => this.handleUserChange(e)}/>
+          <TextField
+          variant="outlined"
+          label="Zip"
+          id="zip"
+          name="zip" type="integer" placeholder="Zip" onChange={(e) => this.handleUserChange(e)}/>
           <div>Amenities</div>
           <label>Parking:</label>
           <input
@@ -231,16 +262,20 @@ class CreateListing extends Component {
           <CreateCarousel addPhoto={this.addPhoto} uploadPhoto={this.state.uploadedPhoto} />
 
           <div>
-            <button type="submit" onClick={this.handleSubmit}>
+          <MuiThemeProvider theme={theme}><Button
+            variant="contained"
+            color='primary'
+            type="submit" onClick={this.handleSubmit}>
               Create
-            </button>
-
-            <button
-              onClick={(e) => {
-                this.handleCancel(e)
-              }}>
-              Cancel
-            </button>
+          </Button></MuiThemeProvider>
+            <MuiThemeProvider theme={theme}><Button
+                  variant="contained"
+                  color='primary'
+                  onClick={(e) => {
+                    this.handleCancel(e)
+                  }}>
+                  Cancel
+                </Button></MuiThemeProvider>
           </div>
         </form>
       </div>
