@@ -93,6 +93,10 @@ app.delete(
 // review endpoints
 app.get('/api/reviews/getreviews/:property_id', reviewCtrl.getAllReviews)
 app.post('/api/reviews/addreviews/:property_id', reviewCtrl.addReview)
+app.put(
+  '/api/reviews/ editreview/:property_id/:review_id',
+  reviewCtrl.editReview
+)
 app.delete(
   '/api/reviews/deletereviews/:property_id/:review_id',
   reviewCtrl.deleteReview

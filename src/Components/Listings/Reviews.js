@@ -1,101 +1,130 @@
-// import React, { Component } from 'react'
-// import { connect } from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import ReviewContainer from './ReviewContainer'
+import { getUser } from '../../ducks/authReducer'
+import StarRatingComponent from 'react-star-rating-component'
 
-// import Rating from './Rating'
-// import axios from 'axios'
-// import './reviews.css'
+import axios from 'axios'
+import './reviews.css'
 
-// class Reviews extends Component {
-//     constructor(){
-//         super()
+class Reviews extends Component {
+  constructor(props) {
+    super(props)
 
-//         this.state = {
-//             reviews: [],
-//             userInput: '',
-//             created_at: null
-//         }
-//     }
+    this.state = {
+      reviews: [],
+      created_at: null,
+      content: '',
+      rating: 0,
+    }
+  }
 
-//     componentDidMount() {
-//         if(!this.props.isLoggedIn){
-//             this.props.getUser().catch((err) => {
-//                 this.props.history.push('/')
-//             })
-//         }
-//         this.getReviews()
-//     }
-// }
+  componentDidMount() {
+    if (!this.props.isLoggedIn) {
+      this.props.getUser().catch((err) => {
+        this.props.history.push('/')
+      })
+    }
+    this.getReviews()
+  }
 
-// getReviews = () => {
-//     axios.get('/api/reviews').then((res) => {
-//         this.setState({
-//             reviews: res.data,
-//         })
-//     })
-// }
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({ rating: nextValue })
+  }
 
-// handleChange = (e) => {
-//     this.setState({
-//         userInput: e.target.value,
-//     })
-// }
+  getReviews = () => {
+    axios
+      .get(`/api/reviews/getreviews/${this.props.listing_id}`)
+      .then((res) => {
+        this.setState({
+          reviews: res.data,
+        })
+        console.log(this.state.reviews)
+      })
+  }
 
-// handleClick = () => {
-//     const { userInput: content ,created_at } = this.state
-//     axios
-//             .post('/api/reviews/addreviews/${property_id}', { content, created_at })
-//             .then((res) => this.setState({reviews: res.data, userInput: ''})
-//     )
-// }
+  handleChange = (e) => {
+    this.setState({
+      content: e.target.value,
+    })
+  }
 
-// handleDelete = (propertyId, reviewId) => {
-//     axios.delete(`/api/reviews/deletereviews/${propertyId}`).then((res) => {
-//         this.setState({reviews: res.data})
-//     })
-// }
+  handleClick = () => {
+    const property_id = this.props.listing_id
+    const { user_id } = this.props.authReducer.user
+    const { rating, content, created_at } = this.state
+    axios
+      .post(`/api/reviews/addreviews/${this.props.listing_id}`, {
+        property_id,
+        user_id,
+        rating,
+        content,
+        created_at,
+      })
+      .then((res) =>
+        this.setState({ reviews: res.data, content: '', rating: 1 })
+      )
+  }
 
-// render(){
-//     const mappedReviews = this.state.reviews.map((reviews, index) => {
-//         return (
-//                 <ReviewContainer
-//                         review={review}
-//                         key={review.id}
-//                         handleDelete={this.handleDelete}
-//                     />
-//         )
-//     })
-//     return (
-//             <>
-//                 <div className="input-container">
-//                     <textarea
-//                       id="new-review"
-//                       cols="25"
-//                       rows="5"
-//                       placeholder="Let us know how were doing!"
-//                       value={this.state.userInput}
-//                       onChange={(e) => {
-//                           this.handlechange(e)
-//                       }}
-//                     />
-//                     <button
-//                             onClick={() => {
-//                                 this.handleClick()
-//                             }}
-//                             className="input-container-button"
-//                     >
-//                        Post
-//                     </button>
-//                 </div>
+  handleDelete = (review_id) => {
+    axios
+      .delete(
+        `/api/reviews/deletereviews/${this.props.listing_id}/${review_id}`
+      )
+      .then((res) => {
+        this.setState({ reviews: res.data })
+      })
+  }
 
-//                 <section className="app-body">
-//                     <div className="padding"/>
-//                     <ul className="flex-vertical-center review-feed">{mappedReviews}</ul>
-//                 </section>
-//             </>
-//     )
-//   }
-// }
+  render() {
+    const mappedReviews = this.state.reviews.map((e) => {
+      return (
+        <ReviewContainer
+          review={e}
+          key={e.review_id}
+          handleDelete={this.handleDelete}
+        />
+      )
+    })
+    return (
+      <div>
+        <section className="app-body">
+          <div className="padding" />
+          <ul className="flex-vertical-center review-feed">{mappedReviews}</ul>
+        </section>
+        <div className="input-container">
+          <p>
+            Your Rating Here:
+            <StarRatingComponent
+              name="rate1"
+              starCount={5}
+              value={this.state.rating}
+              onStarClick={this.onStarClick.bind(this)}
+            />
+          </p>
+          <textarea
+            id="new-review"
+            cols="25"
+            rows="5"
+            placeholder="Let us know how were doing!"
+            value={this.state.content}
+            onChange={(e) => {
+              this.handleChange(e)
+            }}
+          />
+          <button
+            onClick={() => {
+              this.handleClick()
+            }}
+            className="input-container-button">
+            Post
+          </button>
+        </div>
+      </div>
+    )
+  }
+}
 
-// const mapStateToProps = reduxState => reduxState
+const mapStateToProps = (reduxState) => reduxState
 
-// export default connect(mapStateToProps, { getUser })(Reviews)
+export default connect(mapStateToProps, { getUser })(Reviews)
