@@ -103,6 +103,7 @@ module.exports = {
     const db = req.app.get('db')
 
     const { listing_id } = req.params
+    await db.delete_listing_reviews([listing_id])
     await db.delete_listing_reservations([listing_id])
     await db.delete_listing_amenities([listing_id])
     await db.delete_listing_allphotos([listing_id])
