@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton'
 import TextField from '@material-ui/core/TextField'
 import SearchIcon from '@material-ui/icons/Search'
 import CircularProgress from '@material-ui/core/CircularProgress'
+// import white from '@material-ui/core/colors'
 import PlacesAutocomplete, {
   geocodeByAddress,
   geocodeByPlaceId,
@@ -45,6 +46,7 @@ const styles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: '25ch',
+    // color: white[500],
   },
 }))
 
@@ -106,8 +108,9 @@ class Search extends Component {
                   height: '10rem',
                   position: 'relative',
                   top: '10rem',
+                  color: 'white',
                 }}
-                variant="outlined"
+                variant="filled"
                 InputLabelProps={{
                   shrink: true,
                 }}
