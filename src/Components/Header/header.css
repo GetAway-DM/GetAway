@@ -7,6 +7,7 @@
     color: white;
 }
 
-# .collasible-nav-dropdown .dropdown-toggle .nav-link a{
+.collasible-nav-dropdown .dropdown-toggle .nav-link a{
     color: green !important;
 }
+

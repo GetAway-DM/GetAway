@@ -21,7 +21,7 @@ class Header extends Component {
     render() {
         return (
 
-            <ReactBootStrap.Navbar collapseOnSelect expand="md" bg="dark" variant="dark" style={{ position: "fixed", width: "100vw" }}>
+            <ReactBootStrap.Navbar collapseOnSelect expand="md" bg="dark" variant="dark" style={{ position: "fixed", width: "100vw" }} class="text-info">
                 <ReactBootStrap.Navbar.Brand href="/">Get Away</ReactBootStrap.Navbar.Brand>
                 <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
@@ -41,7 +41,7 @@ class Header extends Component {
                                     Signed in as : {this.props.authReducer.user.first_name} {this.props.authReducer.user.last_name}
                                 </div>
                                 <div>
-                                    <ReactBootStrap.NavDropdown title="Account" id="collasible-nav-dropdown" >
+                                    <ReactBootStrap.NavDropdown title="Account" id="collasible-nav-dropdown" className="account_dropdown">
                                         <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/account/${this.props.authReducer.user.user_id}`) }} >Profile</ReactBootStrap.NavDropdown.Item>
                                         <ReactBootStrap.NavDropdown.Item onClick={() => { this.props.history.push(`/reservations/${this.props.authReducer.user.user_id}`) }}>My Reservations</ReactBootStrap.NavDropdown.Item>
 
