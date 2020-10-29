@@ -267,7 +267,7 @@ class CreateListing extends Component {
               name="zip" type="integer" placeholder="Zip" onChange={(e) => this.handleUserChange(e)}/>
             </span>
           </div>
-          <div>Amenities</div>
+          <h3>Amenities</h3>
           <FormControlLabel control={<Checkbox id="parking" name="amenities" value="parking" onChange={this.handleChecked}
             checked={this.state.parking} style={{ color: '#607d8b' }} />} label="Parking" />
           <FormControlLabel control={<Checkbox id="television"
