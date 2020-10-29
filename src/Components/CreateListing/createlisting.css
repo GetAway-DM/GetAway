@@ -5,6 +5,7 @@
     margin: 5vh;
 }
 .creates{
+    width: 98%;
     padding-top: 5vh;
     display: flex;
     flex-direction: column;
