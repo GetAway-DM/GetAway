@@ -43,12 +43,10 @@ const theme = createMuiTheme({
   },
 })
 
-
-
 const CardListing = () => {
   const classes = useStyles()
   const [data, setData] = useState({ listings: [] })
-  const [url] = useState('/api/listing/getlistings')
+  const [url, setUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
@@ -61,6 +59,11 @@ const CardListing = () => {
           .get('/api/listing/getlistings')
           .then((res) => {
             const listings = res.data
+            axios.get(`/api/listingphoto/getphotos/${listings.listing_id}`)
+              .then((res) => {
+                setUrl(res.data[0])
+              })
+              .catch((err) => (console.log(err)))
             setData({ listings })
           })
       } catch (error) {
@@ -68,9 +71,8 @@ const CardListing = () => {
       }
       setIsLoading(false)
     }
-
     fetchData()
-  }, [url])
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -108,8 +110,8 @@ const CardListing = () => {
                   />
                   <CardMedia
                     className={classes.media}
-                    image={HouseImage}
-                    title="Paella dish"
+                    image={item.photo}
+                    title="House"
                   />
                   <CardContent>
                     <Typography

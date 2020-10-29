@@ -41,7 +41,7 @@ class AboutUs extends Component {
             </h3>
             <br />
             <Row>
-              <Col xs="12" md={{ size: 6, offset: 3 }}>
+              <Col xs="12" md={{ size: 6, offset: 0 }}>
                 <br />
                 <div className="roundPics">
                   <img width="20%" src={tessa} alt="Picture of Tessa" />
@@ -60,7 +60,7 @@ class AboutUs extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs="12" md={{ size: 6, offset: 3 }}>
+              <Col xs="12" md={{ size: 6, offset: 0 }}>
                 <br />
                 <div className="roundPics">
                   <img width="20%" src={matt} alt="Picture of Matt" />
@@ -79,7 +79,7 @@ class AboutUs extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs="12" md={{ size: 6, offset: 3 }}>
+              <Col xs="12" md={{ size: 6, offset: 0 }}>
                 <br />
                 <div className="roundPics">
                   <img width="20%" src={megan} alt="Picture of Megan" />
@@ -99,7 +99,7 @@ class AboutUs extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs="12" md={{ size: 6, offset: 3 }}>
+              <Col xs="12" md={{ size: 6, offset: 0 }}>
                 <br />
                 <div className="roundPics">
                   <img width="20%" src={masen} alt="Picture of Masen" />
