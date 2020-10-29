@@ -144,8 +144,9 @@ class CreateListing extends Component {
   }
   render() {
     return (
-      <div>
-        <div>New Listing</div>
+      <div className="creates">
+        <h3 className="header">New Listing</h3>
+        <div className="thepage">
         <form id="create_listing" onSubmit={this.handleSubmit.bind(this)} method="Post">
         <TextField
           variant="outlined"
@@ -160,7 +161,12 @@ class CreateListing extends Component {
           id="description"
           name="description" type="text" 
           onChange={(e) => this.handleUserChange(e)}/>
-
+        <TextField
+        variant="outlined"
+        label="Price"
+        id="price"
+        name="price" type="numeric" onChange={(e) => this.handleUserChange(e)}/>
+        <br></br>
       <FormControl variant="filled" className='dropdown'>
         <InputLabel id="property-type">Property Type</InputLabel>
         <Select
@@ -211,17 +217,13 @@ class CreateListing extends Component {
 
         </Select>
       </FormControl>
-
-          <TextField
-          variant="outlined"
-          label="Price"
-          id="price"
-          name="price" type="numeric" onChange={(e) => this.handleUserChange(e)}/>
+      <br></br>
           <TextField
           variant="outlined"
           label="Street"
           id="street"
           name="street" type="text" placeholder="Street" onChange={(e) => this.handleUserChange(e)}/>
+          <br></br>
           <TextField
           variant="outlined"
           label="City"
@@ -250,6 +252,7 @@ class CreateListing extends Component {
             value="washer_dryer"
             onChange={this.handleChecked}
             checked={this.state.washer_dryer} style={{ color: '#607d8b' }} />} label="Washer/Dryer" />
+            <br></br>
           <FormControlLabel control={<Checkbox id="air_conditioning"
             name="Amenities"
             value="air_conditioning"
@@ -270,10 +273,12 @@ class CreateListing extends Component {
             value="pool"
             onChange={this.handleChecked}
             checked={this.state.pool} style={{ color: '#607d8b' }} />} label="Pool" />
+          <div className="photos">
 
           <CreateCarousel addPhoto={this.addPhoto} uploadPhoto={this.state.uploadedPhoto} />
 
           <div>
+            </div>
           <MuiThemeProvider theme={theme}><Button
             variant="contained"
             color='primary'
@@ -290,6 +295,7 @@ class CreateListing extends Component {
                 </Button></MuiThemeProvider>
           </div>
         </form>
+      </div>
       </div>
     )
   }

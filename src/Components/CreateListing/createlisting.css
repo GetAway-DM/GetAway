@@ -1,3 +1,21 @@
 #dropdown{
-    width: 10vw;
+    width: 9vw;
+}
+.header {
+    margin: 5vh;
+}
+.creates{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+#price {
+    width: 6vw;
+}
+#street{
+    width: 35vw;
+}
+#zip{
+    width: 6vw;
 }

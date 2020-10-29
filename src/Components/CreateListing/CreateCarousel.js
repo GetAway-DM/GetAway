@@ -92,7 +92,7 @@ class CreateCarousel extends Component {
     }
     return (
       <div className="App">
-        <h3>Add photos of your listing</h3>
+        <h4>Add photos of your listing</h4>
         <div className="slide-container">
           <Slide ref={this.slideRef} {...properties}>
             {this.props.uploadPhoto.map((each, index) => (

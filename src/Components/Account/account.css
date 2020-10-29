@@ -45,6 +45,7 @@
 .uploadedit{
     display: flex;
     height: 300px;
+    margin-top: 4vh;
     flex-direction: column;
     align-content: space-between;
     justify-content: center;
