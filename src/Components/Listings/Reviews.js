@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import ReviewContainer from './ReviewContainer'
 // import { getUser } from '../../ducks/authReducer'
@@ -28,14 +28,12 @@ const useStyles = makeStyles((theme) => ({
 const Reviews = (props) => {
   const classes = useStyles()
   const [reviews, setReviews] = useState([])
-  const [createdAt, setCreatedAt] = useState(null)
+  const [createdAt] = useState(null)
   const [content, setContent] = useState('')
   const [rating, setRating] = useState(0)
 
-  const currentListing = useSelector((state) => state.listReducer.listing)
-  const getUser = useSelector((state) => state.authReducer.user)
-
-  const dispatch = useDispatch()
+  // const currentListing = useSelector((state) => state.listReducer.listing)
+  // const getUser = useSelector((state) => state.authReducer.user)
 
   // useEffect(() => {
   //   const getId = props.authReducer.getReviews()

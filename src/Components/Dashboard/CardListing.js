@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   makeStyles,
   createMuiTheme,
@@ -12,7 +12,6 @@ import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import { red } from '@material-ui/core/colors'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import blueGrey from '@material-ui/core/colors/blueGrey'
@@ -47,7 +46,7 @@ const theme = createMuiTheme({
 const CardListing = () => {
   const classes = useStyles()
   const [data, setData] = useState({ listings: [] })
-  const [url, setUrl] = useState('/api/listing/getlistings')
+  const [url] = useState('/api/listing/getlistings')
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
@@ -104,7 +103,6 @@ const CardListing = () => {
                   title={item.title}
                   subheader={`${item.city}, ${item.state}`}
                 />
-                {item.zip}
                 <CardMedia
                   className={classes.media}
                   image={HouseImage}
