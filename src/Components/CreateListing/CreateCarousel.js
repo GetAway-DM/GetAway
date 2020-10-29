@@ -7,6 +7,7 @@ import Dropzone from 'react-dropzone'
 import { GridLoader } from 'react-spinners'
 import { v4 as randomString } from 'uuid'
 import axios from 'axios'
+import './createcarousel.css'
 
 class CreateCarousel extends Component {
   constructor(props) {
@@ -91,8 +92,8 @@ class CreateCarousel extends Component {
       indicators: (i) => <div className="indicator">{i + 1}</div>,
     }
     return (
-      <div className="App">
-        <h3>Add photos of your listing</h3>
+      <div className="carouselc">
+        <h4>Add photos of your listing</h4>
         <div className="slide-container">
           <Slide ref={this.slideRef} {...properties}>
             {this.props.uploadPhoto.map((each, index) => (
@@ -107,10 +108,10 @@ class CreateCarousel extends Component {
           <FaArrowLeft onClick={this.back} type="button" />
           <FaArrowRight onClick={this.next} type="button" />
         </div>
-        <Dropzone onDropAccepted={this.getSignedRequest} accept="image/*" multiple={false}>
+        <Dropzone className="dragndrop" onDropAccepted={this.getSignedRequest} accept="image/*" multiple={false}>
           {({ getRootProps, getInputProps }) =>
             this.state.isUploading ? (
-              <GridLoader />
+              <GridLoader/>
             ) : (
               <section
                 style={{
@@ -124,10 +125,11 @@ class CreateCarousel extends Component {
                   borderRadius: 5,
                   display: 'flex',
                   justifyContent: 'center',
+                  alignSelf: 'center',
                   alignItems: 'center',
                   fontSize: 28,
                 }}>
-                <div {...getRootProps()}>
+                <div {...getRootProps()} >
                   <input {...getInputProps()} />
                   <p>Drag 'n' drop some files here, or click to select files</p>
                 </div>

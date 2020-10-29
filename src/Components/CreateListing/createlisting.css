@@ -1,0 +1,44 @@
+#dropdown{
+    width: 9vw;
+}
+.header {
+    margin: 5vh;
+}
+.creates{
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+#price {
+    width: 6vw;
+}
+#street{
+    width: 37vw;
+}
+#zip{
+    width: 6vw;
+}
+.lazy{
+    height: 25vh;
+}
+.spaces{
+    margin: 6px;
+}
+.row{
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+}
+.photos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
