@@ -9,8 +9,9 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import IconButton from '@material-ui/core/IconButton'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
-class AboutUs extends Component {
+import './aboutus.css'
 
+class AboutUs extends Component {
 
     render() {
         const { classes } = this.props
@@ -18,7 +19,7 @@ class AboutUs extends Component {
             <React.Fragment>
                 <Container>
                     <div className="about-us">
-                        <h3 className="pages-header"> About Us </h3>
+                        <h3 className="about-us-container"> About Us </h3>
                         <p> Welcome to the Get Away App! The creators of this application make a team of four full stack developers from Devmountain. We are passionate about creating technologies that make life easier. Sharing that frame of mind, we have found a common mission in delivering an application that can help you search for your next vacation rental.</p>
                         <IconButton href="https://github.com/GetAway-DM/GetAway">
                         Checkout our GitHub Repo!
