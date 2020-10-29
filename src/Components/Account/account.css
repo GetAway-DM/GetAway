@@ -1,0 +1,58 @@
+.image > img {
+    height: 10vh;
+    width: auto;
+}
+.accountcontainer {
+    padding: 3vh;
+    padding-top: 12vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.infocontainer {
+    margin: 5vh;
+    height: 55vh;
+    width: 40vw;
+    display: flex;
+    font-size: 18px;
+    justify-content: space-between;
+    align-content: center;
+    align-self: center;
+    flex-direction: column;
+}
+.emailedit{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+}
+.emailedit > p {
+    margin: 1vw;
+}
+#email {
+    width: 25vw;
+}
+.submitbutton{
+    margin-top: 3vh;
+}
+.upload{
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-around;
+}
+.uploadedit{
+    display: flex;
+    height: 300px;
+    margin-top: 4vh;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+}
+.cancelUpload{
+    display: flex;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
