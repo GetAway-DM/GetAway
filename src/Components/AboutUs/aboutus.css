@@ -1,3 +1,7 @@
 .about-us-container{
     padding-top: 10vh;
 }
+
+.about-us{
+    align-items: center;
+}
