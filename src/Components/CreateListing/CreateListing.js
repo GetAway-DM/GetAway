@@ -148,97 +148,125 @@ class CreateListing extends Component {
         <h3 className="header">New Listing</h3>
         <div className="thepage">
         <form id="create_listing" onSubmit={this.handleSubmit.bind(this)} method="Post">
-        <TextField
-          variant="outlined"
-          label="Title"
-          id="title"
-          name="title" 
-          type="text" 
-          onChange={(e) => this.handleUserChange(e)}/>
-        <TextField
-          variant="outlined"
-          label="Description"
-          id="description"
-          name="description" type="text" 
-          onChange={(e) => this.handleUserChange(e)}/>
-        <TextField
-        variant="outlined"
-        label="Price"
-        id="price"
-        name="price" type="numeric" onChange={(e) => this.handleUserChange(e)}/>
-        <br></br>
-      <FormControl variant="filled" className='dropdown'>
-        <InputLabel id="property-type">Property Type</InputLabel>
-        <Select
-          labelId="property-type"
-          id="dropdown"
-	        name="property_type"
-          value={this.state.property_type}
-          onChange={(e) => this.handleUserChange(e)}>
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value="1">House</MenuItem>
-          <MenuItem value="2">Apartment</MenuItem>
-        </Select>
-      </FormControl>
-
-      <FormControl variant="filled" className="dropdown">
-        <InputLabel id="bedrooms">Bedrooms</InputLabel>
-        <Select
-          labelId="bedrooms"
-          id="dropdown"
-	  name="bedrooms" value={this.state.bedrooms} onChange={(e) => this.handleUserChange(e)}
-        >
-          <MenuItem value=""><em>None</em></MenuItem>
-            <MenuItem value="1">1 bedroom</MenuItem>
-            <MenuItem value="2">2 bedrooms</MenuItem>
-            <MenuItem value="3">3 bedrooms</MenuItem>
-            <MenuItem value="4">4 bedrooms</MenuItem>
-            <MenuItem value="5">5 bedrooms</MenuItem>
-            <MenuItem value="6">6 bedrooms</MenuItem>
-
-        </Select>
-      </FormControl>
-
-      <FormControl variant="filled" className="dropdown">
-        <InputLabel id="bathrooms">Bathrooms</InputLabel>
-        <Select
-          labelId="bathrooms"
-          id="dropdown"
-	        name="bathrooms" value={this.state.bathrooms} onChange={(e) => this.handleUserChange(e)}>
-          <MenuItem value=""><em>None</em></MenuItem>
-            <MenuItem value="1">1 bathroom</MenuItem>
-            <MenuItem value="2">2 bathrooms</MenuItem>
-            <MenuItem value="3">3 bathrooms</MenuItem>
-            <MenuItem value="4">4 bathrooms</MenuItem>
-            <MenuItem value="5">5 bathrooms</MenuItem>
-            <MenuItem value="6">6 bathrooms</MenuItem>
-
-        </Select>
-      </FormControl>
+        <div className="row">
+          <span className="spaces">
+            <TextField
+              variant="outlined"
+              label="Title"
+              id="title"
+              name="title" 
+              type="text" 
+              onChange={(e) => this.handleUserChange(e)}/>
+          </span>
+          <span className="spaces">
+            <TextField
+              variant="outlined"
+              label="Description"
+              id="description"
+              name="description" type="text" 
+              onChange={(e) => this.handleUserChange(e)}/>
+          </span>
+          <span className="spaces">
+            <TextField
+            variant="outlined"
+            label="Price"
+            id="price"
+            name="price" type="numeric" onChange={(e) => this.handleUserChange(e)}/>
+          </span>
+        </div>
+        <br className="spaces"></br>
+      <div className="row">
+        <span className="spaces">
+          <FormControl variant="filled" className='dropdown'>
+            <InputLabel id="property-type">Property Type</InputLabel>
+            <Select
+              labelId="property-type"
+              id="dropdown"
+    	        name="property_type"
+              value={this.state.property_type}
+              onChange={(e) => this.handleUserChange(e)}>
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="1">House</MenuItem>
+              <MenuItem value="2">Apartment</MenuItem>
+            </Select>
+          </FormControl>
+        </span>
+  
+        <span className="spaces">
+          <FormControl variant="filled" className="dropdown">
+            <InputLabel id="bedrooms">Bedrooms</InputLabel>
+            <Select
+              labelId="bedrooms"
+              id="dropdown"
+    	  name="bedrooms" value={this.state.bedrooms} onChange={(e) => this.handleUserChange(e)}
+            >
+              <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value="1">1 bedroom</MenuItem>
+                <MenuItem value="2">2 bedrooms</MenuItem>
+                <MenuItem value="3">3 bedrooms</MenuItem>
+                <MenuItem value="4">4 bedrooms</MenuItem>
+                <MenuItem value="5">5 bedrooms</MenuItem>
+                <MenuItem value="6">6 bedrooms</MenuItem>
+    
+            </Select>
+          </FormControl>
+        </span>
+  
+        <span className="spaces">
+          <FormControl variant="filled" className="dropdown">
+            <InputLabel id="bathrooms">Bathrooms</InputLabel>
+            <Select
+              labelId="bathrooms"
+              id="dropdown"
+    	        name="bathrooms" value={this.state.bathrooms} onChange={(e) => this.handleUserChange(e)}>
+              <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value="1">1 bathroom</MenuItem>
+                <MenuItem value="2">2 bathrooms</MenuItem>
+                <MenuItem value="3">3 bathrooms</MenuItem>
+                <MenuItem value="4">4 bathrooms</MenuItem>
+                <MenuItem value="5">5 bathrooms</MenuItem>
+                <MenuItem value="6">6 bathrooms</MenuItem>
+    
+            </Select>
+          </FormControl>
+        </span>
+      </div>
       <br></br>
-          <TextField
-          variant="outlined"
-          label="Street"
-          id="street"
-          name="street" type="text" placeholder="Street" onChange={(e) => this.handleUserChange(e)}/>
+          <div className="row">
+          <span className="spaces">
+              <TextField
+              variant="outlined"
+              label="Street"
+              id="street"
+              name="street" type="text" placeholder="Street" onChange={(e) => this.handleUserChange(e)}/>
+            </span>
+          </div>
           <br></br>
-          <TextField
-          variant="outlined"
-          label="City"
-          id="city"
-          name="city" type="text" placeholder="City" onChange={(e) => this.handleUserChange(e)}/>
-          <TextField
-          variant="outlined"
-          label="State"
-          id="state"
-          name="state" type="text" placeholder="State" onChange={(e) => this.handleUserChange(e)}/>
-          <TextField
-          variant="outlined"
-          label="Zip"
-          id="zip"
-          name="zip" type="integer" placeholder="Zip" onChange={(e) => this.handleUserChange(e)}/>
+          <div className="row">
+            <span className="spaces">
+              <TextField
+              variant="outlined"
+              label="City"
+              id="city"
+              name="city" type="text" placeholder="City" onChange={(e) => this.handleUserChange(e)}/>
+            </span>
+            <span className="spaces">
+              <TextField
+              variant="outlined"
+              label="State"
+              id="state"
+              name="state" type="text" placeholder="State" onChange={(e) => this.handleUserChange(e)}/>
+            </span>
+            <span className="spaces">
+              <TextField
+              variant="outlined"
+              label="Zip"
+              id="zip"
+              name="zip" type="integer" placeholder="Zip" onChange={(e) => this.handleUserChange(e)}/>
+            </span>
+          </div>
           <div>Amenities</div>
           <FormControlLabel control={<Checkbox id="parking" name="amenities" value="parking" onChange={this.handleChecked}
             checked={this.state.parking} style={{ color: '#607d8b' }} />} label="Parking" />
@@ -279,20 +307,22 @@ class CreateListing extends Component {
 
           <div>
             </div>
-          <MuiThemeProvider theme={theme}><Button
-            variant="contained"
-            color='primary'
-            type="submit" onClick={this.handleSubmit}>
-              Create
-          </Button></MuiThemeProvider>
+          <div className="button">
             <MuiThemeProvider theme={theme}><Button
-                  variant="contained"
-                  color='primary'
-                  onClick={(e) => {
-                    this.handleCancel(e)
-                  }}>
-                  Cancel
-                </Button></MuiThemeProvider>
+              variant="contained"
+              color='primary'
+              type="submit" onClick={this.handleSubmit}>
+                Create
+            </Button></MuiThemeProvider>
+              <MuiThemeProvider theme={theme}><Button
+                    variant="contained"
+                    color='primary'
+                    onClick={(e) => {
+                      this.handleCancel(e)
+                    }}>
+                    Cancel
+                  </Button></MuiThemeProvider>
+          </div>
           </div>
         </form>
       </div>

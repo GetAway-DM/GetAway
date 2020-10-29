@@ -1,0 +1,12 @@
+.carouselc{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.dragndrop{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+}
