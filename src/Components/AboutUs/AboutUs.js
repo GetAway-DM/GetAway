@@ -9,13 +9,16 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import IconButton from '@material-ui/core/IconButton'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
+import './aboutus.css'
+
 class AboutUs extends Component {
   render() {
+    const { classes } = this.props
     return (
       <React.Fragment>
         <Container>
           <div className="about-us">
-            <h3 className="pages-header"> About Us </h3>
+            <h3 className="about-us-container"> About Us </h3>
             <p>
               {' '}
               Welcome to the Get Away App! The creators of this application make
@@ -41,7 +44,7 @@ class AboutUs extends Component {
               <Col xs="12" md={{ size: 6, offset: 3 }}>
                 <br />
                 <div className="roundPics">
-                  <img width="20%" src={tessa} alt="Tessa" />
+                  <img width="20%" src={tessa} alt="Picture of Tessa" />
                   <p>
                     Hi, my name is Tessa Woodard and I'm a web developer from
                     Colorado. I love making nice, easy to use apps that brighten
@@ -60,7 +63,7 @@ class AboutUs extends Component {
               <Col xs="12" md={{ size: 6, offset: 3 }}>
                 <br />
                 <div className="roundPics">
-                  <img width="20%" src={matt} alt="Matt" />
+                  <img width="20%" src={matt} alt="Picture of Matt" />
                   <p>
                     Hi! I am Matt McCarthy, a web developer focused on crafting
                     great web experiences. Coding has been a passion since I
@@ -79,7 +82,7 @@ class AboutUs extends Component {
               <Col xs="12" md={{ size: 6, offset: 3 }}>
                 <br />
                 <div className="roundPics">
-                  <img width="20%" src={megan} alt="Megan" />
+                  <img width="20%" src={megan} alt="Picture of Megan" />
                   <p>
                     Hello! My name is Megan Olsen. I’m a Full Stack Web
                     Developer from Utah. I take the notion of working hard to
@@ -99,7 +102,7 @@ class AboutUs extends Component {
               <Col xs="12" md={{ size: 6, offset: 3 }}>
                 <br />
                 <div className="roundPics">
-                  <img width="20%" src={masen} alt="Masen" />
+                  <img width="20%" src={masen} alt="Picture of Masen" />
                   <p>
                     Hey! My name is Masen Funderburk. I'm a web developer from
                     Dallas, TX who is passionate about making efficient and
