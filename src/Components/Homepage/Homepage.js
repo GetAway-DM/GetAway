@@ -21,6 +21,8 @@ class Homepage extends Component {
   render() {
     return (
       <div className="homepage-container">
+        <div className="homepage_text">Want to Get Away?</div>
+        <div className="homepage_text1">Discover new places to stay whether it’s for live, work or just to relax.</div>
         <Search />
       </div>
     )
