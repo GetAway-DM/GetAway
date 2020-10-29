@@ -78,7 +78,7 @@ class MapContainer extends Component {
             region: 'US',
           }}
           defaultCenter={this.props.locationReducer.selectedProperty}
-          defaultZoom={8}>
+          defaultZoom={12}>
           {markerz}
         </GoogleMapReact>
       </div>
