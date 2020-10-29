@@ -3,7 +3,35 @@ import { connect } from 'react-redux'
 import { getUser } from '../../ducks/authReducer'
 import React, { Component } from 'react'
 import CreateCarousel from './CreateCarousel'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import './createlisting.css';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 300,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
+const theme = createMuiTheme({
+  palette: {
+      primary: blueGrey,
+  },
+})
 class CreateListing extends Component {
   constructor(props) {
     super(props)
@@ -112,137 +140,192 @@ class CreateListing extends Component {
     })
   }
   handleCancel = (e) => {
-    this.props.history.push('/')
+    this.props.history.push(`/`)
   }
   render() {
     return (
-      <div>
-        <div>New Listing</div>
+      <div className="creates">
+        <h3 className="header">New Listing</h3>
+        <div className="thepage">
         <form id="create_listing" onSubmit={this.handleSubmit.bind(this)} method="Post">
-          <label>Title:</label>
-          <input name="title" type="text" onChange={(e) => this.handleUserChange(e)}></input>
-
-          <label>Description:</label>
-          <input name="description" type="text" onChange={(e) => this.handleUserChange(e)}></input>
-
-          <label>Property Type:</label>
-          <select name="property_type" value={this.state.property_type} onChange={(e) => this.handleUserChange(e)}>
-            <option value="Select Property Type"></option>
-            <option value="1">House</option>
-            <option value="2">Apartment</option>
-          </select>
-
-          <label>Bedrooms:</label>
-          <select name="bedrooms" value={this.state.bedrooms} onChange={(e) => this.handleUserChange(e)}>
-            <option value="Number of Bedrooms"></option>
-            <option value="1">1 bedroom</option>
-            <option value="2">2 bedrooms</option>
-            <option value="3">3 bedrooms</option>
-            <option value="4">4 bedrooms</option>
-            <option value="5">5 bedrooms</option>
-            <option value="6">6 bedrooms</option>
-          </select>
-
-          <label>Bathrooms:</label>
-          <select name="bathrooms" value={this.state.bathrooms} onChange={(e) => this.handleUserChange(e)}>
-            <option value="Number of Bathrooms"></option>
-            <option value="1">1 bathroom</option>
-            <option value="2">2 bathrooms</option>
-            <option value="3">3 bathrooms</option>
-            <option value="4">4 bathrooms</option>
-            <option value="5">5 bathrooms</option>
-            <option value="6">6 bathrooms</option>
-          </select>
-
-          <label>Price:</label>
-          <input name="price" type="numeric" onChange={(e) => this.handleUserChange(e)}></input>
-
-          <label>Address:</label>
-          <input name="street" type="text" placeholder="Street" onChange={(e) => this.handleUserChange(e)}></input>
-          <input name="city" type="text" placeholder="City" onChange={(e) => this.handleUserChange(e)}></input>
-          <input name="state" type="text" placeholder="State" onChange={(e) => this.handleUserChange(e)}></input>
-          <input name="zip" type="integer" placeholder="Zip" onChange={(e) => this.handleUserChange(e)}></input>
-
-          <div>Amenities</div>
-          <label>Parking:</label>
-          <input
-            type="checkbox"
-            id="parking"
-            name="amenities"
-            value="parking"
-            onChange={this.handleChecked}
-            checked={this.state.parking}
-          />
-          <label>Television:</label>
-          <input
-            type="checkbox"
-            id="television"
+        <div className="row">
+          <span className="spaces">
+            <TextField
+              variant="outlined"
+              label="Title"
+              id="title"
+              name="title" 
+              type="text" 
+              onChange={(e) => this.handleUserChange(e)}/>
+          </span>
+          <span className="spaces">
+            <TextField
+              variant="outlined"
+              label="Description"
+              id="description"
+              name="description" type="text" 
+              onChange={(e) => this.handleUserChange(e)}/>
+          </span>
+          <span className="spaces">
+            <TextField
+            variant="outlined"
+            label="Price"
+            id="price"
+            name="price" type="numeric" onChange={(e) => this.handleUserChange(e)}/>
+          </span>
+        </div>
+        <br className="spaces"></br>
+      <div className="row">
+        <span className="spaces">
+          <FormControl variant="filled" className='dropdown'>
+            <InputLabel id="property-type">Property Type</InputLabel>
+            <Select
+              labelId="property-type"
+              id="dropdown"
+    	        name="property_type"
+              value={this.state.property_type}
+              onChange={(e) => this.handleUserChange(e)}>
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="1">House</MenuItem>
+              <MenuItem value="2">Apartment</MenuItem>
+            </Select>
+          </FormControl>
+        </span>
+  
+        <span className="spaces">
+          <FormControl variant="filled" className="dropdown">
+            <InputLabel id="bedrooms">Bedrooms</InputLabel>
+            <Select
+              labelId="bedrooms"
+              id="dropdown"
+    	  name="bedrooms" value={this.state.bedrooms} onChange={(e) => this.handleUserChange(e)}
+            >
+              <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value="1">1 bedroom</MenuItem>
+                <MenuItem value="2">2 bedrooms</MenuItem>
+                <MenuItem value="3">3 bedrooms</MenuItem>
+                <MenuItem value="4">4 bedrooms</MenuItem>
+                <MenuItem value="5">5 bedrooms</MenuItem>
+                <MenuItem value="6">6 bedrooms</MenuItem>
+    
+            </Select>
+          </FormControl>
+        </span>
+  
+        <span className="spaces">
+          <FormControl variant="filled" className="dropdown">
+            <InputLabel id="bathrooms">Bathrooms</InputLabel>
+            <Select
+              labelId="bathrooms"
+              id="dropdown"
+    	        name="bathrooms" value={this.state.bathrooms} onChange={(e) => this.handleUserChange(e)}>
+              <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value="1">1 bathroom</MenuItem>
+                <MenuItem value="2">2 bathrooms</MenuItem>
+                <MenuItem value="3">3 bathrooms</MenuItem>
+                <MenuItem value="4">4 bathrooms</MenuItem>
+                <MenuItem value="5">5 bathrooms</MenuItem>
+                <MenuItem value="6">6 bathrooms</MenuItem>
+    
+            </Select>
+          </FormControl>
+        </span>
+      </div>
+      <br></br>
+          <div className="row">
+          <span className="spaces">
+              <TextField
+              variant="outlined"
+              label="Street"
+              id="street"
+              name="street" type="text" placeholder="Street" onChange={(e) => this.handleUserChange(e)}/>
+            </span>
+          </div>
+          <br></br>
+          <div className="row">
+            <span className="spaces">
+              <TextField
+              variant="outlined"
+              label="City"
+              id="city"
+              name="city" type="text" placeholder="City" onChange={(e) => this.handleUserChange(e)}/>
+            </span>
+            <span className="spaces">
+              <TextField
+              variant="outlined"
+              label="State"
+              id="state"
+              name="state" type="text" placeholder="State" onChange={(e) => this.handleUserChange(e)}/>
+            </span>
+            <span className="spaces">
+              <TextField
+              variant="outlined"
+              label="Zip"
+              id="zip"
+              name="zip" type="integer" placeholder="Zip" onChange={(e) => this.handleUserChange(e)}/>
+            </span>
+          </div>
+          <h3>Amenities</h3>
+          <FormControlLabel control={<Checkbox id="parking" name="amenities" value="parking" onChange={this.handleChecked}
+            checked={this.state.parking} style={{ color: '#607d8b' }} />} label="Parking" />
+          <FormControlLabel control={<Checkbox id="television"
             name="amenities"
             value="television"
             onChange={this.handleChecked}
-            checked={this.state.television}
-          />
-          <label>Washer/Dryer:</label>
-          <input
-            type="checkbox"
-            id="washer_dryer"
+            checked={this.state.television} style={{ color: '#607d8b' }} />} label="Television" />
+          <FormControlLabel control={<Checkbox id="washer_dryer"
             name="amenities"
             value="washer_dryer"
             onChange={this.handleChecked}
-            checked={this.state.washer_dryer}
-          />
-          <label>Air Conditioning:</label>
-          <input
-            type="checkbox"
-            id="air_conditioning"
+            checked={this.state.washer_dryer} style={{ color: '#607d8b' }} />} label="Washer/Dryer" />
+            <br></br>
+          <FormControlLabel control={<Checkbox id="air_conditioning"
             name="Amenities"
             value="air_conditioning"
             onChange={this.handleChecked}
-            checked={this.state.air_conditioning}
-          />
-          <label>Wifi:</label>
-          <input
-            type="checkbox"
-            id="wifi"
+            checked={this.state.air_conditioning} style={{ color: '#607d8b' }} />} label="Air Conditioning" />
+          <FormControlLabel control={<Checkbox id="wifi"
             name="amenities"
             value="wifi"
             onChange={this.handleChecked}
-            checked={this.state.wifi}
-          />
-          <label>Hair Dryer:</label>
-          <input
-            type="checkbox"
-            id="hair_dryer"
+            checked={this.state.wifi} style={{ color: '#607d8b' }} />} label="Wifi" />
+          <FormControlLabel control={<Checkbox id="hair_dryer"
             name="amenities"
             value="hair_dryer"
             onChange={this.handleChecked}
-            checked={this.state.hair_dryer}
-          />
-          <label>Pool:</label>
-          <input
-            type="checkbox"
-            id="pool"
+            checked={this.state.hair_dryer} style={{ color: '#607d8b' }} />} label="Hair Dryer" />
+          <FormControlLabel control={<Checkbox id="pool"
             name="amenities"
             value="pool"
             onChange={this.handleChecked}
-            checked={this.state.pool}
-          />
+            checked={this.state.pool} style={{ color: '#607d8b' }} />} label="Pool" />
+          <div className="photos">
 
           <CreateCarousel addPhoto={this.addPhoto} uploadPhoto={this.state.uploadedPhoto} />
 
           <div>
-            <button type="submit" onClick={this.handleSubmit}>
-              Create
-            </button>
-
-            <button
-              onClick={(e) => {
-                this.handleCancel(e)
-              }}>
-              Cancel
-            </button>
+            </div>
+          <div className="button">
+            <MuiThemeProvider theme={theme}><Button
+              variant="contained"
+              color='primary'
+              type="submit" onClick={this.handleSubmit}>
+                Create
+            </Button></MuiThemeProvider>
+              <MuiThemeProvider theme={theme}><Button
+                    variant="contained"
+                    color='primary'
+                    onClick={(e) => {
+                      this.handleCancel(e)
+                    }}>
+                    Cancel
+                  </Button></MuiThemeProvider>
+          </div>
           </div>
         </form>
+      </div>
       </div>
     )
   }
