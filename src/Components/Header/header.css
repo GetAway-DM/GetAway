@@ -1,0 +1,10 @@
+.navbar {
+    min-height: 4rem;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.signinas {
+    color: white;
+}
+
