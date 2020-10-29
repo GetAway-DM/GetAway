@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import Carousel from './Carousel'
 import StarRatingComponent from 'react-star-rating-component'
-// import Rating from './Rating'
 import Rules from './Rules'
-import Reviews from './Reviews'
-import Button from '@material-ui/core/Button'
+// import Reviews from './Reviews'
+// import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
-import SaveIcon from '@material-ui/icons/Save'
+// import SaveIcon from '@material-ui/icons/Save'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import './listing.css'
@@ -16,9 +15,6 @@ import './listing.css'
 const AddListings = (props) => {
   const currentListing = useSelector((state) => state.listReducer.listing)
   const dispatch = useDispatch()
-
-  // TODO loading section
-
   useEffect(() => {
     setTimeout(() => {
       axios
@@ -35,9 +31,8 @@ const AddListings = (props) => {
       margin: theme.spacing(1),
     },
   }))
-  const classes = useStyles()
 
-  console.log(currentListing)
+  // const classes = useStyles()
 
   return (
     <div>
@@ -73,7 +68,7 @@ const AddListings = (props) => {
       <div className="listing-img">
         <img
           src={currentListing.profile_img}
-          alt="profile Image"
+          alt="profile"
           className="listing-profile-img"
         />
       </div>
