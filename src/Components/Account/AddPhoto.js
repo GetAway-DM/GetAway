@@ -107,29 +107,18 @@ class AddPhoto extends Component {
           <FaArrowLeft onClick={this.back} type="button" />
           <FaArrowRight onClick={this.next} type="button" />
         </div>
-        <Dropzone onDropAccepted={this.getSignedRequest} accept="image/*" multiple={false}>
+        <Dropzone
+          onDropAccepted={this.getSignedRequest}
+          accept="image/*"
+          multiple={false}>
           {({ getRootProps, getInputProps }) =>
             this.state.isUploading ? (
               <GridLoader />
             ) : (
-              <section
-                style={{
-                  position: 'relative',
-                  width: 200,
-                  height: 200,
-                  borderWidth: 7,
-                  marginTop: 100,
-                  borderColor: 'rgb(102, 102, 102)',
-                  borderStyle: 'dashed',
-                  borderRadius: 5,
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  fontSize: 28,
-                }}>
+              <section className="photo-input">
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  <p>Drag 'n' drop some files here, or click to select files</p>
+                  <p>Click Here to add a photo</p>
                 </div>
               </section>
             )
