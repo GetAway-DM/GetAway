@@ -21,8 +21,6 @@ type_id SERIAL PRIMARY KEY
 type_name VARCHAR(15)
 );
 
-
-
 CREATE TABLE listings(
 listing_id SERIAL PRIMARY KEY,
 title VARCHAR(100),

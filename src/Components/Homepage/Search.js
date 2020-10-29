@@ -109,8 +109,10 @@ class Search extends Component {
                   <div
                     style={{
                       width: '50rem',
-                      position: 'relative',
-                      left: '35rem',
+                      position: 'absolute',
+                      left: '20rem',
+                      top: '21rem',
+                      justifyContent: 'center',
                       textAlign: 'left',
                       fontFamily: 'Roboto',
                     }}>
@@ -126,7 +128,7 @@ class Search extends Component {
                           borderRadius: '10%',
                           backgroundColor: 'transparent',
                         }
-                        : { backgroundColor: '#ffffff', cursor: 'pointer' }
+                        : { backgroundColor: 'transparent', cursor: 'pointer' }
                       return (
                         <div
                           {...getSuggestionItemProps(suggestion, {

@@ -1,0 +1,21 @@
+.res_title{
+    padding-top: 10vh;
+}
+
+.res_container{
+    width: 50vw;
+    height: 60vh;
+    
+}
+
+.res_dates{
+    left: 0;
+    width: 100vw;
+    height: 20vh;
+}
+
+.res_details{
+    right: -40rem;
+    width: 100vw;
+    height: 20vh;
+}

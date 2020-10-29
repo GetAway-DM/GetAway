@@ -1,10 +1,13 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import {getUser} from '../../ducks/authReducer';
+import { getUser } from '../../ducks/authReducer';
 import axios from 'axios';
 import MyReservations from './MyReservations'
+
+import './reservations.css'
+
 class UserReservations extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             reservations: [],
@@ -12,11 +15,11 @@ class UserReservations extends Component {
         }
     }
 
-    async componentDidMount(){
+    async componentDidMount() {
         if (!this.props.authReducer.isLoggedIn) {
             this.props.getUser().catch((err) => {
-                    this.props.history.push('/')
-                }
+                this.props.history.push('/')
+            }
             )
         }
         await this.props.getUser().then(res => {
@@ -25,32 +28,32 @@ class UserReservations extends Component {
             })
         })
         await this.getReservations()
-        }
-    
-        componentDidUpdate(prevProps){
-        if (this.props.user_id !== prevProps.user_id){
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.user_id !== prevProps.user_id) {
             this.props.getUser()
-            }
         }
+    }
 
-        getReservations = () => {
-            const user_id = this.state.user_id
-            axios.get(`/api/reservations/${user_id}`).then((res) => {
-                this.setState({
-                    reservations: res.data
-                })
+    getReservations = () => {
+        const user_id = this.state.user_id
+        axios.get(`/api/reservations/${user_id}`).then((res) => {
+            this.setState({
+                reservations: res.data
             })
-        }
+        })
+    }
 
 
-    render(){
+    render() {
         const mappedRes = this.state.reservations.map((reservation, index) => {
-            return ( 
-                <MyReservations reservation={reservation} key={reservation.id} push={this.props.history.push}/>
+            return (
+                <MyReservations reservation={reservation} key={reservation.id} push={this.props.history.push} />
             )
         })
         return (
-            <div>
+            <div className="res_title">
                 <h1>My Reservations</h1>
                 <div>{mappedRes}</div>
             </div>
@@ -58,4 +61,4 @@ class UserReservations extends Component {
     }
 }
 const mapStateToProps = (state) => state
-export default connect(mapStateToProps, {getUser})(UserReservations)
+export default connect(mapStateToProps, { getUser })(UserReservations)
