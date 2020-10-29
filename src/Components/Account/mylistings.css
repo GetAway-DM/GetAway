@@ -1,6 +1,6 @@
 .container-listing {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   border-radius: 8px;
   box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25),
     0 10px 10px 0 rgba(0, 0, 0, 0.26);
@@ -11,3 +11,6 @@
 /* Please play among us with me ! */
 /* 😁 */
 /* mmmmmmm idk bout that, but I will */
+.my-listing-button {
+  margin: 10px;
+}

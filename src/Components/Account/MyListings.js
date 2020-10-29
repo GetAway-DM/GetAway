@@ -15,17 +15,15 @@ import {
   MuiThemeProvider,
   withStyles,
 } from '@material-ui/core/styles'
-import PropTypes from 'prop-types'
-import Avatar from '@material-ui/core/Avatar'
+
 import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
+
 import TextField from '@material-ui/core/TextField'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
+
 import Box from '@material-ui/core/Box'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+
 import Typography from '@material-ui/core/Typography'
 import FormLabel from '@material-ui/core/FormLabel'
 import blueGrey from '@material-ui/core/colors/blueGrey'
@@ -49,7 +47,11 @@ const theme = createMuiTheme({
       body2: 'span',
     },
   },
+  palette: {
+    primary: blueGrey,
+  },
 })
+
 class MyListings extends Component {
   constructor(props) {
     super(props)
@@ -261,7 +263,13 @@ class MyListings extends Component {
                   }}
                   name="detailsEdit"
                   variant="contained"
-                  color="primary">
+                  color="primary"
+                  style={{
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 5,
+                    marginRight: 5,
+                  }}>
                   Edit Details
                 </Button>
               </Box>
@@ -418,7 +426,13 @@ class MyListings extends Component {
                     this.handleDetails(e)
                   }}
                   variant="contained"
-                  color="primary">
+                  color="primary"
+                  style={{
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 5,
+                    marginRight: 5,
+                  }}>
                   Submit Details
                 </Button>
                 <Button
@@ -427,7 +441,13 @@ class MyListings extends Component {
                   }}
                   variant="contained"
                   color="primary"
-                  name="detailsEdit">
+                  name="detailsEdit"
+                  style={{
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 5,
+                    marginRight: 5,
+                  }}>
                   Cancel Edit
                 </Button>
               </Box>
@@ -484,7 +504,13 @@ class MyListings extends Component {
                     }}
                     variant="contained"
                     color="primary"
-                    name="amenitiesEdit">
+                    name="amenitiesEdit"
+                    style={{
+                      marginTop: 10,
+                      marginBottom: 10,
+                      marginLeft: 5,
+                      marginRight: 5,
+                    }}>
                     Edit Amenities
                   </Button>
                 </div>
@@ -606,7 +632,13 @@ class MyListings extends Component {
                       this.handleAmenities(e)
                     }}
                     variant="contained"
-                    color="primary">
+                    color="primary"
+                    style={{
+                      marginTop: 10,
+                      marginBottom: 10,
+                      marginLeft: 5,
+                      marginRight: 5,
+                    }}>
                     Submit Amenities
                   </Button>
                   <Button
@@ -615,7 +647,13 @@ class MyListings extends Component {
                     }}
                     name="amenitiesEdit"
                     variant="contained"
-                    color="primary">
+                    color="primary"
+                    style={{
+                      marginTop: 10,
+                      marginBottom: 10,
+                      marginLeft: 5,
+                      marginRight: 5,
+                    }}>
                     Cancel Amenities Edit
                   </Button>
                 </Box>
@@ -628,6 +666,14 @@ class MyListings extends Component {
                   name="photosEdit"
                   onClick={(e) => {
                     this.toggleEdit(e)
+                  }}
+                  variant="contained"
+                  color="primary"
+                  style={{
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 5,
+                    marginRight: 5,
                   }}>
                   Add Photos
                 </Button>
@@ -641,6 +687,14 @@ class MyListings extends Component {
                 <Button
                   onClick={(e) => {
                     this.handlePhotos(e)
+                  }}
+                  variant="contained"
+                  color="primary"
+                  style={{
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 5,
+                    marginRight: 5,
                   }}>
                   Submit Photos
                 </Button>
@@ -648,6 +702,14 @@ class MyListings extends Component {
                   name="photosEdit"
                   onClick={(e) => {
                     this.toggleCancel(e)
+                  }}
+                  variant="contained"
+                  color="primary"
+                  style={{
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 5,
+                    marginRight: 5,
                   }}>
                   Cancel Adding Photos
                 </Button>
@@ -656,12 +718,29 @@ class MyListings extends Component {
             <Button
               onClick={(e) => {
                 this.props.push(`/listing/${this.state.listing_id}`)
+              }}
+              variant="contained"
+              color="primary"
+              style={{
+                marginTop: 10,
+                marginBottom: 10,
+                marginLeft: 5,
+                marginRight: 5,
               }}>
               Go To Listing
             </Button>
             <Button
               onClick={(e) => {
                 this.deleteListing()
+              }}
+              variant="contained"
+              color="primary"
+              className="my-listing-button"
+              style={{
+                marginTop: 10,
+                marginBottom: 10,
+                marginLeft: 5,
+                marginRight: 5,
               }}>
               Delete Listing
             </Button>

@@ -115,20 +115,7 @@ class AddPhoto extends Component {
             this.state.isUploading ? (
               <GridLoader />
             ) : (
-              <section
-                style={{
-                  width: 200,
-                  height: 200,
-                  borderWidth: 7,
-                  marginTop: 100,
-                  borderColor: 'rgb(102, 102, 102)',
-                  borderStyle: 'dashed',
-                  borderRadius: 5,
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  fontSize: 28,
-                }}>
+              <section className="photo-input">
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
                   <p>Click Here to add a photo</p>
