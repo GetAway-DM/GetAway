@@ -46,7 +46,7 @@ const theme = createMuiTheme({
 const CardListing = () => {
   const classes = useStyles()
   const [data, setData] = useState({ listings: [] })
-  const [url] = useState('/api/listing/getlistings')
+  const [url, setUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
@@ -59,6 +59,11 @@ const CardListing = () => {
           .get('/api/listing/getlistings')
           .then((res) => {
             const listings = res.data
+            axios.get(`/api/listingphoto/getphotos/${listings.listing_id}`)
+              .then((res) => {
+                setUrl(res.data[0])
+              })
+              .catch((err) => (console.log(err)))
             setData({ listings })
           })
       } catch (error) {
@@ -66,9 +71,8 @@ const CardListing = () => {
       }
       setIsLoading(false)
     }
-
     fetchData()
-  }, [url])
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -82,46 +86,47 @@ const CardListing = () => {
             style={{ position: 'relative', top: '8rem', left: '-2rem' }}
           />
         ) : (
-          <>
-            {data.listings.map((item) => (
-              <Card className={classes.card} key={item.id}>
-                <CardHeader
-                  avatar={
-                    <Avatar
-                      className={classes.avatar}
-                      style={{ fontSize: '16px', fontFamily: 'roboto' }}>
-                      ${item.price}
-                    </Avatar>
-                  }
-                  action={
-                    <IconButton aria-label="settings">
-                      <Link to={`/listing/${item.id}`}>
-                        <ArrowForwardIcon />
-                      </Link>
-                    </IconButton>
-                  }
-                  title={item.title}
-                  subheader={`${item.city}, ${item.state}`}
-                />
-                <CardMedia
-                  className={classes.media}
-                  image={HouseImage}
-                  title="Paella dish"
-                />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p">
-                    {item.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            ))}
-          </>
-        )}
+            <>
+              {data.listings.map((item) => (
+
+                <Card className={classes.card} key={item.listing_id} >
+                  <CardHeader
+                    avatar={
+                      <Avatar
+                        className={classes.avatar}
+                        style={{ fontSize: '16px', fontFamily: 'roboto' }}>
+                        ${item.price}
+                      </Avatar>
+                    }
+                    action={
+                      <IconButton aria-label="settings">
+                        <Link to={`/listing/${item.listing_id}`}>
+                          <ArrowForwardIcon />
+                        </Link>
+                      </IconButton>
+                    }
+                    title={item.title}
+                    subheader={`${item.city}, ${item.state}`}
+                  />
+                  <CardMedia
+                    className={classes.media}
+                    image={item.photo}
+                    title="House"
+                  />
+                  <CardContent>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p">
+                      {item.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              ))}
+            </>
+          )}
       </div>
-    </ThemeProvider>
+    </ThemeProvider >
   )
 }
 

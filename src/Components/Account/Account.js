@@ -5,7 +5,17 @@ import axios from 'axios'
 import { v4 as randomString } from 'uuid'
 import Dropzone from 'react-dropzone'
 import { GridLoader } from 'react-spinners'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import './account.css'
 
+const theme = createMuiTheme({
+  palette: {
+      primary: blueGrey,
+  },
+})
 class Account extends Component {
   constructor(props) {
     super(props)
@@ -43,14 +53,15 @@ class Account extends Component {
     })
   }
 
-  toggleEdit = (e) => {
+  toggleEdit = (name) => {
     this.setState({
-      [e.target.name]: !this.state.value,
+      [name]: !this.state.value,
     })
   }
-  toggleCancel = (e) => {
+  toggleCancel = (name, id) => {
     this.setState({
-      [e.target.name]: false,
+      [name]: false,
+      [id]: this.props.authReducer.user[id]
     })
   }
 
@@ -135,156 +146,191 @@ class Account extends Component {
     const { email, first_name, last_name, profile_img, user_id } = this.props.authReducer.user
     return (
       <div className="accountcontainer">
-        <div>Account Details</div>
+        <h2>Account Details</h2>
         <div className="infocontainer">
-          <p>Email: {email}</p>
           <div className="email_edit">
             {this.state.emailEdit === false ? (
-              <button
-                name="emailEdit"
-                onClick={(e) => {
-                  this.toggleEdit(e)
-                }}>
-                Edit
-              </button>
+              
+              <div className="emailedit">
+                <p>Email: {email}</p>
+                  <p>
+                    <MuiThemeProvider theme={theme}><Button
+                    size="medium"
+                      variant="contained"
+                      color='primary'
+                      name="emailEdit"
+                      onClick={(e) => {
+                        this.toggleEdit('emailEdit')
+                      }}>
+                      Edit
+                    </Button></MuiThemeProvider>
+                  </p>
+              </div>
+              
             ) : (
-              <div>
-                <input
+              <div className="emailedit">
+                <TextField
+                  variant="outlined"
+                  label="email"
+                  id="email"
                   value={this.state.email}
                   onChange={(e) => {
                     this.handleInput(e)
                   }}
                   name="email"
-                  placeholder="New Email"
-                />
-                <button
-                  name="emailEdit"
-                  onClick={(e) => {
-                    this.toggleCancel(e)
-                  }}>
-                  Cancel
-                </button>
+                  placeholder="New Email"/>
+                
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                    variant="contained"
+                    color='primary'
+                    name="emailEdit"
+                    onClick={(e) => {
+                      this.toggleCancel('emailEdit', 'email')
+                    }}>
+                    Cancel
+                  </Button></MuiThemeProvider>
+                </p>
               </div>
             )}
           </div>
-          <p>
-            Name: {first_name} {last_name}
-          </p>
           <div className="name_edit">
             {this.state.nameEdit === false ? (
-              <button
-                name="nameEdit"
-                onClick={(e) => {
-                  this.toggleEdit(e)
-                }}>
-                Edit
-              </button>
+              <div className="emailedit">
+                <p>Name: {first_name} {last_name} </p>
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                  variant="contained"
+                  color='primary'
+                  name="nameEdit"
+                  onClick={(e) => {
+                    this.toggleEdit('nameEdit')
+                  }}>
+                  Edit
+                </Button></MuiThemeProvider>
+                </p>
+              </div>
             ) : (
-              <div>
-                <input
+              <div className="emailedit">
+                <TextField
+                  variant="outlined"
+                  label="first_name"
+                  id="first_name"
                   value={this.state.first_name}
                   onChange={(e) => {
                     this.handleInput(e)
                   }}
                   name="first_name"
-                  placeholder="First Name"
-                />{' '}
-                <input
+                  placeholder="First Name"/>{' '}
+                <TextField
+                  variant="outlined"
+                  label="last_name"
+                  id="last_name"
                   value={this.state.last_name}
                   onChange={(e) => {
                     this.handleInput(e)
                   }}
                   name="last_name"
-                  placeholder="Last Name"
-                />
-                <button
-                  name="nameEdit"
-                  onClick={(e) => {
-                    this.toggleCancel(e)
-                  }}>
-                  Cancel
-                </button>
+                  placeholder="Last Name"/>
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                    variant="contained"
+                    color='primary'
+                    name="nameEdit"
+                    onClick={(e) => {
+                      this.toggleCancel( '', 'first_name') 
+                      this.toggleCancel('nameEdit', 'last_name')
+                    }}>
+                    Cancel
+                  </Button></MuiThemeProvider>
+                </p>
               </div>
             )}
           </div>
-          <p>
-            Profile Picture: <img src={`${profile_img}`} alt="Not Loading" />
-          </p>
           <div className="profile_img_edit">
             {this.state.profile_imgEdit === false ? (
-              <button
-                name="profile_imgEdit"
-                onClick={(e) => {
-                  this.toggleEdit(e)
-                }}>
-                Edit
-              </button>
-            ) : (
-              <div>
-                <h1>Upload</h1>
-                <h1>{url}</h1>
-                <img src={url} alt="" width="450px" />
-                <Dropzone onDropAccepted={this.getSignedRequest} accept="image/*" multiple={false}>
-                  {({ getRootProps, getInputProps }) =>
-                    isUploading ? (
-                      <GridLoader />
-                    ) : (
-                      <section
-                        style={{
-                          position: 'relative',
-                          width: 200,
-                          height: 200,
-                          borderWidth: 7,
-                          marginTop: 100,
-                          borderColor: 'rgb(102, 102, 102)',
-                          borderStyle: 'dashed',
-                          borderRadius: 5,
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          fontSize: 28,
-                        }}>
-                        <div {...getRootProps()}>
-                          <input {...getInputProps()} />
-                          <p>Drag 'n' drop some files here, or click to select files</p>
-                        </div>
-                      </section>
-                    )
-                  }
-                </Dropzone>
-                <button
+             <div className="emailedit">
+               <p className="image">Profile Picture: <img src={`${profile_img}`} alt="Not Loading" /></p>
+                <p>
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                  variant="contained"
+                  color='primary'
                   name="profile_imgEdit"
                   onClick={(e) => {
-                    this.toggleCancel(e)
+                    this.toggleEdit('profile_imgEdit')
                   }}>
-                  Cancel
-                </button>
+                  Edit
+                </Button></MuiThemeProvider>
+                </p>
+             </div>
+            ) : (
+              <div className="uploadedit">
+                <p>Upload</p>
+                <p>{url}</p>
+                <img src={url} alt="" width="450px" />
+                <div className="upload">
+                  <Dropzone className="dropzone" onDropAccepted={this.getSignedRequest} accept="image/*" multiple={false}>
+                    {({ getRootProps, getInputProps }) =>
+                      isUploading ? (
+                        <GridLoader />
+                      ) : (
+                        <section
+                          style={{
+                            position: 'relative',
+                            width: 200,
+                            height: 200,
+                            borderWidth: 7,
+                            marginTop: 100,
+                            borderColor: 'rgb(102, 102, 102)',
+                            borderStyle: 'dashed',
+                            borderRadius: 5,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontSize: 18,
+                          }}>
+                          <div {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            <p>Drag 'n' drop some files here, or click to select files</p>
+                          </div>
+                        </section>
+                      )
+                    }
+                  </Dropzone>
+                </div>
+                <p className="cancelUpload">
+                  <MuiThemeProvider theme={theme}><Button
+                  size="medium"
+                    variant="contained"
+                    color='primary'
+                    name="profile_imgEdit"
+                    onClick={(e) => {
+                      this.toggleCancel('profile_imgEdit', 'profile_img')
+                    }}>
+                    Cancel
+                  </Button></MuiThemeProvider>
+                </p>
               </div>
             )}
           </div>
           {this.state.emailEdit === true || this.state.nameEdit === true || this.state.profile_imgEdit === true ? (
-            <button
+            <div className="submitbutton">
+              <MuiThemeProvider theme={theme}><Button
+              size="medium"
+              variant="contained"
+              color='primary'
               onClick={(e) => {
                 this.handleSubmit(e)
               }}>
               Submit Edit
-            </button>
+            </Button></MuiThemeProvider>
+            </div>
           ) : null}
-        </div>
-        <button
-          onClick={(e) => {
-            this.props.history.push('/createlisting')
-          }}>
-          Create A Listing
-        </button>
-        <br></br>
-        <button
-          onClick={(e) => {
-            this.props.history.push(`/reservations/${user_id}`)
-          }}>
-          My Reservations
-        </button>
-          <button onClick={(e) => {this.props.history.push(`/listings/${user_id}`)}}>My Listings</button>
+        </div>  
       </div>
     )
   }

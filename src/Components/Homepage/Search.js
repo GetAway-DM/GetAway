@@ -69,81 +69,82 @@ class Search extends Component {
             getSuggestionItemProps,
             loading,
           }) => (
-            <>
-              <TextField
-                {...getInputProps({
-                  placeholder: "Try searching 'San Francisco'",
-                  className: 'location-search-input',
-                })}
-                style={{
-                  margin: 8,
-                  width: '50rem',
-                  height: '10rem',
-                  position: 'relative',
-                  top: '3rem',
-                  color: 'white',
-                }}
-                variant="filled"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                label="Search Nearby Listings"
-                placeholder="Try searching 'San Francisco'"
-                id="outlined-full-width"
-                margin="normal"
-                size="large"
-              />
-              <div className="autocomplete-dropdown-container">
-                {loading && (
-                  <CircularProgress
-                    size={100}
-                    color={'secondary'}
-                    style={{ position: 'relative', top: '8rem', left: '-2rem' }}
-                  />
-                )}
-                <IconButton
-                  type="submit"
-                  className={classes.iconButton}></IconButton>
-                <Divider className={classes.divider} orientation="vertical" />
-                <IconButton></IconButton>
-                <div
+              <>
+                <TextField
+                  {...getInputProps({
+                    placeholder: "Try searching 'San Francisco'",
+                    className: 'location-search-input',
+                  })}
                   style={{
+                    margin: 8,
                     width: '50rem',
+                    height: '10rem',
                     position: 'relative',
-                    left: '35rem',
-                    textAlign: 'left',
-                    fontFamily: 'Roboto',
-                  }}>
-                  {suggestions.map((suggestion) => {
-                    const className = suggestion.active
-                      ? 'suggestion-item--active'
-                      : 'suggestion-item'
-                    const style = suggestion.active
-                      ? {
+                    top: '3rem',
+                    color: 'white',
+                  }}
+                  variant="filled"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  label="Search Nearby Listings"
+                  placeholder="Try searching 'San Francisco'"
+                  id="outlined-full-width"
+                  margin="normal"
+                  size="large"
+                />
+                <div className="autocomplete-dropdown-container">
+                  {loading && (
+                    <CircularProgress
+                      size={100}
+                      color={'secondary'}
+                      style={{ position: 'relative', top: '8rem', left: '-2rem' }}
+                    />
+                  )}
+                  <IconButton
+                    type="submit"
+                    className={classes.iconButton}></IconButton>
+                  <Divider className={classes.divider} orientation="vertical" />
+                  <IconButton></IconButton>
+                  <div
+                    style={{
+                      width: '50rem',
+                      position: 'relative',
+                      left: '35rem',
+                      textAlign: 'left',
+                      fontFamily: 'Roboto',
+                    }}>
+                    {suggestions.map((suggestion) => {
+                      const className = suggestion.active
+                        ? 'suggestion-item--active'
+                        : 'suggestion-item'
+                      const style = suggestion.active
+                        ? {
                           cursor: 'pointer',
                           color: 'black',
                           opactiy: '90%',
                           borderRadius: '10%',
                           backgroundColor: 'transparent',
                         }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' }
-                    return (
-                      <div
-                        {...getSuggestionItemProps(suggestion, {
-                          className,
-                          style,
-                        })}>
-                        <span
-                          onClick={() => this.handleInputProperty(suggestion)}>
-                          {suggestion.description}
-                        </span>
-                      </div>
-                    )
-                  })}
+                        : { backgroundColor: '#ffffff', cursor: 'pointer' }
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className,
+                            style,
+                          })}>
+                          <span
+                          // onClick={() => this.handleInputProperty(suggestion)}
+                          >
+                            {suggestion.description}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
-              </div>
-            </>
-          )}
+              </>
+            )}
         </PlacesAutocomplete>
       </>
     )
