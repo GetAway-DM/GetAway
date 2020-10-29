@@ -4,6 +4,7 @@ import Datepicker from 'react-datepicker'
 import { connect } from 'react-redux'
 import 'react-datepicker/dist/react-datepicker.css'
 import StarRatingComponent from 'react-star-rating-component'
+import './reservation.css'
 
 function Reservation(props) {
   const [dateFrom, setDateFrom] = useState(new Date())
@@ -35,16 +36,19 @@ function Reservation(props) {
   return (
     <div className="reserve-container">
       <div className="info-container">
-        <p>${props.listReducer.listing.price}/night</p>
-        <div>
+        <p>
+          <strong>${props.listReducer.listing.price}</strong> /night
+        </p>
+        <div className="avg-container">
           <p>
             <StarRatingComponent
               name="rate2"
               editing={false}
               starCount={1}
               value={1}
+              starDimension={'15px'}
             />
-            {props.listReducer.listing.avg}
+            <span>{props.listReducer.listing.avg}</span>
           </p>
         </div>
       </div>

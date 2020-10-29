@@ -4,15 +4,34 @@ import PropTypes from 'prop-types'
 import Carousel from './Carousel'
 import StarRatingComponent from 'react-star-rating-component'
 import Rules from './Rules'
+import Container from '@material-ui/core/Container'
+import { makeStyles } from '@material-ui/core/styles'
+import Box from '@material-ui/core/Box'
 // import Reviews from './Reviews'
 // import Button from '@material-ui/core/Button'
-import { makeStyles } from '@material-ui/core/styles'
 // import SaveIcon from '@material-ui/icons/Save'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import './listing.css'
 
+const useStyles = makeStyles({
+  root: {
+    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    boxSizing: 'borderBox',
+    borderRadius: 3,
+    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'black',
+    height: '150vh',
+    padding: '0 30px',
+    zIndex: 1,
+  },
+  rules: {
+    zIndex: '2',
+  },
+})
+
 const AddListings = (props) => {
+  const classes = useStyles()
   const currentListing = useSelector((state) => state.listReducer.listing)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -26,19 +45,12 @@ const AddListings = (props) => {
     }, 3000)
   }, [])
 
-  const useStyles = makeStyles((theme) => ({
-    button: {
-      margin: theme.spacing(1),
-    },
-  }))
-
-  // const classes = useStyles()
-
   return (
-    <div>
-      <div>
+    <Container className={classes.root} maxWidth={'xl'}>
+      <Box>
         <h1 className="listing-title">{currentListing.title}</h1>
-      </div>
+      </Box>
+      <Carousel listing={props.match.params.listing_id} />
       <div className="listing-city">
         <h3>{currentListing.city}</h3>
       </div>
@@ -54,8 +66,6 @@ const AddListings = (props) => {
         />
         ({currentListing.avg})
       </p>
-      <Carousel listing={props.match.params.listing_id} />
-      <Rules />
       <div className="listing-description">
         <p>{currentListing.description}</p>
       </div>
@@ -77,8 +87,9 @@ const AddListings = (props) => {
       </div>
       <div className="listing-bathrooms">
         <h3>{currentListing.bathrooms} Bathrooms</h3>
+        <Rules />
       </div>
-    </div>
+    </Container>
   )
 }
 
