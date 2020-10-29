@@ -235,430 +235,7 @@ class MyListings extends Component {
       <MuiThemeProvider theme={theme}>
         <Container className="container-listing">
           <Box component="span" m={1} className="listing-container">
-            {this.state.detailsEdit === false ? (
-              <Box className="details-container">
-                <Typography variant="h3">{this.state.title}</Typography>
-                <Typography variant="body1">
-                  {this.state.description}
-                </Typography>
-                <Typography variant="body1">
-                  Bedrooms: {this.state.bedrooms}
-                </Typography>
-                <Typography variant="body1">
-                  Bathrooms: {this.state.bathrooms}
-                </Typography>
-                <Typography variant="body1">
-                  Price: ${this.state.price}
-                </Typography>
-                <Typography variant="body1">
-                  Address:{this.state.street}
-                </Typography>
-                <Typography variant="body1">
-                  {this.state.city} {this.state.state}
-                </Typography>
-                <p>{this.state.zip}</p>
-                <Button
-                  onClick={(e) => {
-                    this.toggleEdit(e)
-                  }}
-                  name="detailsEdit"
-                  variant="contained"
-                  color="primary"
-                  style={{
-                    marginTop: 10,
-                    marginBottom: 10,
-                    marginLeft: 5,
-                    marginRight: 5,
-                  }}>
-                  Edit Details
-                </Button>
-              </Box>
-            ) : (
-              <Box>
-                <FormLabel>Title</FormLabel>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="zip"
-                  label="Title"
-                  name="title"
-                  autoComplete="zip"
-                  autoFocus
-                  value={this.state.title}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <FormLabel>Description</FormLabel>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="description"
-                  label="Description"
-                  name="description"
-                  autoComplete="description"
-                  autoFocus
-                  value={this.state.description}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <FormLabel>Bedrooms</FormLabel>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="bedrooms"
-                  label="Bedrooms"
-                  name="bedrooms"
-                  autoComplete="bedrooms"
-                  autoFocus
-                  value={this.state.bedrooms}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <FormLabel>Bathrooms:</FormLabel>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="bathrooms"
-                  label="Bathrooms"
-                  name="bathrooms"
-                  autoComplete="bathrooms"
-                  autoFocus
-                  value={this.state.bathrooms}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <FormLabel>Price $</FormLabel>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="price"
-                  label="Price"
-                  name="price"
-                  autoComplete="price"
-                  autoFocus
-                  value={this.state.price}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <FormLabel>Address</FormLabel>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="street"
-                  label="Street"
-                  name="street"
-                  autoComplete="street"
-                  autoFocus
-                  value={this.state.street}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="city"
-                  label="City"
-                  name="city"
-                  autoComplete="city"
-                  autoFocus
-                  value={this.state.city}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />{' '}
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="street"
-                  label="Street"
-                  name="street"
-                  autoComplete="street"
-                  autoFocus
-                  value={this.state.street}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="state"
-                  label="State"
-                  name="state"
-                  autoComplete="state"
-                  autoFocus
-                  value={this.state.state}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  id="zip"
-                  label="Zip Code"
-                  name="zip"
-                  autoComplete="zip"
-                  autoFocus
-                  value={this.state.zip}
-                  onChange={(e) => {
-                    this.handleInput(e)
-                  }}
-                />
-                <Button
-                  onClick={(e) => {
-                    this.handleDetails(e)
-                  }}
-                  variant="contained"
-                  color="primary"
-                  style={{
-                    marginTop: 10,
-                    marginBottom: 10,
-                    marginLeft: 5,
-                    marginRight: 5,
-                  }}>
-                  Submit Details
-                </Button>
-                <Button
-                  onClick={(e) => {
-                    this.toggleCancel(e)
-                  }}
-                  variant="contained"
-                  color="primary"
-                  name="detailsEdit"
-                  style={{
-                    marginTop: 10,
-                    marginBottom: 10,
-                    marginLeft: 5,
-                    marginRight: 5,
-                  }}>
-                  Cancel Edit
-                </Button>
-              </Box>
-            )}
-            <>
-              <h4>Amenities</h4>
-              {this.state.amenitiesEdit === false ? (
-                <div>
-                  {this.state.parking === true ? (
-                    <p value={this.state.parking}>
-                      {' '}
-                      <FaParking /> Parking
-                    </p>
-                  ) : null}
-                  {this.state.television ? (
-                    <p value={this.state.television}>
-                      {' '}
-                      <CgScreen /> Television
-                    </p>
-                  ) : null}
-                  {this.state.washer_dryer ? (
-                    <p value={this.state.washer_dryer}>
-                      {' '}
-                      <CgSmartHomeWashMachine /> Washer/Dryer
-                    </p>
-                  ) : null}
-                  {this.state.air_conditioning ? (
-                    <p value={this.state.air_conditioning}>
-                      {' '}
-                      <RiTempColdLine /> Air Conditioning
-                    </p>
-                  ) : null}
-                  {this.state.wifi ? (
-                    <p value={this.state.wifi}>
-                      {' '}
-                      <FaWifi /> Wifi
-                    </p>
-                  ) : null}
-                  {this.state.hair_dryer ? (
-                    <p value={this.state.hair_dryer}>
-                      {' '}
-                      <FiWind /> Hair Dryer
-                    </p>
-                  ) : null}
-                  {this.state.pool ? (
-                    <p value={this.state.pool}>
-                      {' '}
-                      <FaSwimmingPool /> Pool
-                    </p>
-                  ) : null}
-                  <Button
-                    onClick={(e) => {
-                      this.toggleEdit(e)
-                    }}
-                    variant="contained"
-                    color="primary"
-                    name="amenitiesEdit"
-                    style={{
-                      marginTop: 10,
-                      marginBottom: 10,
-                      marginLeft: 5,
-                      marginRight: 5,
-                    }}>
-                    Edit Amenities
-                  </Button>
-                </div>
-              ) : (
-                <Box>
-                  <FormLabel>Parking</FormLabel>
-                  <FormControlLabel
-                    value="start"
-                    control={
-                      <Checkbox
-                        checked={this.state.parking}
-                        onChange={this.handleChecked}
-                        value="parking"
-                        style={{ color: '#607d8b' }}
-                        name="amenities"
-                        id="parking"
-                      />
-                    }
-                    type="checkbox"
-                  />
-
-                  <FormLabel>Television</FormLabel>
-                  <FormControlLabel
-                    value="start"
-                    control={
-                      <Checkbox
-                        value="television"
-                        style={{ color: '#607d8b' }}
-                        onChange={this.handleChecked}
-                        checked={this.state.television}
-                        id="television"
-                        name="amenities"
-                      />
-                    }
-                    type="checkbox"
-                  />
-
-                  <FormLabel>Washer/Dryer</FormLabel>
-                  <FormControlLabel
-                    value="start"
-                    control={
-                      <Checkbox
-                        value="washer_dryer"
-                        style={{ color: '#607d8b' }}
-                        onChange={this.handleChecked}
-                        checked={this.state.washer_dryer}
-                        id="washer_dryer"
-                        name="amenities"
-                      />
-                    }
-                    type="checkbox"
-                  />
-
-                  <FormLabel>Air Conditioning</FormLabel>
-                  <FormControlLabel
-                    value="start"
-                    control={
-                      <Checkbox
-                        value="Air Conditioning"
-                        style={{ color: '#607d8b' }}
-                        onChange={this.handleChecked}
-                        checked={this.state.air_conditioning}
-                        id="air_conditioning"
-                        name="amenities"
-                      />
-                    }
-                    type="checkbox"
-                  />
-
-                  <FormLabel>Wifi</FormLabel>
-                  <FormControlLabel
-                    value="start"
-                    control={
-                      <Checkbox
-                        value="wifi"
-                        style={{ color: '#607d8b' }}
-                        onChange={this.handleChecked}
-                        checked={this.state.wifi}
-                        id="wifi"
-                        name="amenities"
-                      />
-                    }
-                    type="checkbox"
-                  />
-
-                  <label>Hair Dryer</label>
-                  <FormControlLabel
-                    value="start"
-                    control={
-                      <Checkbox
-                        value="hair_dryer"
-                        style={{ color: '#607d8b' }}
-                        onChange={this.handleChecked}
-                        checked={this.state.hair_dryer}
-                        id="hair_dryer"
-                        name="amenities"
-                      />
-                    }
-                    type="checkbox"
-                  />
-                  <FormLabel>Pool</FormLabel>
-                  <FormControlLabel
-                    value="start"
-                    control={
-                      <Checkbox
-                        value="hair_dryer"
-                        style={{ color: '#607d8b' }}
-                        id="pool"
-                        name="amenities"
-                        value="pool"
-                        onChange={this.handleChecked}
-                        checked={this.state.pool}
-                      />
-                    }
-                    type="checkbox"
-                  />
-                  <Button
-                    onClick={(e) => {
-                      this.handleAmenities(e)
-                    }}
-                    variant="contained"
-                    color="primary"
-                    style={{
-                      marginTop: 10,
-                      marginBottom: 10,
-                      marginLeft: 5,
-                      marginRight: 5,
-                    }}>
-                    Submit Amenities
-                  </Button>
-                  <Button
-                    onClick={(e) => {
-                      this.toggleCancel(e)
-                    }}
-                    name="amenitiesEdit"
-                    variant="contained"
-                    color="primary"
-                    style={{
-                      marginTop: 10,
-                      marginBottom: 10,
-                      marginLeft: 5,
-                      marginRight: 5,
-                    }}>
-                    Cancel Amenities Edit
-                  </Button>
-                </Box>
-              )}
-            </>{' '}
+            <Typography variant="h3">{this.state.title}</Typography>
             {this.state.photosEdit === false ? (
               <Box>
                 <Photo photos={this.state.photos} />
@@ -715,6 +292,431 @@ class MyListings extends Component {
                 </Button>
               </Box>
             )}
+            <div className="info-listing-container">
+              {this.state.detailsEdit === false ? (
+                <Box className="details-container">
+                  <Typography variant="body1">
+                    {this.state.description}
+                  </Typography>
+                  <Typography variant="body1">
+                    Bedrooms: {this.state.bedrooms}
+                  </Typography>
+                  <Typography variant="body1">
+                    Bathrooms: {this.state.bathrooms}
+                  </Typography>
+                  <Typography variant="body1">
+                    Price: ${this.state.price}
+                  </Typography>
+                  <Typography variant="body1">
+                    Address:{this.state.street}
+                  </Typography>
+                  <Typography variant="body1">
+                    {this.state.city} {this.state.state}
+                  </Typography>
+                  <p>{this.state.zip}</p>
+                  <Button
+                    onClick={(e) => {
+                      this.toggleEdit(e)
+                    }}
+                    name="detailsEdit"
+                    variant="contained"
+                    color="primary"
+                    style={{
+                      marginTop: 10,
+                      marginBottom: 10,
+                      marginLeft: 5,
+                      marginRight: 5,
+                    }}>
+                    Edit Details
+                  </Button>
+                </Box>
+              ) : (
+                <Box>
+                  <FormLabel>Title</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="zip"
+                    label="Title"
+                    name="title"
+                    autoComplete="zip"
+                    autoFocus
+                    value={this.state.title}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <FormLabel>Description</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="description"
+                    label="Description"
+                    name="description"
+                    autoComplete="description"
+                    autoFocus
+                    value={this.state.description}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <FormLabel>Bedrooms</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="bedrooms"
+                    label="Bedrooms"
+                    name="bedrooms"
+                    autoComplete="bedrooms"
+                    autoFocus
+                    value={this.state.bedrooms}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <FormLabel>Bathrooms:</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="bathrooms"
+                    label="Bathrooms"
+                    name="bathrooms"
+                    autoComplete="bathrooms"
+                    autoFocus
+                    value={this.state.bathrooms}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <FormLabel>Price $</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="price"
+                    label="Price"
+                    name="price"
+                    autoComplete="price"
+                    autoFocus
+                    value={this.state.price}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <FormLabel>Address</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="street"
+                    label="Street"
+                    name="street"
+                    autoComplete="street"
+                    autoFocus
+                    value={this.state.street}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="city"
+                    label="City"
+                    name="city"
+                    autoComplete="city"
+                    autoFocus
+                    value={this.state.city}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />{' '}
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="street"
+                    label="Street"
+                    name="street"
+                    autoComplete="street"
+                    autoFocus
+                    value={this.state.street}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="state"
+                    label="State"
+                    name="state"
+                    autoComplete="state"
+                    autoFocus
+                    value={this.state.state}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    id="zip"
+                    label="Zip Code"
+                    name="zip"
+                    autoComplete="zip"
+                    autoFocus
+                    value={this.state.zip}
+                    onChange={(e) => {
+                      this.handleInput(e)
+                    }}
+                  />
+                  <Button
+                    onClick={(e) => {
+                      this.handleDetails(e)
+                    }}
+                    variant="contained"
+                    color="primary"
+                    style={{
+                      marginTop: 10,
+                      marginBottom: 10,
+                      marginLeft: 5,
+                      marginRight: 5,
+                    }}>
+                    Submit Details
+                  </Button>
+                  <Button
+                    onClick={(e) => {
+                      this.toggleCancel(e)
+                    }}
+                    variant="contained"
+                    color="primary"
+                    name="detailsEdit"
+                    style={{
+                      marginTop: 10,
+                      marginBottom: 10,
+                      marginLeft: 5,
+                      marginRight: 5,
+                    }}>
+                    Cancel Edit
+                  </Button>
+                </Box>
+              )}
+              <div>
+                <h4>Amenities</h4>
+                {this.state.amenitiesEdit === false ? (
+                  <div>
+                    {this.state.parking === true ? (
+                      <p value={this.state.parking}>
+                        {' '}
+                        <FaParking /> Parking
+                      </p>
+                    ) : null}
+                    {this.state.television ? (
+                      <p value={this.state.television}>
+                        {' '}
+                        <CgScreen /> Television
+                      </p>
+                    ) : null}
+                    {this.state.washer_dryer ? (
+                      <p value={this.state.washer_dryer}>
+                        {' '}
+                        <CgSmartHomeWashMachine /> Washer/Dryer
+                      </p>
+                    ) : null}
+                    {this.state.air_conditioning ? (
+                      <p value={this.state.air_conditioning}>
+                        {' '}
+                        <RiTempColdLine /> Air Conditioning
+                      </p>
+                    ) : null}
+                    {this.state.wifi ? (
+                      <p value={this.state.wifi}>
+                        {' '}
+                        <FaWifi /> Wifi
+                      </p>
+                    ) : null}
+                    {this.state.hair_dryer ? (
+                      <p value={this.state.hair_dryer}>
+                        {' '}
+                        <FiWind /> Hair Dryer
+                      </p>
+                    ) : null}
+                    {this.state.pool ? (
+                      <p value={this.state.pool}>
+                        {' '}
+                        <FaSwimmingPool /> Pool
+                      </p>
+                    ) : null}
+                    <Button
+                      onClick={(e) => {
+                        this.toggleEdit(e)
+                      }}
+                      variant="contained"
+                      color="primary"
+                      name="amenitiesEdit"
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 10,
+                        marginLeft: 5,
+                        marginRight: 5,
+                      }}>
+                      Edit Amenities
+                    </Button>
+                  </div>
+                ) : (
+                  <Box>
+                    <FormLabel>Parking</FormLabel>
+                    <FormControlLabel
+                      value="start"
+                      control={
+                        <Checkbox
+                          checked={this.state.parking}
+                          onChange={this.handleChecked}
+                          value="parking"
+                          style={{ color: '#607d8b' }}
+                          name="amenities"
+                          id="parking"
+                        />
+                      }
+                      type="checkbox"
+                    />
+
+                    <FormLabel>Television</FormLabel>
+                    <FormControlLabel
+                      value="start"
+                      control={
+                        <Checkbox
+                          value="television"
+                          style={{ color: '#607d8b' }}
+                          onChange={this.handleChecked}
+                          checked={this.state.television}
+                          id="television"
+                          name="amenities"
+                        />
+                      }
+                      type="checkbox"
+                    />
+
+                    <FormLabel>Washer/Dryer</FormLabel>
+                    <FormControlLabel
+                      value="start"
+                      control={
+                        <Checkbox
+                          value="washer_dryer"
+                          style={{ color: '#607d8b' }}
+                          onChange={this.handleChecked}
+                          checked={this.state.washer_dryer}
+                          id="washer_dryer"
+                          name="amenities"
+                        />
+                      }
+                      type="checkbox"
+                    />
+
+                    <FormLabel>Air Conditioning</FormLabel>
+                    <FormControlLabel
+                      value="start"
+                      control={
+                        <Checkbox
+                          value="Air Conditioning"
+                          style={{ color: '#607d8b' }}
+                          onChange={this.handleChecked}
+                          checked={this.state.air_conditioning}
+                          id="air_conditioning"
+                          name="amenities"
+                        />
+                      }
+                      type="checkbox"
+                    />
+
+                    <FormLabel>Wifi</FormLabel>
+                    <FormControlLabel
+                      value="start"
+                      control={
+                        <Checkbox
+                          value="wifi"
+                          style={{ color: '#607d8b' }}
+                          onChange={this.handleChecked}
+                          checked={this.state.wifi}
+                          id="wifi"
+                          name="amenities"
+                        />
+                      }
+                      type="checkbox"
+                    />
+
+                    <label>Hair Dryer</label>
+                    <FormControlLabel
+                      value="start"
+                      control={
+                        <Checkbox
+                          value="hair_dryer"
+                          style={{ color: '#607d8b' }}
+                          onChange={this.handleChecked}
+                          checked={this.state.hair_dryer}
+                          id="hair_dryer"
+                          name="amenities"
+                        />
+                      }
+                      type="checkbox"
+                    />
+                    <FormLabel>Pool</FormLabel>
+                    <FormControlLabel
+                      value="start"
+                      control={
+                        <Checkbox
+                          value="hair_dryer"
+                          style={{ color: '#607d8b' }}
+                          id="pool"
+                          name="amenities"
+                          value="pool"
+                          onChange={this.handleChecked}
+                          checked={this.state.pool}
+                        />
+                      }
+                      type="checkbox"
+                    />
+                    <Button
+                      onClick={(e) => {
+                        this.handleAmenities(e)
+                      }}
+                      variant="contained"
+                      color="primary"
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 10,
+                        marginLeft: 5,
+                        marginRight: 5,
+                      }}>
+                      Submit Amenities
+                    </Button>
+                    <Button
+                      onClick={(e) => {
+                        this.toggleCancel(e)
+                      }}
+                      name="amenitiesEdit"
+                      variant="contained"
+                      color="primary"
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 10,
+                        marginLeft: 5,
+                        marginRight: 5,
+                      }}>
+                      Cancel Amenities Edit
+                    </Button>
+                  </Box>
+                )}
+              </div>{' '}
+            </div>
             <Button
               onClick={(e) => {
                 this.props.push(`/listing/${this.state.listing_id}`)

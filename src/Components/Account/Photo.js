@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Slide } from 'react-slideshow-image'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
-import { makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import './photo.css'
@@ -55,14 +54,12 @@ class Photo extends Component {
                     this.deletePhoto(each.photo_id)
                   }}
                   aria-label="delete">
-                  <DeleteIcon />
+                  <DeleteIcon
+                    style={{
+                      zIndex: '2',
+                    }}
+                  />
                 </IconButton>
-                {/* <button
-                  onClick={(e) => {
-                    this.deletePhoto(each.photo_id)
-                  }}>
-                  Delete Photo
-                </button> */}
               </div>
             ))}
           </Slide>
