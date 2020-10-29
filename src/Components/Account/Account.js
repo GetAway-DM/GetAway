@@ -302,7 +302,7 @@ class Account extends Component {
                     }
                   </Dropzone>
                 </div>
-                <p>
+                <p className="cancelUpload">
                   <MuiThemeProvider theme={theme}><Button
                   size="medium"
                     variant="contained"
