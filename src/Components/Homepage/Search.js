@@ -96,69 +96,69 @@ class Search extends Component {
             getSuggestionItemProps,
             loading,
           }) => (
-            <>
-              <TextField
-                {...getInputProps({
-                  placeholder: "Try searching 'San Francisco'",
-                  className: 'location-search-input',
-                })}
-                style={{
-                  margin: 8,
-                  width: '50rem',
-                  height: '10rem',
-                  position: 'relative',
-                  top: '10rem',
-                  color: 'white',
-                }}
-                variant="filled"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                label="Search Nearby Listings"
-                placeholder="Try searching 'San Francisco'"
-                id="outlined-full-width"
-                margin="normal"
-                size="large"
-              />
-              {/* <TextField
+              <>
+                <TextField
+                  {...getInputProps({
+                    placeholder: "Try searching 'San Francisco'",
+                    className: 'location-search-input',
+                  })}
+                  style={{
+                    margin: 8,
+                    width: '50rem',
+                    height: '10rem',
+                    position: 'relative',
+                    top: '3rem',
+                    color: 'white',
+                  }}
+                  variant="filled"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  label="Search Nearby Listings"
+                  placeholder="Try searching 'San Francisco'"
+                  id="outlined-full-width"
+                  margin="normal"
+                  size="large"
+                />
+                {/* <TextField
                 fullWidth
                  {...getInputProps({
                 style={{ margin: 8 }}
                 })}
               /> */}
-              <div className="autocomplete-dropdown-container">
-                {loading && (
-                  <CircularProgress
-                    size={100}
-                    color={'secondary'}
-                    style={{ position: 'relative', top: '8rem', left: '-2rem' }}
-                  />
-                )}
-                <IconButton type="submit" className={classes.iconButton}>
-                  {/* <SearchIcon /> */}
-                </IconButton>
-                <Divider className={classes.divider} orientation="vertical" />
-                <IconButton>
-                  {/* <BiCurrentLocation className="bicurrent" /> */}
-                </IconButton>
-                <div
-                  style={{
-                    // border: 'inset',
-                    width: '50rem',
-                    position: 'relative',
-                    left: '35rem',
-                    textAlign: 'left',
-                    fontFamily: 'Roboto',
-                  }}
+                <div className="autocomplete-dropdown-container">
+                  {loading && (
+                    <CircularProgress
+                      size={100}
+                      color={'secondary'}
+                      style={{ position: 'relative', top: '8rem', left: '-2rem' }}
+                    />
+                  )}
+                  <IconButton type="submit" className={classes.iconButton}>
+                    {/* <SearchIcon /> */}
+                  </IconButton>
+                  <Divider className={classes.divider} orientation="vertical" />
+                  <IconButton>
+                    {/* <BiCurrentLocation className="bicurrent" /> */}
+                  </IconButton>
+                  <div
+                    style={{
+                      // border: 'inset',
+                      width: '50rem',
+                      position: 'relative',
+                      left: '35rem',
+                      textAlign: 'left',
+                      fontFamily: 'Roboto',
+                    }}
                   //  : onChange={this.toggleHidden.bind(this)}
                   // : {!this.state.isHidden}
-                >
-                  {suggestions.map((suggestion) => {
-                    const className = suggestion.active
-                      ? 'suggestion-item--active'
-                      : 'suggestion-item'
-                    const style = suggestion.active
-                      ? {
+                  >
+                    {suggestions.map((suggestion) => {
+                      const className = suggestion.active
+                        ? 'suggestion-item--active'
+                        : 'suggestion-item'
+                      const style = suggestion.active
+                        ? {
                           backgroundColor: '#fafafa',
                           cursor: 'pointer',
                           color: 'black',
@@ -166,25 +166,25 @@ class Search extends Component {
                           borderRadius: '10%',
                           backgroundColor: 'transparent',
                         }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' }
-                    return (
-                      <div
-                        {...getSuggestionItemProps(suggestion, {
-                          className,
-                          style,
-                        })}>
-                        <span
-                          onClick={() => this.handleInputProperty(suggestion)}>
-                          {suggestion.description}
-                        </span>
-                      </div>
-                    )
-                  })}
+                        : { backgroundColor: '#ffffff', cursor: 'pointer' }
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className,
+                            style,
+                          })}>
+                          <span
+                            onClick={() => this.handleInputProperty(suggestion)}>
+                            {suggestion.description}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  {/* )} */}
                 </div>
-                {/* )} */}
-              </div>
-            </>
-          )}
+              </>
+            )}
         </PlacesAutocomplete>
       </>
     )
