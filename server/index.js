@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
@@ -8,9 +9,9 @@ const mapCtrl = require('./mapController')
 const resCtrl = require('./resController')
 const reviewCtrl = require('./reviewController')
 const photoCtrl = require('./photoController')
-const path = require('path')
 const verifyUser = require('./middlewares/verifyUser')
 const aws = require('aws-sdk')
+app.use(express.static(`${__dirname}/..build`))
 
 const app = express()
 
@@ -24,10 +25,9 @@ const {
 } = process.env
 
 // Build
-
-app.use(express.static(__dirname + '/..build'))
-
 app.use(express.json())
+
+
 app.use(
   session({
     secret: SESSION_SECRET,
@@ -125,9 +125,6 @@ app.delete(
 )
 
 // Hosting
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'))
-})
 
 massive({
   connectionString: CONNECTION_STRING,
@@ -141,3 +138,7 @@ massive({
     )
   })
   .catch((err) => console.log(err))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
