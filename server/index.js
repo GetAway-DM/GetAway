@@ -8,6 +8,7 @@ const mapCtrl = require('./mapController')
 const resCtrl = require('./resController')
 const reviewCtrl = require('./reviewController')
 const photoCtrl = require('./photoController')
+const path = require('path')
 const verifyUser = require('./middlewares/verifyUser')
 const aws = require('aws-sdk')
 
@@ -21,6 +22,10 @@ const {
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
 } = process.env
+
+// Build
+
+app.use(express.static(__dirname + '/..build'))
 
 app.use(express.json())
 app.use(
@@ -118,6 +123,11 @@ app.delete(
   '/api/listingphoto/deletephoto/:photo_id',
   photoCtrl.deletePhoto
 )
+
+// Hosting
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 massive({
   connectionString: CONNECTION_STRING,
