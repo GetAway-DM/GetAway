@@ -4,6 +4,11 @@ import Datepicker from 'react-datepicker'
 import { connect } from 'react-redux'
 import 'react-datepicker/dist/react-datepicker.css'
 import StarRatingComponent from 'react-star-rating-component'
+import Divider from '@material-ui/core/Divider'
+import './reservation.css'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import Button from '@material-ui/core/Button'
+import { createMuiTheme } from '@material-ui/core/styles'
 
 function Reservation(props) {
   const [dateFrom, setDateFrom] = useState(new Date())
@@ -27,24 +32,33 @@ function Reservation(props) {
           dateTo,
         })
         .then((res) => {
-          props.history('/')
+          props.history(`/reservations/${user_id}`)
         })
     }
   }
 
+  const theme = createMuiTheme({
+    palette: {
+      primary: blueGrey,
+    },
+  })
+
   return (
-    <div className="reserve-container">
+    <div className="reserve-container" style={{ paddingTop: '7rem' }}>
       <div className="info-container">
-        <p>${props.listReducer.listing.price}/night</p>
-        <div>
+        <p>
+          <strong>${props.listReducer.listing.price}</strong> /night
+        </p>
+        <div className="avg-container">
           <p>
             <StarRatingComponent
               name="rate2"
               editing={false}
               starCount={1}
               value={1}
+              starDimension={'15px'}
             />
-            {props.listReducer.listing.avg}
+            <span>{props.listReducer.listing.avg}</span>
           </p>
         </div>
       </div>
@@ -67,9 +81,20 @@ function Reservation(props) {
         </div>
       </div>
       <div className="guests-reserve">
-        <button className="reserve-button" onClick={handleReservation}>
+        {/* <button className="reserve-button" onClick={handleReservation}>
           Reserve
-        </button>
+        </button> */}
+        <Button
+          onClick={handleReservation}
+          size="medium"
+          // position="relative"
+          variant="contained"
+          color="primary">
+          Reserve
+        </Button>
+      </div>
+      <div>
+        <Divider orientation="vertical" flexItem />
       </div>
     </div>
   )

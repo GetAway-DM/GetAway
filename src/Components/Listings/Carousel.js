@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Slide } from 'react-slideshow-image'
 import axios from 'axios'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
-import './carousel.css'
+import './ListingCarousel.css'
 import 'react-slideshow-image/dist/styles.css'
 
 class Carousel extends Component {
@@ -51,18 +53,30 @@ class Carousel extends Component {
     return (
       <div className="App">
         <div className="slide-container">
-          <Slide ref={this.slideRef} {...properties}>
+          <Slide
+            ref={this.slideRef}
+            {...properties}
+            style={{ boxShadow: '3px 3px 5px 6px #ccc' }}>
             {this.state.slideImages.map((each) => (
               <div key={each.photo_id} className="each-slide">
-                <img className="lazy" src={each.photo} alt="sample" />
+                <img className="lazy-slide" src={each.photo} alt="sample" />
               </div>
             ))}
           </Slide>
         </div>
-
         <div className="slide-container buttons">
-          <FaArrowLeft onClick={this.back} type="button" />
-          <FaArrowRight onClick={this.next} type="button" />
+          <ArrowBackIosIcon
+            fontSize={'large'}
+            onClick={this.back}
+            type="button"
+            className="left-arrow"
+          />
+          <ArrowForwardIosIcon
+            fontSize={'large'}
+            onClick={this.next}
+            type="button"
+            className="right-arrow"
+          />
         </div>
       </div>
     )

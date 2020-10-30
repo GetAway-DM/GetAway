@@ -1,17 +1,19 @@
-.listing-profile-img{
-    height: 5vh;
-    width: 5vw;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap')
+.listing-profile-img {
+  position: relative;
+  height: 6rem;
+  width: 6rem;
 }
 
-.rules{
-    display: inline-block;
-    flex-direction: column;
+.rules {
+  display: inline-block;
+  flex-direction: column;
 }
-.rules-box{
-    display: block;
-    flex-direction: column;
+.rules-box {
+  display: block;
+  flex-direction: column;
 }
 
-.list-box{
-    display: block;
+.list-box {
+  display: block;
 }
