@@ -17,8 +17,8 @@ const useStyles = makeStyles({
     color: 'black',
     position: 'relative',
     left: '-28rem',
-    top: '30rem',
-    height: '40vh',
+    top: '20rem',
+    height: '60vh',
     width: '40vw',
     padding: '0 30px',
     zIndex: '1',
@@ -32,7 +32,7 @@ const Rules = () => {
   const classes = useStyles()
   return (
     <Container className={classes.root}>
-      <Box className="rules-box">
+      <Box className="rules-box" style={{ paddingTop: '8rem' }}>
         <Box>
           <h1>Things to Know</h1>
         </Box>

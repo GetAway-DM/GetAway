@@ -83,3 +83,18 @@ h3 {
 .lazy {
   width: 400px;
 }
+
+.left-arrow {
+  height: 10vh;
+  width: 10vw;
+  position: relative;
+  left: -50rem;
+  top: -40rem;
+}
+.right-arrow {
+  height: 10vh;
+  width: 10vw;
+  position: relative;
+  left: 50rem;
+  top: -40rem;
+}

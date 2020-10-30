@@ -1,9 +1,9 @@
 .reserve-container {
-  height: 30vh;
-  width: 20vw;
+  height: 45vh;
+  width: 30vw;
   position: relative;
   left: 70rem;
-  top: -110rem;
+  top: -95rem;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;

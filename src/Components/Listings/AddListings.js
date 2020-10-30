@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Amenities from './Amenities'
 import Avatar from '@material-ui/core/Avatar'
 import Box from '@material-ui/core/Box'
+import DialogTitle from '@material-ui/core/DialogTitle'
 import Divider from '@material-ui/core/Divider'
 // import Reviews from './Reviews'
 // import Button from '@material-ui/core/Button'
@@ -22,7 +23,7 @@ const useStyles = makeStyles({
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     boxSizing: 'borderBox',
     borderRadius: 3,
-    boxShadow: '0 3px 5px 2px grey',
+    // boxShadow: '0 3px 5px 2px grey',
     color: 'black',
     position: 'relative',
     height: '300vh',
@@ -65,7 +66,12 @@ const AddListings = (props) => {
     <Container className={classes.root} maxWidth={'xl'}>
       <Box>
         <h1
-          style={{ position: 'relative', left: '-15rem' }}
+          style={{
+            position: 'relative',
+            left: '-30rem',
+            fontSize: '80px',
+            fontFamily: 'Cormorant Garamond',
+          }}
           className="listing-title">
           {currentListing.title}
         </h1>
@@ -96,7 +102,9 @@ const AddListings = (props) => {
           />
           ({currentListing.avg})
         </p>
-        <div className="listing-description">
+        <div
+          className="listing-description"
+          style={{ position: 'relative', left: '3rem' }}>
           <p>{currentListing.description}</p>
         </div>
         <div
@@ -110,7 +118,11 @@ const AddListings = (props) => {
             sizes={'lg'}
             src={currentListing.profile_img}
             alt="profile"
-            style={{ borderRadius: '50%', border: '1px solid' }}
+            style={{
+              borderRadius: '50%',
+              border: '1px solid',
+              marginLeft: '2rem',
+            }}
           />
         </div>
         <div
@@ -134,7 +146,7 @@ const AddListings = (props) => {
         </div>
       </Box>
       <Rules />
-      <Divider variant="middle" />
+      <Divider orientation="vertical" flexItem />
     </Container>
   )
 }

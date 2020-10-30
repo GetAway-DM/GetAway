@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     left: '0rem',
     top: '-40rem',
-    height: '40vh',
+    height: '60vh',
     width: '110vw',
     padding: '0 30px',
     zIndex: 1,
@@ -112,7 +112,9 @@ const Reviews = (props) => {
   })
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider
+      theme={theme}
+      style={{ minHeight: '20vh', maxHeight: '320vh' }}>
       <Container className={classes.theroot}>
         <List>
           <Box className="app-body">
@@ -142,6 +144,7 @@ const Reviews = (props) => {
               onChange={(e) => setContent(e.target.value)}
             />
             <Button
+              style={{ postion: 'relative', left: '-10rem', top: '2.5rem' }}
               variant="contained"
               color="primary"
               onClick={() => {

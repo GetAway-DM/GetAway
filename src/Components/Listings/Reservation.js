@@ -32,7 +32,7 @@ function Reservation(props) {
           dateTo,
         })
         .then((res) => {
-          props.history('/')
+          props.history(`/reservations/${user_id}`)
         })
     }
   }
@@ -44,7 +44,7 @@ function Reservation(props) {
   })
 
   return (
-    <div className="reserve-container">
+    <div className="reserve-container" style={{ paddingTop: '7rem' }}>
       <div className="info-container">
         <p>
           <strong>${props.listReducer.listing.price}</strong> /night
