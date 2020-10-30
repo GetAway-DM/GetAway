@@ -20,7 +20,12 @@ function AlertDialog() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button
+        onClick={handleClickOpen}
+        variant="contained"
+        color="primary"
+        size="medium"
+        style={{ zIndex: '5' }}>
         More Details
       </Button>
       <Dialog

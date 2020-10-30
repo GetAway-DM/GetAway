@@ -4,7 +4,11 @@ import Datepicker from 'react-datepicker'
 import { connect } from 'react-redux'
 import 'react-datepicker/dist/react-datepicker.css'
 import StarRatingComponent from 'react-star-rating-component'
+import Divider from '@material-ui/core/Divider'
 import './reservation.css'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import Button from '@material-ui/core/Button'
+import { createMuiTheme } from '@material-ui/core/styles'
 
 function Reservation(props) {
   const [dateFrom, setDateFrom] = useState(new Date())
@@ -32,6 +36,12 @@ function Reservation(props) {
         })
     }
   }
+
+  const theme = createMuiTheme({
+    palette: {
+      primary: blueGrey,
+    },
+  })
 
   return (
     <div className="reserve-container">
@@ -71,9 +81,20 @@ function Reservation(props) {
         </div>
       </div>
       <div className="guests-reserve">
-        <button className="reserve-button" onClick={handleReservation}>
+        {/* <button className="reserve-button" onClick={handleReservation}>
           Reserve
-        </button>
+        </button> */}
+        <Button
+          onClick={handleReservation}
+          size="medium"
+          // position="relative"
+          variant="contained"
+          color="primary">
+          Reserve
+        </Button>
+      </div>
+      <div>
+        <Divider orientation="vertical" flexItem />
       </div>
     </div>
   )

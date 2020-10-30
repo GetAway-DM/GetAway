@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from './Post'
+import Box from '@material-ui/core/Box'
 
 class ReviewContainer extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class ReviewContainer extends React.Component {
     this.state = {
       isEditing: false,
     }
+    console.log(this.props)
   }
 
   toggleEdit = () => {
@@ -24,11 +26,13 @@ class ReviewContainer extends React.Component {
         toggleEdit={this.toggleEdit}
        />
      ) : */
-      <Post
-        handleDelete={this.props.handleDelete}
-        post={this.props.review}
-        toggleEdit={this.toggleEdit}
-      />
+      <Box className="box">
+        <Post
+          handleDelete={this.props.handleDelete}
+          post={this.props.review}
+          toggleEdit={this.toggleEdit}
+        />
+      </Box>
     )
   }
 }

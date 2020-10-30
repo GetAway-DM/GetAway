@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import AddListings from './AddListings'
-import Amenities from './Amenities'
+// import Amenities from './Amenities'
 import Reservation from './Reservation'
+import Divider from '@material-ui/core/Divider'
+
 import Reviews from './Reviews'
 import { connect } from 'react-redux'
 import { getUser } from '../../ducks/authReducer'
@@ -30,12 +32,12 @@ const Listings = (props) => {
       ) : (
         <div>
           <div>
+            <Divider variant="middle" />
             <AddListings />
             <Reservation
               listing={props.match.params.listing_id}
               history={props.history.push}
             />
-            <Amenities listing={props.match.params.listing_id} />
             <Reviews listing_id={props.match.params.listing_id} />
           </div>
         </div>

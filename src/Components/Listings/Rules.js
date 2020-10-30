@@ -10,14 +10,18 @@ import './rules.css'
 const useStyles = makeStyles({
   root: {
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
+    borderTop: 0,
     boxSizing: 'borderBox',
     borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    boxShadow: '0 3px 5px 2px grey',
     color: 'black',
-    height: '26vh',
+    position: 'relative',
+    left: '-28rem',
+    top: '30rem',
+    height: '40vh',
+    width: '40vw',
     padding: '0 30px',
-    zIndex: 1,
+    zIndex: '1',
   },
   rules: {
     zIndex: '2',
@@ -27,7 +31,7 @@ const useStyles = makeStyles({
 const Rules = () => {
   const classes = useStyles()
   return (
-    <Container className={classes.root} style={{ zIndex: '-1' }}>
+    <Container className={classes.root}>
       <Box className="rules-box">
         <Box>
           <h1>Things to Know</h1>
@@ -47,9 +51,10 @@ const Rules = () => {
             Get Away's social distancing and other COVID-19-related guidelines
             apply
           </li>
-          <h5>
+          <div className={classes.rules}>
+            {' '}
             <AlertDialog />
-          </h5>
+          </div>
         </ul>
       </Box>
     </Container>

@@ -37,7 +37,13 @@ class Amenities extends Component {
       const amenities = { ...this.props.listReducer.listing.amenities }
 
       amenitiesDisplay = (
-        <Container className="a-box-all">
+        <Container
+          className="a-box-all"
+          style={{
+            position: 'relative',
+            top: '-10rem',
+            display: 'inlineBlock',
+          }}>
           <h3>Amenities</h3>
 
           {amenities.parking === true ? (

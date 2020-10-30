@@ -1,17 +1,18 @@
-.listing-profile-img{
-    height: 5vh;
-    width: 5vw;
+.listing-profile-img {
+  position: relative;
+  height: 12vh;
+  width: 12vw;
 }
 
-.rules{
-    display: inline-block;
-    flex-direction: column;
+.rules {
+  display: inline-block;
+  flex-direction: column;
 }
-.rules-box{
-    display: block;
-    flex-direction: column;
+.rules-box {
+  display: block;
+  flex-direction: column;
 }
 
-.list-box{
-    display: block;
+.list-box {
+  display: block;
 }
