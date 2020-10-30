@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import axios from 'axios';
+import { connect } from 'react-redux'
+import axios from 'axios'
+
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import Button from '@material-ui/core/Button'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 
 import './reservations.css'
+
+const theme = createMuiTheme({
+    palette: {
+        primary: blueGrey,
+    },
+})
 
 class MyReservations extends Component {
     constructor(props) {
@@ -43,14 +53,30 @@ class MyReservations extends Component {
                 <div className="res_dates">
                     <p>Date From: {date_from.slice(0, 10)}</p>
                     <p>Date To: {date_to.slice(0, 10)}</p>
-                    <button onClick={(e) => { this.deleteReservation() }}>Delete Reservation</button>
+                    <MuiThemeProvider theme={theme}><Button
+                        onClick={(e) => { this.deleteReservation() }}
+                        size="medium"
+                        variant="contained"
+                        color='primary'
+                        name="deletereservation"
+                    >
+                        Delete Reservation
+                    </Button></MuiThemeProvider>
                 </div>
                 <div className="res_details">
                     <p>{this.state.listing.title}</p>
                     <p>Address</p>
                     <p>{this.state.listing.street}</p>
                     <p>{this.state.listing.city}, {this.state.listing.state}</p>
-                    <button onClick={(e) => { this.props.push(`/listing/${listing_id}`) }}>View Listing</button>
+                    <MuiThemeProvider theme={theme}><Button
+                        onClick={(e) => { this.props.push(`/listing/${listing_id}`) }}
+                        size="medium"
+                        variant="contained"
+                        color='primary'
+                        name="viewlisting"
+                    >
+                        View Listing
+                    </Button></MuiThemeProvider>
                 </div>
             </div>
         )

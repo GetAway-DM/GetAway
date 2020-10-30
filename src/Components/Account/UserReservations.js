@@ -54,7 +54,7 @@ class UserReservations extends Component {
         })
         return (
             <div className="res_title">
-                <h1>My Reservations</h1>
+                <h2>My Reservations</h2>
                 <div>{mappedRes}</div>
             </div>
         )
