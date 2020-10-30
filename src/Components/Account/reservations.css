@@ -1,0 +1,24 @@
+.res_title{
+    padding-top: 10vh;
+}
+
+.res_container{
+    width: 100vw;
+    height: 55vh;
+    align-items: space-around;
+    box-sizing: border-box;
+    padding-bottom: 5rem;
+    padding-top: 3rem;
+    flex-direction: row;
+}
+
+.res_dates{
+    width: 100vw;
+    height: 20vh;
+    justify-content: flex-start;
+}
+
+.res_details{
+    width: 100vw;
+    height: 20vh;
+}
