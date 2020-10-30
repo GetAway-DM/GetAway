@@ -11,7 +11,6 @@ const reviewCtrl = require('./reviewController')
 const photoCtrl = require('./photoController')
 const verifyUser = require('./middlewares/verifyUser')
 const aws = require('aws-sdk')
-app.use(express.static(`${__dirname}/..build`))
 
 const app = express()
 
@@ -27,6 +26,7 @@ const {
 // Build
 app.use(express.json())
 
+app.use(express.static(`${__dirname}/../build`))
 
 app.use(
   session({
