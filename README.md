@@ -1,68 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Welcome To GetAway!
 
-In the project directory, you can run:
+Want to get away from the daily grind? Well with GetAWay you pretty much go wherever your heart desires!
+GetAway is a platform to let you be able to rent out a house or apartment for short length of time. You can either host or rent. This website includes google maps to get a visual of where the listings are shown, a individual page for each listing to give more information on it. Full authentication to keep host and customers information with the best security possible. Also a profile to be able to see who exactly you are renting from and reviews to get that added bit peace-of-mind when do buisness with strangers. 
 
-### `yarn start`
+### `What to expect?`
+Here are a few demos to get a feel layout.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
+![Hi](./assets/photo.webp)
+![Hi](https://www.google.com/aclk?sa=l&ai=DChcSEwiy1IK-jvTsAhXS8OMHHVRZAooYABAHGgJ5bQ&sig=AOD64_0xDQQGjWbCiEtBlQfIw2e-rk3dpw&adurl&ctype=46&ved=2ahUKEwiOwPa9jvTsAhXBJ6wKHRnhCrIQvhd6BAgBEGU)
+### `How to use?`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `FAQ's`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Lorizzle ipsum sit amizzle, consectetuer adipiscing elizzle. Nullam sapien velizzle, shut the shizzle up volutpizzle, we gonna chung daahng dawg, ass vizzle, yo. Hizzle gizzle tortor. Sizzle erizzle. Sheezy stuff dolor gizzle turpis pimpin' own yo'. Maurizzle pellentesque nibh et turpis. Vestibulum izzle tortizzle. Dizzle eleifend crackalackin dope. Shizznit pimpin' habitasse platea dictumst. The bizzle dapibizzle. Curabitizzle tellizzle urna, fo shizzle eu, rizzle ghetto, gizzle crunk, nunc. Crunk suscipit. Away boom shackalack cool away go to hizzle.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
+### `About Us`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Dizzle fo shizzle my nizzle shiz. Fusce magna dizzle, dignissizzle sizzle amet, fringilla egizzle, sollicitudin nizzle, shizznit. Maecenas a nisi. Dang malesuada fizzle et boom shackalack. Suspendisse get down get down. Crizzle fo brizzle mammasay mammasa mamma oo sa. Suspendisse uhuh ... yih! ultrices purus. Sed dolor libero, pizzle interdum, posuere cool, dapibizzle shizznit, mammasay mammasa mamma oo sa. Suspendisse i saw beyonces tizzles and my pizzle went crizzle tellus. Pot aliquizzle bow wow wow shut the shizzle up yo cool. Fusce dapibizzle pimpin' id pimpin'. Mah nizzle fizzle fizzle sit amizzle, pimpin' adipiscing elit. Suspendisse boom shackalack purus, eleifend check out this, ullamcorper id, consequizzle nizzle, elit. Nam brizzle pot things.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Sed ullamcorpizzle. Aliquam sagittis massa ma nizzle pizzle. Vestibulizzle ante uhuh ... yih! primizzle in faucibizzle orci luctus et ultrices rizzle cubilia Owned; Aenizzle vestibulum. Pellentesque fizzle morbi tristique crunk izzle netizzle izzle malesuada fames ac turpizzle egestizzle. Its fo rizzle tempizzle hendrerit velit. Fo shizzle erizzle volutpizzle. Vivamizzle nizzle fo shizzle, scelerisque stuff, dignissim a, fringilla shiz, arcu. Nulla brizzle. Donizzle fermentum, est fo shizzle pharetra aliquet, magna shiz ultricies neque, non ullamcorpizzle ghetto dolor black nibh. Vivamizzle tellus ma nizzle, ultrices ut, ornare gizzle, non, yippiyo. Shizzlin dizzle purus sizzle, black sizzle amet, gangsta vehicula, dignissizzle fo shizzle mah nizzle fo rizzle, mah home g-dizzle, arcu. Aenean its fo rizzle nizzle sheezy check out this ullamcorpizzle tincidunt. Donec bling bling. Maurizzle ligula urna, tempor izzle, bizzle venenatizzle, rizzle nizzle, cool. Etiam fo shizzle.
 
 ## Learn More
-
+~This is a website used for learning and showcase the work of 4 young developers. 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Technologies used
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
