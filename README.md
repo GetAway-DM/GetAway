@@ -1,36 +1,72 @@
 
 ### Welcome To GetAway!
 
-Want to get away from the daily grind? Well with GetAWay you pretty much go wherever your heart desires!
+   Want to get away from the daily grind? Well with GetAWay you pretty much go wherever your heart desires!
 GetAway is a platform to let you be able to rent out a house or apartment for short length of time. You can either host or rent. This website includes google maps to get a visual of where the listings are shown, a individual page for each listing to give more information on it. Full authentication to keep host and customers information with the best security possible. Also a profile to be able to see who exactly you are renting from and reviews to get that added bit peace-of-mind when do buisness with strangers. 
 
 ### `What to expect?`
-Here are a few demos to get a feel layout.
+*Here are a few demos to get a feel layout.*
 
-![Hi](./assets/photo.webp)
-![Hi](https://www.google.com/aclk?sa=l&ai=DChcSEwiy1IK-jvTsAhXS8OMHHVRZAooYABAHGgJ5bQ&sig=AOD64_0xDQQGjWbCiEtBlQfIw2e-rk3dpw&adurl&ctype=46&ved=2ahUKEwiOwPa9jvTsAhXBJ6wKHRnhCrIQvhd6BAgBEGU)
+![Demo](./src/assets/demo/register.png) 
+![Demo](./src/assets/demo/login.png)
+![Demo](./src/assets/demo/dashboard.png)
+![Demo](./src/assets/demo/landing.png)
+![Demo](./src/assets/demo/createlisting.png)
+![Demo](./src/assets/demo/createlistingpt2.png)
+![Demo](./src/assets/demo/profile.png)
+![Demo](./src/assets/demo/editlistingpt1.png)
+![Demo](./src/assets/demo/createlistingpt2.png)
+![Demo](./src/assets/demo/reservations.png)
+![Demo](./src/assets/demo/mylisting.png)
+
 ### `How to use?`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**[GetAway](http://getaway.dev)**. Here we have the link to access the website!
+Sign In is located in the top right corner. After that navigate to the dashboard then you proceed to either create a listing or enjoy the listings already up for grabs! 
 
 ### `FAQ's`
 
-Lorizzle ipsum sit amizzle, consectetuer adipiscing elizzle. Nullam sapien velizzle, shut the shizzle up volutpizzle, we gonna chung daahng dawg, ass vizzle, yo. Hizzle gizzle tortor. Sizzle erizzle. Sheezy stuff dolor gizzle turpis pimpin' own yo'. Maurizzle pellentesque nibh et turpis. Vestibulum izzle tortizzle. Dizzle eleifend crackalackin dope. Shizznit pimpin' habitasse platea dictumst. The bizzle dapibizzle. Curabitizzle tellizzle urna, fo shizzle eu, rizzle ghetto, gizzle crunk, nunc. Crunk suscipit. Away boom shackalack cool away go to hizzle.
+#### Why use GetAway?
+> ##### GetAway is awesome because it gives users a great experience in being able to review and easy access <br/> the listings they are interested in.
+#### Are there refunds?
+> ##### Refunds are handled at the host and customer level. We encourage all host to offer refunds!
+#### Where are listings located?
+> ##### Currently are listings are only located within the states, but look for future updates to include <br/> international listings!
+#### Does it cost money to use the website? 
+> ##### Currently GetAway requires nothing but to register and get to vacationing! No credit card required on Sign-up.
+
 
 ### `About Us`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Note: Please do not solicited or spam us !**
 
-Dizzle fo shizzle my nizzle shiz. Fusce magna dizzle, dignissizzle sizzle amet, fringilla egizzle, sollicitudin nizzle, shizznit. Maecenas a nisi. Dang malesuada fizzle et boom shackalack. Suspendisse get down get down. Crizzle fo brizzle mammasay mammasa mamma oo sa. Suspendisse uhuh ... yih! ultrices purus. Sed dolor libero, pizzle interdum, posuere cool, dapibizzle shizznit, mammasay mammasa mamma oo sa. Suspendisse i saw beyonces tizzles and my pizzle went crizzle tellus. Pot aliquizzle bow wow wow shut the shizzle up yo cool. Fusce dapibizzle pimpin' id pimpin'. Mah nizzle fizzle fizzle sit amizzle, pimpin' adipiscing elit. Suspendisse boom shackalack purus, eleifend check out this, ullamcorper id, consequizzle nizzle, elit. Nam brizzle pot things.
-
-Sed ullamcorpizzle. Aliquam sagittis massa ma nizzle pizzle. Vestibulizzle ante uhuh ... yih! primizzle in faucibizzle orci luctus et ultrices rizzle cubilia Owned; Aenizzle vestibulum. Pellentesque fizzle morbi tristique crunk izzle netizzle izzle malesuada fames ac turpizzle egestizzle. Its fo rizzle tempizzle hendrerit velit. Fo shizzle erizzle volutpizzle. Vivamizzle nizzle fo shizzle, scelerisque stuff, dignissim a, fringilla shiz, arcu. Nulla brizzle. Donizzle fermentum, est fo shizzle pharetra aliquet, magna shiz ultricies neque, non ullamcorpizzle ghetto dolor black nibh. Vivamizzle tellus ma nizzle, ultrices ut, ornare gizzle, non, yippiyo. Shizzlin dizzle purus sizzle, black sizzle amet, gangsta vehicula, dignissizzle fo shizzle mah nizzle fo rizzle, mah home g-dizzle, arcu. Aenean its fo rizzle nizzle sheezy check out this ullamcorpizzle tincidunt. Donec bling bling. Maurizzle ligula urna, tempor izzle, bizzle venenatizzle, rizzle nizzle, cool. Etiam fo shizzle.
-
+   Hi, we are four new developers that recently graduated from DevMountain's 13 intensive bootcamp. <br/>
+ This group project helped to give of the experence of working dillgently in a group. We learned a lot through this project on teamwork and a lot about coding! Feel free to checkout the organization.
+ [Organization for GetAway] ()
+ 
+ ##### Tessa [Github](https://github.com/tessa-woodard)
+ ##### Matt  [Github](https://github.com/mattmc96)
+ ##### Masen [Github](https://github.com/mfunderburk15)
+ ##### Megan [Github](https://github.com/Megan-Olsen)
+ 
+  
+ 
+ 
+ 
 ## Learn More
-~This is a website used for learning and showcase the work of 4 young developers. 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This is a website used for **learning** and to showcase the work of 4 young developers. 
+You can learn more in the **[GetAway](http://getaway.dev/aboutus)** about us section. 
+*Even though the website is fully functional the listings are demo data*
 
 ### Technologies used
+- React
+    - Redux
+    - Material UI
+    - Google Map API
+- PostgreSQL
+    - Massive.js
+- Node
+- Express
+
 
 
 
